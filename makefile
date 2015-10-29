@@ -7,6 +7,8 @@ FILES :=                              \
     RunDarwin.out                     \
     html                              \
     TestDarwin.c++                    \
+    Darwin.pdf                        \
+    darwin-tests                      \
     TestDarwin.out
 
 CXX        := g++-4.8
@@ -49,9 +51,9 @@ log:
 
 test: TestDarwin.out
 
-allocator-tests:
+darwin-tests:
 	cd ..
-	git clone https://github.com/cs371p-fall-2015/allocator-tests.git
+	git clone https://github.com/cs371p-fall-2015/darwin-tests.git
 
 coverage:
 	gcov-4.8 -b Darwin.h Darwin.c++
@@ -62,10 +64,10 @@ clean:
 	rm -f *.gcov
 	rm -f TestDarwin
 
-TestAllocator: Darwin.h TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.h TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.h Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
 
-TestAllocator.out: TestAllocator
+TestDarwin.out: TestDarwin
 	$(VALGRIND) ./TestDarwin						> TestDarwin.out 2>&1
 	$(GCOV) -b TestDarwin.c++ 	| grep -A 5 "File 'TestDarwin.c++'" 	>> TestDarwin.out
 	cat TestDarwin.out
