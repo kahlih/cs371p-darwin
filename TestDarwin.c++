@@ -11,3 +11,24 @@ using namespace std;
 TEST(Darwin, test_1) {
 	ASSERT_TRUE(true);
 }
+
+    // ------
+    // hopper
+    // ------
+
+    /*
+     0: hop
+     1: go 0
+    */
+
+
+
+// TEST(Species, species_1){
+// 	Action i(HOP);
+// 	Species s;
+// 	s.addInstruction(i);
+	
+// 	Creature b1(s,EAST,0);
+
+// 	x.addCreature
+// }

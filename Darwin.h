@@ -74,7 +74,19 @@ class Creature {
 
 class Darwin {
 	public:
-		Darwin(int width, int height) : grid(width, vector<Creature>(height)) {}
+		Darwin(int width, int height) : grid(width*height) {
+			_width = width;
+		}
+		
+		void addCreature(Creature& c, int x, int y){
+			grid[x*_width + y] = c;
+		}
+
+		Creature& at(int x, int y){
+			return grid[x*_width + y];
+		}
+
 	private:
-		vector<vector<Creature>> grid;
+		vector<Creature> grid; //row-major order
+		int _width;
 };
