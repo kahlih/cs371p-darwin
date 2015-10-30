@@ -6,6 +6,7 @@
 
 
 #include <vector>
+#include <iostream>
 #include "gtest/gtest_prod.h"
 
 using namespace std;
@@ -29,15 +30,17 @@ class Action : public Instruction {
 
 class Control : public Instruction {
 	public:
-		Control(int n, INSTRUCTION_NAME name);
+		Control(INSTRUCTION_NAME name,int n);
 	private:
 		int _n;
 };
 
 class Species {
 	public:
-		void addInstruction(Instruction instruction);
-	    Species();
+		int addInstruction(Instruction instruction);
+		Species();
+	    Species(char c);
+	    char _name;
 	private:
 		vector<Instruction> program;
 };
@@ -51,13 +54,16 @@ class Creature {
 	public:
 		Creature();
 		Creature(Species species, DIRECTION direction, int n);
+		friend ostream& operator<<(ostream& os, const Creature& creature);
 };
 
 class Darwin {
 	public:
 		Darwin(int width, int height);
 		void addCreature(Creature& c, int x, int y);
-		Creature& at(int x, int y);
+		Creature& at(int n);	// if you have the specific index
+		Creature& at(int x, int y);   // if you have coordinates
+		void display();
 	private:
 		vector<Creature> grid; //row-major order
 		int _width;

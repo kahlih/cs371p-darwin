@@ -71,3 +71,10 @@ TestDarwin.out: TestDarwin
 	$(VALGRIND) ./TestDarwin						> TestDarwin.out 2>&1
 	$(GCOV) -b TestDarwin.c++ 	| grep -A 5 "File 'TestDarwin.c++'" 	>> TestDarwin.out
 	cat TestDarwin.out
+
+RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
+
+RunDarwin.tmp: RunDarwin
+	./RunDarwin > RunDarwin.tmp
+	cat RunDarwin.tmp

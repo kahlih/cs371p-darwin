@@ -29,6 +29,11 @@ int main () {
      0: left
      1: go 0
     */
+     Species food('f');
+     Action f_a1(LEFT);
+     Control f_c2(GO, 0);
+     assert(food.addInstruction(f_a1) == 1);
+     assert(food.addInstruction(f_c2) == 2);
 
     // ------
     // hopper
@@ -38,6 +43,12 @@ int main () {
      0: hop
      1: go 0
     */
+
+     Species hopper('h');
+     Action h_a1(HOP);
+     Control h_c2(GO, 0);
+     assert(hopper.addInstruction(h_a1) == 1);
+     assert(hopper.addInstruction(h_c2) == 2);
 
     // -----
     // rover
@@ -57,6 +68,32 @@ int main () {
     10: go 0
     */
 
+     Species rover('r');
+     Control r_c1(IF_ENEMY, 9);
+     Control r_c2(IF_EMPTY, 7);
+     Control r_c3(IF_RANDOM, 5);
+     Action r_a4(LEFT);
+     Control r_c5(GO, 0);
+     Action r_a6(RIGHT);
+     Control r_c7(GO, 0);
+     Action r_a8(HOP);
+     Control r_c9(GO, 0);
+     Action r_a10(INFECT);
+     Control r_c11(GO, 0);
+
+     assert(rover.addInstruction(r_c1) == 1);
+     assert(rover.addInstruction(r_c2) == 2);
+     assert(rover.addInstruction(r_c3) == 3);
+     assert(rover.addInstruction(r_a4) == 4);
+     assert(rover.addInstruction(r_c5) == 5);
+     assert(rover.addInstruction(r_a6) == 6);
+     assert(rover.addInstruction(r_c7) == 7);
+     assert(rover.addInstruction(r_a8) == 8);
+     assert(rover.addInstruction(r_c9) == 9);
+     assert(rover.addInstruction(r_a10) == 10);
+     assert(rover.addInstruction(r_c11) == 11);
+
+
     // ----
     // trap
     // ----
@@ -68,6 +105,20 @@ int main () {
      3: infect
      4: go 0
     */
+
+
+     Species trap('t');
+     Control t_c1(IF_ENEMY,3);
+     Action t_a2(LEFT);
+     Control t_c3(GO,0);
+     Action t_a4(INFECT);
+     Control t_c5(GO, 0);
+
+     assert(trap.addInstruction(t_c1) == 1);
+     assert(trap.addInstruction(t_a2) == 2);
+     assert(trap.addInstruction(t_c3) == 3);
+     assert(trap.addInstruction(t_a4) == 4);
+     assert(trap.addInstruction(t_c5) == 5);
 
     // ----------
     // darwin 8x8
@@ -86,6 +137,22 @@ int main () {
     Print every grid.
     */
 
+    Creature c1(food, EAST, 0);
+    Creature c2(hopper, NORTH, 0);
+    Creature c3(hopper, EAST, 0);
+    Creature c4(hopper, SOUTH, 0);
+    Creature c5(hopper, WEST, 0);
+    Creature c6(food, NORTH, 0);
+
+    Darwin grid1(8,8);
+    grid1.addCreature(c1,0,0);
+    grid1.addCreature(c2,3,3);
+    grid1.addCreature(c3,3,4);
+    grid1.addCreature(c4,4,4);
+    grid1.addCreature(c5,4,3);
+    grid1.addCreature(c6,7,7);
+
+    grid1.display();
     // ----------
     // darwin 7x9
     // ----------
