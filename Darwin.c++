@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/* Instruction */
 Instruction::Instruction(){}
 Instruction::Instruction(INSTRUCTION_NAME name) {
 	instruction_name = name;
@@ -14,6 +15,7 @@ Control::Control(INSTRUCTION_NAME name,int n) : Instruction(name) {
 	_n = n;
 }
 
+/* Species */
 Species::Species() { _name = '.';}
 Species::Species(char c) { _name = c;}
 int Species::addInstruction(Instruction instruction) {
@@ -21,6 +23,7 @@ int Species::addInstruction(Instruction instruction) {
 	return program.size();
 }
 
+/* Creature */
 Creature::Creature() {}
 Creature::Creature(Species species, DIRECTION direction, int n) {
 	_species = species;
@@ -34,15 +37,15 @@ ostream& operator<<(ostream& os, const Creature& creature) {
 	return os;
 }
 
+
+/* Darwin */
 Darwin::Darwin(int width, int height) : grid(width*height) {
 	_height = height;
 }
 Darwin::~Darwin(){}
-
 void Darwin::addCreature(Creature& c, int x, int y){
 	grid[x*_height + y] = c;
 }
-
 void Darwin::display(){
 	int length = grid.size()/_height;
 	cout << " ";
@@ -51,14 +54,11 @@ void Darwin::display(){
 	}
 
 	cout << endl;
-
 	for (int i = 0; i < (int)grid.size(); i++) {
 		if (i % length == 0) {
 			cout << (i / length) % 10;
 		}
-
 		cout << grid.at(i);
-
 		if (i % length == length - 1) {
 			cout << endl;
 		}

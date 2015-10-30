@@ -93,7 +93,6 @@ int main () {
      assert(rover.addInstruction(r_a10) == 10);
      assert(rover.addInstruction(r_c11) == 11);
 
-
     // ----
     // trap
     // ----
