@@ -153,6 +153,11 @@ int main () {
     grid1.addCreature(c6,7,7);
 
     grid1.display();
+
+    // *** DESTROY *** //
+    //grid1.~Darwin();
+    //c1.~Creature();
+
     // ----------
     // darwin 7x9
     // ----------
@@ -169,6 +174,18 @@ int main () {
     Print every grid.
     */
 
+    Creature d1(trap, SOUTH, 0);
+    Creature d2(hopper, EAST, 0);
+    Creature d3(rover, NORTH, 0);
+    Creature d4(trap, WEST, 0);
+
+    Darwin grid2(7,9);
+    grid2.addCreature(d1,0,0);
+    grid2.addCreature(d2,3,2);
+    grid2.addCreature(d3,5,4);
+    grid2.addCreature(d4,6,8);
+
+    grid2.display();
     // ------------
     // darwin 72x72
     // without best

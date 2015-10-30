@@ -55,16 +55,18 @@ class Creature {
 		Creature();
 		Creature(Species species, DIRECTION direction, int n);
 		friend ostream& operator<<(ostream& os, const Creature& creature);
+		~Creature();
 };
 
 class Darwin {
 	public:
-		Darwin(int width, int height);
+		Darwin(int length, int height);
+		~Darwin();
 		void addCreature(Creature& c, int x, int y);
 		Creature& at(int n);	// if you have the specific index
 		Creature& at(int x, int y);   // if you have coordinates
 		void display();
 	private:
 		vector<Creature> grid; //row-major order
-		int _width;
+		int _height;
 };

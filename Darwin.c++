@@ -27,6 +27,7 @@ Creature::Creature(Species species, DIRECTION direction, int n) {
 	_direction = direction;
 	_pc = 0;
 }
+Creature::~Creature(){}
 
 ostream& operator<<(ostream& os, const Creature& creature) {
 	os << creature._species._name;
@@ -34,15 +35,16 @@ ostream& operator<<(ostream& os, const Creature& creature) {
 }
 
 Darwin::Darwin(int width, int height) : grid(width*height) {
-	_width = width;
+	_height = height;
 }
+Darwin::~Darwin(){}
 
 void Darwin::addCreature(Creature& c, int x, int y){
-	grid[x*_width + y] = c;
+	grid[x*_height + y] = c;
 }
 
 void Darwin::display(){
-	int length = grid.size()/_width;
+	int length = grid.size()/_height;
 	cout << " ";
 	for (int i = 0; i < length; i++){
 		cout << i % 10;
@@ -67,7 +69,5 @@ Creature& Darwin::at(int n){
 	return grid[n];
 }
 Creature& Darwin::at(int x, int y){
-	return grid[x*_width + y];
+	return grid[x*_height + y];
 }
-
-

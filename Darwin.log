@@ -1,0 +1,47 @@
+commit b705241d73fa5c17eb2a6a8507588294c92e8774
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Fri Oct 30 12:45:19 2015 -0500
+
+    able to print correct grids
+
+commit 43a7b634ce9e65a882b1c873b231cf9ec9c52dfc
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Fri Oct 30 11:44:24 2015 -0500
+
+    refactored
+
+commit 6494bf335050c7328e0fab7610ae1c6e9896c04f
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Thu Oct 29 17:02:49 2015 -0500
+
+    changed to row-major and starting on tests
+
+commit d19b5bf2123d6068f7b54ead4044d70bf49ee433
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Thu Oct 29 16:32:32 2015 -0500
+
+    fixed makefile, created classes, Closes #1, Closes #6
+
+commit 7a448aa630344aab3beee5c2e15a876a537439d4
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Oct 29 13:55:19 2015 -0500
+
+    added uml, probably still needs to be modified
+
+commit 3285817f54c4383d95b137192250becb420e67ef
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Thu Oct 29 13:05:37 2015 -0500
+
+    adding empty files
+
+commit 5793b6e6b83be89d4fab3e346e7f198662d4c272
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Thu Oct 29 13:00:55 2015 -0500
+
+    adding makefile
+
+commit 52441e36e9956c6c62f51b67739dd8207065a6a5
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Oct 28 17:35:58 2015 -0500
+
+    adding skeleton files

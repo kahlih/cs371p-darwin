@@ -1,0 +1,7 @@
+darwin-tests/*
+darwin-tests
+*.gcov
+*.gcda
+*.gcno
+RunDarwin
+TestDarwin

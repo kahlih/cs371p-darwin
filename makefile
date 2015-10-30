@@ -8,7 +8,6 @@ FILES :=                              \
     html                              \
     TestDarwin.c++                    \
     Darwin.pdf                        \
-    darwin-tests                      \
     TestDarwin.out
 
 CXX        := g++-4.8
