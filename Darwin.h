@@ -15,44 +15,31 @@ enum DIRECTION {NORTH, SOUTH, EAST, WEST};
 
 class Instruction {
 	public:
-		Instruction(INSTRUCTION_NAME name) {
-			instruction_name = name;
-		}
-
-		Instruction() {}
+		Instruction(INSTRUCTION_NAME name);
+		Instruction();
 	private:
 		INSTRUCTION_NAME instruction_name;
 };
 
 class Action : public Instruction {
 	public:
-		Action() {}
-
-	Action(INSTRUCTION_NAME name) : Instruction(name) {}
+		Action();
+		Action(INSTRUCTION_NAME name);
 };
 
 class Control : public Instruction {
 	public:
-		Control(int n);
+		Control(int n, INSTRUCTION_NAME name);
 	private:
 		int _n;
-
-	Control(int n, INSTRUCTION_NAME name) : Instruction(name) {
-		_n = n;
-	}
 };
 
 class Species {
 	public:
-		void addInstruction(Instruction instruction) {
-			program.push_back(instruction);
-	    }
-
-	    Species() {}
-
+		void addInstruction(Instruction instruction);
+	    Species();
 	private:
 		vector<Instruction> program;
-
 };
 
 class Creature {
@@ -62,30 +49,15 @@ class Creature {
 		Species _species;
 
 	public:
-		Creature() {}
-
-		Creature(Species species, DIRECTION direction, int n) {
-			_species = species;
-			_direction = direction;
-			_pc = 0;
-		}
-
+		Creature();
+		Creature(Species species, DIRECTION direction, int n);
 };
 
 class Darwin {
 	public:
-		Darwin(int width, int height) : grid(width*height) {
-			_width = width;
-		}
-		
-		void addCreature(Creature& c, int x, int y){
-			grid[x*_width + y] = c;
-		}
-
-		Creature& at(int x, int y){
-			return grid[x*_width + y];
-		}
-
+		Darwin(int width, int height);
+		void addCreature(Creature& c, int x, int y);
+		Creature& at(int x, int y);
 	private:
 		vector<Creature> grid; //row-major order
 		int _width;
