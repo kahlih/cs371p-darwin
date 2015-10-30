@@ -43,7 +43,7 @@ script:
     - ls -al
     - make html
     - ls -al
-    - make Collatz.log
+    - make Darwin.log
     - ls -al
     - make test
     - ls -al
