@@ -2,14 +2,19 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
-
+#include <typeinfo>
 #include "gtest/gtest.h"
 #include "Darwin.h"
 
 using namespace std;
 
-TEST(Darwin, test_1) {
-	ASSERT_TRUE(true);
+TEST(Species, species_1) {
+	Species s('h');
+	ASSERT_EQ(s.addInstruction(Action(HOP)), 1);
+	ASSERT_EQ(s.addInstruction(Action(HOP)), 2);
+	ASSERT_EQ(s.addInstruction(Action(LEFT)), 3);
+	ASSERT_EQ(s.addInstruction(Control(GO,0)), 4);
+	ASSERT_EQ(s._name,'h');
 }
 
     // ------

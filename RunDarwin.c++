@@ -130,6 +130,7 @@ int main () {
     grid1.addCreature(c6,7,7);
 
     grid1.display();
+    grid1.simulate(5);
 
     // *** DESTROY *** //
     //grid1.~Darwin();

@@ -18,7 +18,7 @@ class Instruction {
 	public:
 		Instruction(INSTRUCTION_NAME name);
 		Instruction();
-	private:
+	//private:
 		INSTRUCTION_NAME instruction_name;
 };
 
@@ -31,15 +31,16 @@ class Action : public Instruction {
 class Control : public Instruction {
 	public:
 		Control(INSTRUCTION_NAME name,int n);
-	private:
+	// private:
 		int _n;
 };
 
 class Species {
+	friend class Creature;
 	public:
-		int addInstruction(Instruction instruction);
 		Species();
 	    Species(char c);
+		int addInstruction(Instruction instruction);
 	    char _name;
 	private:
 		vector<Instruction> program;
@@ -52,20 +53,30 @@ class Creature {
 		Species _species;
 
 	public:
+		bool empty;
 		Creature();
 		Creature(Species species, DIRECTION direction);
 		Creature(Species species, DIRECTION direction, int n);
+		Instruction& getInstruction(int pc);
+		void left();
+		void go(int n);
 		friend ostream& operator<<(ostream& os, const Creature& creature);
+		int operator++(int);
 		~Creature();
 };
 
 class Darwin {
 	public:
+		typedef vector<Creature>::iterator iterator;
 		Darwin(int col, int row);
 		~Darwin();
 		void addCreature(Creature& c, int x, int y);
+		iterator begin();
+		iterator end();
+		void simulate(int n);
 		Creature& at(int n);	// if you have the specific index
 		Creature& at(int x, int y);   // if you have coordinates
+		void run(int location, Creature& c);
 		void display();
 	private:
 		vector<Creature> grid; //row-major order
