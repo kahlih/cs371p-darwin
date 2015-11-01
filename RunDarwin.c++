@@ -30,10 +30,8 @@ int main () {
      1: go 0
     */
      Species food('f');
-     Action f_a1(LEFT);
-     Control f_c2(GO, 0);
-     assert(food.addInstruction(f_a1) == 1);
-     assert(food.addInstruction(f_c2) == 2);
+     assert(food.addInstruction(Action(LEFT)) == 1);
+     assert(food.addInstruction(Control(GO,0)) == 2);
 
     // ------
     // hopper
@@ -45,10 +43,8 @@ int main () {
     */
 
      Species hopper('h');
-     Action h_a1(HOP);
-     Control h_c2(GO, 0);
-     assert(hopper.addInstruction(h_a1) == 1);
-     assert(hopper.addInstruction(h_c2) == 2);
+     assert(hopper.addInstruction(Action(HOP)) == 1);
+     assert(hopper.addInstruction(Control(GO,0)) == 2);
 
     // -----
     // rover
@@ -69,29 +65,17 @@ int main () {
     */
 
      Species rover('r');
-     Control r_c1(IF_ENEMY, 9);
-     Control r_c2(IF_EMPTY, 7);
-     Control r_c3(IF_RANDOM, 5);
-     Action r_a4(LEFT);
-     Control r_c5(GO, 0);
-     Action r_a6(RIGHT);
-     Control r_c7(GO, 0);
-     Action r_a8(HOP);
-     Control r_c9(GO, 0);
-     Action r_a10(INFECT);
-     Control r_c11(GO, 0);
-
-     assert(rover.addInstruction(r_c1) == 1);
-     assert(rover.addInstruction(r_c2) == 2);
-     assert(rover.addInstruction(r_c3) == 3);
-     assert(rover.addInstruction(r_a4) == 4);
-     assert(rover.addInstruction(r_c5) == 5);
-     assert(rover.addInstruction(r_a6) == 6);
-     assert(rover.addInstruction(r_c7) == 7);
-     assert(rover.addInstruction(r_a8) == 8);
-     assert(rover.addInstruction(r_c9) == 9);
-     assert(rover.addInstruction(r_a10) == 10);
-     assert(rover.addInstruction(r_c11) == 11);
+     assert(rover.addInstruction(Control(IF_ENEMY, 9)) == 1);
+     assert(rover.addInstruction(Control(IF_EMPTY, 7)) == 2);
+     assert(rover.addInstruction(Control(IF_RANDOM, 5)) == 3);
+     assert(rover.addInstruction(Action(LEFT)) == 4);
+     assert(rover.addInstruction(Control(GO,0)) == 5);
+     assert(rover.addInstruction(Action(RIGHT)) == 6);
+     assert(rover.addInstruction(Control(GO,0)) == 7);
+     assert(rover.addInstruction(Action(HOP)) == 8);
+     assert(rover.addInstruction(Control(GO,0)) == 9);
+     assert(rover.addInstruction(Action(INFECT)) == 10);
+     assert(rover.addInstruction(Control(GO,0)) == 11);
 
     // ----
     // trap
@@ -107,17 +91,11 @@ int main () {
 
 
      Species trap('t');
-     Control t_c1(IF_ENEMY,3);
-     Action t_a2(LEFT);
-     Control t_c3(GO,0);
-     Action t_a4(INFECT);
-     Control t_c5(GO, 0);
-
-     assert(trap.addInstruction(t_c1) == 1);
-     assert(trap.addInstruction(t_a2) == 2);
-     assert(trap.addInstruction(t_c3) == 3);
-     assert(trap.addInstruction(t_a4) == 4);
-     assert(trap.addInstruction(t_c5) == 5);
+     assert(trap.addInstruction(Control(IF_ENEMY,3)) == 1);
+     assert(trap.addInstruction(Action(LEFT)) == 2);
+     assert(trap.addInstruction(Control(GO,0)) == 3);
+     assert(trap.addInstruction(Action(INFECT)) == 4);
+     assert(trap.addInstruction(Control(GO,0)) == 5);
 
     // ----------
     // darwin 8x8
@@ -136,12 +114,12 @@ int main () {
     Print every grid.
     */
 
-    Creature c1(food, EAST, 0);
-    Creature c2(hopper, NORTH, 0);
-    Creature c3(hopper, EAST, 0);
-    Creature c4(hopper, SOUTH, 0);
-    Creature c5(hopper, WEST, 0);
-    Creature c6(food, NORTH, 0);
+    Creature c1(food, EAST);
+    Creature c2(hopper, NORTH);
+    Creature c3(hopper, EAST);
+    Creature c4(hopper, SOUTH);
+    Creature c5(hopper, WEST);
+    Creature c6(food, NORTH);
 
     Darwin grid1(8,8);
     grid1.addCreature(c1,0,0);
@@ -173,10 +151,10 @@ int main () {
     Print every grid.
     */
 
-    Creature d1(trap, SOUTH, 0);
-    Creature d2(hopper, EAST, 0);
-    Creature d3(rover, NORTH, 0);
-    Creature d4(trap, WEST, 0);
+    Creature d1(trap, SOUTH);
+    Creature d2(hopper, EAST);
+    Creature d3(rover, NORTH);
+    Creature d4(trap, WEST);
 
     Darwin grid2(7,9);
     grid2.addCreature(d1,0,0);

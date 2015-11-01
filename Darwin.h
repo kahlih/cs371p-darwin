@@ -53,6 +53,7 @@ class Creature {
 
 	public:
 		Creature();
+		Creature(Species species, DIRECTION direction);
 		Creature(Species species, DIRECTION direction, int n);
 		friend ostream& operator<<(ostream& os, const Creature& creature);
 		~Creature();
@@ -60,7 +61,7 @@ class Creature {
 
 class Darwin {
 	public:
-		Darwin(int length, int height);
+		Darwin(int col, int row);
 		~Darwin();
 		void addCreature(Creature& c, int x, int y);
 		Creature& at(int n);	// if you have the specific index
@@ -68,5 +69,6 @@ class Darwin {
 		void display();
 	private:
 		vector<Creature> grid; //row-major order
-		int _height;
+		int _row;
+		int _col;
 };
