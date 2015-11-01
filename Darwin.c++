@@ -3,13 +3,17 @@
 
 /* Instruction */
 Instruction::Instruction(){}
-Instruction::Instruction(INSTRUCTION_NAME name) {
+Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 	instruction_name = name;
+	_n = n;
 }
-Action::Action(){}
-Action::Action(INSTRUCTION_NAME name) : Instruction(name) {}
+bool Instruction::isControl(){
+	return (_n>-1);
+}
+// Action::Action(){}
+// Action::Action(INSTRUCTION_NAME name) : Instruction(name) {}
 
-Control::Control(INSTRUCTION_NAME name,int n) : Instruction(name) {}
+// Control::Control(INSTRUCTION_NAME name,int n) : Instruction(name) {}
 
 /* Species */
 Species::Species() { _name = '.';}
@@ -115,13 +119,8 @@ void Darwin::run(int location, Creature& c) {
 			break;
 
 		/* Controls */
-		case GO : {
-			Control* control = reinterpret_cast<Control*>(&i);
-			cout << "n: " << control->_n << endl;
-			c.go(control->_n);
-			cout << "n: " << control->_n << endl;
-
-		}
+		case GO :
+			c.go(i._n);
 			break;
 		case IF_EMPTY: 
 			break;

@@ -15,25 +15,29 @@ enum INSTRUCTION_NAME {HOP, LEFT, RIGHT, INFECT, IF_EMPTY, IF_WALL, IF_RANDOM, I
 enum DIRECTION {NORTH, SOUTH, EAST, WEST};
 
 class Instruction {
+	friend class Creature;
+	friend class Darwin;
 	public:
-		Instruction(INSTRUCTION_NAME name);
+		Instruction(INSTRUCTION_NAME name,int n=-1);
 		Instruction();
-	//private:
+		bool isControl();
+	private:
 		INSTRUCTION_NAME instruction_name;
-};
-
-class Action : public Instruction {
-	public:
-		Action();
-		Action(INSTRUCTION_NAME name);
-};
-
-class Control : public Instruction {
-	public:
-		Control(INSTRUCTION_NAME name,int n);
-	// private:
 		int _n;
 };
+
+// class Action : public Instruction {
+// 	public:
+// 		Action();
+// 		Action(INSTRUCTION_NAME name);
+// };
+
+// class Control : public Instruction {
+// 	public:
+// 		Control(INSTRUCTION_NAME name,int n);
+// 	// private:
+// 		int _n;
+// };
 
 class Species {
 	friend class Creature;
