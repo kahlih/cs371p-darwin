@@ -10,10 +10,10 @@ using namespace std;
 
 TEST(Species, species_1) {
 	Species s('h');
-	ASSERT_EQ(s.addInstruction(Action(HOP)), 1);
-	ASSERT_EQ(s.addInstruction(Action(HOP)), 2);
-	ASSERT_EQ(s.addInstruction(Action(LEFT)), 3);
-	ASSERT_EQ(s.addInstruction(Control(GO,0)), 4);
+	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 1);
+	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 2);
+	ASSERT_EQ(s.addInstruction(Instruction(LEFT)), 3);
+	ASSERT_EQ(s.addInstruction(Instruction(GO,0)), 4);
 	ASSERT_EQ(s._name,'h');
 }
 
