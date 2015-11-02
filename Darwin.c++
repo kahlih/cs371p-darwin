@@ -36,12 +36,6 @@ Creature::Creature(Species species, DIRECTION direction) {
 	_pc = 0;
 	isNull = false;
 }
-Creature::Creature(Species species, DIRECTION direction, int n) {
-	_species = species;
-	_direction = direction;
-	_pc = 0;
-	isNull = false;
-}
 Creature::~Creature(){}
 void Darwin::hop(Creature& c, int location){
 	switch(c._direction){
@@ -91,6 +85,22 @@ void Darwin::left(Creature& c){
 			break;
 	}
 }
+void Darwin::right(Creature& c){
+	switch(c._direction){
+		case WEST: 
+			c._direction = NORTH;
+			break;
+		case SOUTH:
+			c._direction = WEST;
+			break;
+		case EAST:
+			c._direction = SOUTH;
+			break;
+		case NORTH:
+			c._direction = EAST;
+			break;
+	}
+}
 void Darwin::go(Creature& c, int n) {
 	c._pc = n;
 }
@@ -124,6 +134,8 @@ void Darwin::simulate(int n){
 	for (int i = 0; i < n; i++){ // # of turns
 		cout << "Turn = " << i << "." << endl;
 		display();
+		// Way to not modify the grid
+		// Grab all the Creatures that need to be process, THEN process their instruction
 		std::deque<pair<int,Creature>> list_of_creatures;
 		for (int j = 0; j < (int) grid.size(); j++) {
 			Creature& current = at(j);
@@ -132,6 +144,7 @@ void Darwin::simulate(int n){
 				list_of_creatures.push_back(p);
 			}
 		}
+		// Now process creatures
 		typedef deque<pair<int,Creature>>::iterator iter;
 		for (iter i = list_of_creatures.begin(); i != list_of_creatures.end(); i++){
 			pair<int,Creature> cur = *i;
@@ -140,7 +153,6 @@ void Darwin::simulate(int n){
 	}
 }
 void Darwin::run(int location, Creature& c) {
-	// get the pc (creature)
 	int pc = c++;
 	Instruction i = c.getInstruction(pc);
 	//cout << i.instruction_name << " " << c << " " << pc << endl;  
@@ -154,6 +166,7 @@ void Darwin::run(int location, Creature& c) {
 			left(c);
 			break;
 		case RIGHT: 
+			right(c);
 			break;
 		case INFECT: 
 			break;

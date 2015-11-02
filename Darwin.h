@@ -69,6 +69,7 @@ class Darwin {
 		void run(int location, Creature& c);
 		void display();
 		void left(Creature& c);
+		void right(Creature& c);
 		void go(Creature& c, int n);
 		void hop(Creature& c,int location);
 	private:
