@@ -1,6 +1,6 @@
 #include "Darwin.h"
 #include <iostream>
-
+ #include <deque>
 /* Instruction */
 Instruction::Instruction(){}
 Instruction::Instruction(INSTRUCTION_NAME name, int n) {
@@ -28,43 +28,47 @@ Instruction& Creature::getInstruction(int pc){
 
 /* Creature */
 Creature::Creature() {
-	empty = true;
+	isNull = true;
 }
 Creature::Creature(Species species, DIRECTION direction) {
 	_species = species;
 	_direction = direction;
 	_pc = 0;
-	empty = false;
+	isNull = false;
 }
 Creature::Creature(Species species, DIRECTION direction, int n) {
 	_species = species;
 	_direction = direction;
 	_pc = 0;
-	empty = false;
+	isNull = false;
 }
 Creature::~Creature(){}
 void Darwin::hop(Creature& c, int location){
 	switch(c._direction){
 		case WEST: {
 				bool invalid = (location-1) % (_col) == (_col-1);
-				if (!invalid && grid.at(location-1).empty) {
+				if (!invalid && grid.at(location-1).isNull) {
 					grid.at(location-1) = c;
 					grid.at(location) = Creature();
 				}
 			}
 			break;
 		case SOUTH:
-			// if ((location+_row < _row*_col) && (grid.at(location+_row).empty)){
-			// 	grid.at(location+_row) = c;
-			// 	grid.at(location) = Creature();
-			// }
+			if ((location+_row < _row*_col) && (grid.at(location+_row).isNull)){
+				grid.at(location+_row) = c;
+				grid.at(location) = Creature();
+			}
 			break;
-		case EAST: 
-				// grid.at(location+1) = c;
-				// grid.at(location) = Creature();
+		case EAST: {
+				bool invalid = (location+1) % (_col) == 0;
+				if (!invalid && grid.at(location+1).isNull) {
+					grid.at(location+1) = c;
+					grid.at(location) = Creature();
+				}
+			}
 			break;
 		case NORTH:
-			if ((location-_row >= 0) && (grid.at(location-_row).empty)){
+			if ((location-_row >= 0) && (grid.at(location-_row).isNull)) {
 				grid.at(location-_row) = c;
 				grid.at(location) = Creature();
 			}
@@ -120,23 +124,26 @@ void Darwin::simulate(int n){
 	for (int i = 0; i < n; i++){ // # of turns
 		cout << "Turn = " << i << "." << endl;
 		display();
+		std::deque<pair<int,Creature>> list_of_creatures;
 		for (int j = 0; j < (int) grid.size(); j++) {
 			Creature& current = at(j);
-			// if (strcmp(current._species._name,'.') != 0){
-			// 	cout << current << " i : " << i << endl;
-			// }
-			if(!current.empty) {
-				run(j,current);
+			if(!current.isNull) {
+				pair<int,Creature> p(j,current);
+				list_of_creatures.push_back(p);
 			}
 		}
-		cout << endl;
+		typedef deque<pair<int,Creature>>::iterator iter;
+		for (iter i = list_of_creatures.begin(); i != list_of_creatures.end(); i++){
+			pair<int,Creature> cur = *i;
+			run(cur.first, cur.second);
+		}
 	}
 }
 void Darwin::run(int location, Creature& c) {
 	// get the pc (creature)
 	int pc = c++;
 	Instruction i = c.getInstruction(pc);
-	cout << i.instruction_name << " " << c << " " << pc << endl;  
+	//cout << i.instruction_name << " " << c << " " << pc << endl;  
 
 	switch(i.instruction_name){
 		/* Actions */

@@ -26,19 +26,6 @@ class Instruction {
 		int _n;
 };
 
-// class Action : public Instruction {
-// 	public:
-// 		Action();
-// 		Action(INSTRUCTION_NAME name);
-// };
-
-// class Control : public Instruction {
-// 	public:
-// 		Control(INSTRUCTION_NAME name,int n);
-// 	// private:
-// 		int _n;
-// };
-
 class Species {
 	friend class Creature;
 	public:
@@ -56,9 +43,9 @@ class Creature {
 		DIRECTION _direction;
 		int _pc;
 		Species _species;
+		bool isNull;
 
 	public:
-		bool empty;
 		Creature();
 		Creature(Species species, DIRECTION direction);
 		Creature(Species species, DIRECTION direction, int n);
