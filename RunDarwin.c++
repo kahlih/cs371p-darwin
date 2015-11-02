@@ -129,7 +129,6 @@ int main () {
     grid1.addCreature(c5,4,3);
     grid1.addCreature(c6,7,7);
 
-    grid1.display();
     grid1.simulate(5);
 
     // *** DESTROY *** //
@@ -164,6 +163,7 @@ int main () {
     grid2.addCreature(d4,6,8);
 
     grid2.display();
+
     // ------------
     // darwin 72x72
     // without best

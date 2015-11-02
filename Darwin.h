@@ -51,6 +51,7 @@ class Species {
 };
 
 class Creature {
+	friend class Darwin;
 	private:
 		DIRECTION _direction;
 		int _pc;
@@ -62,8 +63,6 @@ class Creature {
 		Creature(Species species, DIRECTION direction);
 		Creature(Species species, DIRECTION direction, int n);
 		Instruction& getInstruction(int pc);
-		void left();
-		void go(int n);
 		friend ostream& operator<<(ostream& os, const Creature& creature);
 		int operator++(int);
 		~Creature();
@@ -82,6 +81,9 @@ class Darwin {
 		Creature& at(int x, int y);   // if you have coordinates
 		void run(int location, Creature& c);
 		void display();
+		void left(Creature& c);
+		void go(Creature& c, int n);
+		void hop(Creature& c,int location);
 	private:
 		vector<Creature> grid; //row-major order
 		int _row;

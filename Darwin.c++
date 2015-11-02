@@ -43,24 +43,52 @@ Creature::Creature(Species species, DIRECTION direction, int n) {
 	empty = false;
 }
 Creature::~Creature(){}
-void Creature::left(){
-	switch(_direction){
-		case WEST: 
-			_direction = SOUTH;
+void Darwin::hop(Creature& c, int location){
+	switch(c._direction){
+		case WEST: {
+				bool invalid = (location-1) % (_col) == (_col-1);
+				if (!invalid && grid.at(location-1).empty) {
+					grid.at(location-1) = c;
+					grid.at(location) = Creature();
+				}
+			}
 			break;
 		case SOUTH:
-			_direction = EAST;
+			// if ((location+_row < _row*_col) && (grid.at(location+_row).empty)){
+			// 	grid.at(location+_row) = c;
+			// 	grid.at(location) = Creature();
+			// }
 			break;
-		case EAST:
-			_direction = NORTH;
+		case EAST: 
+				// grid.at(location+1) = c;
+				// grid.at(location) = Creature();
 			break;
 		case NORTH:
-			_direction = WEST;
+			if ((location-_row >= 0) && (grid.at(location-_row).empty)){
+				grid.at(location-_row) = c;
+				grid.at(location) = Creature();
+			}
 			break;
 	}
 }
-void Creature::go(int n) {
-	this->_pc = n;
+void Darwin::left(Creature& c){
+	switch(c._direction){
+		case WEST: 
+			c._direction = SOUTH;
+			break;
+		case SOUTH:
+			c._direction = EAST;
+			break;
+		case EAST:
+			c._direction = NORTH;
+			break;
+		case NORTH:
+			c._direction = WEST;
+			break;
+	}
+}
+void Darwin::go(Creature& c, int n) {
+	c._pc = n;
 }
 ostream& operator<<(ostream& os, const Creature& creature) {
 	os << creature._species._name;
@@ -74,13 +102,13 @@ int Creature::operator++(int){
 
 
 /* Darwin */
-Darwin::Darwin(int col, int row) : grid(row*col) {
+Darwin::Darwin(int row, int col) : grid(row*col) {
 	_row = row;
 	_col = col;
 }
 Darwin::~Darwin(){}
 void Darwin::addCreature(Creature& c, int x, int y){
-	grid[x + y*_col] = c;
+	grid[y + x*_col] = c;
 }
 Darwin::iterator Darwin::begin(){
 	return grid.begin();
@@ -90,6 +118,8 @@ Darwin::iterator Darwin::end(){
 }
 void Darwin::simulate(int n){
 	for (int i = 0; i < n; i++){ // # of turns
+		cout << "Turn = " << i << "." << endl;
+		display();
 		for (int j = 0; j < (int) grid.size(); j++) {
 			Creature& current = at(j);
 			// if (strcmp(current._species._name,'.') != 0){
@@ -106,12 +136,15 @@ void Darwin::run(int location, Creature& c) {
 	// get the pc (creature)
 	int pc = c++;
 	Instruction i = c.getInstruction(pc);
+	cout << i.instruction_name << " " << c << " " << pc << endl;  
+
 	switch(i.instruction_name){
 		/* Actions */
 		case HOP : 
+			hop(c,location);
 			break;
 		case LEFT: 
-			c.left();
+			left(c);
 			break;
 		case RIGHT: 
 			break;
@@ -120,7 +153,8 @@ void Darwin::run(int location, Creature& c) {
 
 		/* Controls */
 		case GO :
-			c.go(i._n);
+			go(c,i._n);
+			run(location, c);
 			break;
 		case IF_EMPTY: 
 			break;
@@ -132,7 +166,6 @@ void Darwin::run(int location, Creature& c) {
 			break;
 
 	}
-	cout << "Name: " << i.instruction_name << " " << c << " " << pc << endl;  
 	// get the instruction from program (species)
 
 	// execute the instruction (switch case)
