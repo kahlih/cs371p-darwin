@@ -64,11 +64,12 @@ class Darwin {
 		void addCreature(Creature& c, int n);
 		iterator begin();
 		iterator end();
-		void simulate(int n);
+		void simulate(int n, ostream& w);
 		Creature& at(int n);	// if you have the specific index
 		Creature& at(int x, int y);   // if you have coordinates
 		void run(int location, Creature& c);
-		void display();
+		// void display();
+		friend ostream& operator<<(ostream& os, const Darwin& d);
 		void left(Creature& c);
 		void right(Creature& c);
 		void go(Creature& c, int n);

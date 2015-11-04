@@ -27,13 +27,132 @@ TEST(Species, species_1) {
     */
 
 
+/* INFECT WEST */
+TEST(Action_Instructions, infect_1){
 
-// TEST(Species, species_1){
-// 	Action i(HOP);
-// 	Species s;
-// 	s.addInstruction(i);
-	
-// 	Creature b1(s,EAST,0);
+	Species hopper('h');
+    assert(hopper.addInstruction(Instruction(HOP)) == 1);
+    assert(hopper.addInstruction(Instruction(GO,0)) == 2);
 
-// 	x.addCreature
+	Species rover('r');
+	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
+	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
+	assert(rover.addInstruction(Instruction(INFECT)) == 3);
+	assert(rover.addInstruction(Instruction(HOP)) == 4);
+	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+
+	Creature c1(hopper, EAST);
+	Creature c2(rover, WEST);
+
+	Darwin grid1(3,3);
+
+	grid1.addCreature(c1,1,0);
+	grid1.addCreature(c2,1,2);
+
+	// * * *
+	// h * r
+	// * * *
+
+	//grid1.simulate(1);
+	ostringstream w;
+	grid1.simulate(1,w);
+	ASSERT_EQ(w.str(),"Turn = 0.\n 012\n0...\n1h.r\n2...\n\nTurn = 1.\n 012\n0...\n1.rr\n2...\n\n");
+}
+
+// /* INFECT EAST */
+// TEST(Action_Instructions, infect_2){
+
+// 	Species hopper('h');
+//     assert(hopper.addInstruction(Instruction(HOP)) == 1);
+//     assert(hopper.addInstruction(Instruction(GO,0)) == 2);
+
+// 	Species rover('r');
+// 	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
+// 	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
+// 	assert(rover.addInstruction(Instruction(INFECT)) == 3);
+// 	assert(rover.addInstruction(Instruction(HOP)) == 4);
+// 	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+
+// 	Creature c1(hopper, SOUTH);
+// 	Creature c2(rover, EAST);
+
+// 	Darwin grid1(4,3);
+
+// 	grid1.addCreature(c1,0,1);
+// 	grid1.addCreature(c2,1,0);
+
+// 	// * h *
+// 	// r * *
+// 	// * * *
+// 	// * * *
+
+// 	grid1.simulate(1);
+// 	//ASSERT_EQ(grid1.simulate(1)," 012\n0...\n1h.r\n2...\n");
+
 // }
+
+//  INFECT SOUTH 
+// TEST(Action_Instructions, infect_3){
+
+// 	Species hopper('h');
+//     assert(hopper.addInstruction(Instruction(HOP)) == 1);
+//     assert(hopper.addInstruction(Instruction(GO,0)) == 2);
+
+// 	Species rover('r');
+// 	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
+// 	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
+// 	assert(rover.addInstruction(Instruction(INFECT)) == 3);
+// 	assert(rover.addInstruction(Instruction(HOP)) == 4);
+// 	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+
+// 	Creature c1(hopper, EAST);
+// 	Creature c2(rover, SOUTH);
+
+// 	Darwin grid1(3,4);
+
+// 	grid1.addCreature(c1,2,1);
+// 	grid1.addCreature(c2,0,3);
+
+// 	// * * * r
+// 	// * * * *
+// 	// * h * *
+
+
+// 	// grid1.display();
+// 	// grid1.simulate(1);
+// 	//ASSERT_EQ(grid1.simulate(1)," 012\n0...\n1h.r\n2...\n");
+
+// }
+
+// /* INFECT NORTH */
+// TEST(Action_Instructions, infect_3){
+
+//      Species food('f');
+//      assert(food.addInstruction(Instruction(LEFT)) == 1);
+//      assert(food.addInstruction(Instruction(GO,0)) == 2);
+
+// 	Species rover('r');
+// 	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
+// 	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
+// 	assert(rover.addInstruction(Instruction(INFECT)) == 3);
+// 	assert(rover.addInstruction(Instruction(HOP)) == 4);
+// 	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+
+// 	Creature c1(food, WEST);
+// 	Creature c2(rover, NORTH);
+
+// 	Darwin grid1(2,2);
+
+// 	grid1.addCreature(c1,0,1);
+// 	grid1.addCreature(c2,1,1);
+
+// 	// * f
+// 	// * r
+
+// 	// grid1.display();
+// 	// grid1.simulate(1);
+// 	//ASSERT_EQ(grid1.simulate(1)," 012\n0...\n1h.r\n2...\n");
+
+// }
+
+

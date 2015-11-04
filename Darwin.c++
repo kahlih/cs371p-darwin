@@ -264,13 +264,14 @@ Darwin::iterator Darwin::begin(){
 Darwin::iterator Darwin::end(){
 	return grid.end();
 }
-void Darwin::simulate(int n){
-	cout << "Turn = " << 0 << "." << endl;
-	display();
-	cout << endl;
+void Darwin::simulate(int n, ostream& w){
+	w << "Turn = " << 0 << "." << endl;
+	//display();
+	w << *this;
+	w << endl;
 	for (int i = 1; i <= n; i++){ // # of turns
 		if (i < 10 || (i >= 10 && i%100==0)){
-			cout << "Turn = " << i << "." << endl;}
+			w << "Turn = " << i << "." << endl;}
 		// Way to not modify the grid
 		// Grab all the Creatures that need to be process, THEN process their instruction
 		std::deque<pair<int,Creature>> list_of_creatures;
@@ -288,8 +289,9 @@ void Darwin::simulate(int n){
 			run(cur.first, cur.second);
 		}
 		if (i < 10 || (i >= 10 && i%100==0)){
-			display();
-			cout << endl;}
+			//display();
+			w << *this;
+			w << endl;}
 	}
 }
 void Darwin::run(int location, Creature& c) {
@@ -340,28 +342,47 @@ void Darwin::run(int location, Creature& c) {
 	// execute the instruction (switch case)
 	// increment the pc (creature)
 }
-void Darwin::display(){
-	int length = grid.size()/_row;
-	cout << " ";
-	for (int i = 0; i < length; i++){
-		cout << i % 10;
-	}
+// void Darwin::display(){
+// 	int length = grid.size()/_row;
+// 	cout << " ";
+// 	for (int i = 0; i < length; i++){
+// 		cout << i % 10;
+// 	}
 
-	cout << endl;
-	for (int i = 0; i < (int)grid.size(); i++) {
-		if (i % length == 0) {
-			cout << (i / length) % 10;
-		}
-		cout << grid.at(i);
-		if (i % length == length - 1) {
-			cout << endl;
-		}
-	}
+// 	cout << endl;
+// 	for (int i = 0; i < (int)grid.size(); i++) {
+// 		if (i % length == 0) {
+// 			cout << (i / length) % 10;
+// 		}
+// 		cout << grid.at(i);
+// 		if (i % length == length - 1) {
+// 			cout << endl;
+// 		}
+// 	}
 
-}
+// }
 Creature& Darwin::at(int n){
 	return grid[n];
 }
 Creature& Darwin::at(int x, int y){
 	return grid[x + y*_col];
+}
+ostream& operator<<(ostream& os, const Darwin& d) {
+	int length = d.grid.size()/d._row;
+	os << " ";
+	for (int i = 0; i < length; i++){
+		os << i % 10;
+	}
+
+	os << endl;
+	for (int i = 0; i < (int)d.grid.size(); i++) {
+		if (i % length == 0) {
+			os << (i / length) % 10;
+		}
+		os << d.grid.at(i);
+		if (i % length == length - 1) {
+			os << endl;
+		}
+	}
+	return os;
 }
