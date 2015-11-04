@@ -542,3 +542,41 @@ TEST(Control_Instructions, go_2) {
 	d.go(c, 1);
 	ASSERT_EQ(c._pc, 1);
 }
+
+/**
+ * Tests at() when given coordinates
+ */
+TEST(Indexable, at_1) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 1, 1);
+
+	ostringstream a;
+
+	a << d.at(1,1);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+	b << d.at(0,0);
+	ASSERT_EQ(b.str(), ".");
+}
+
+/**
+ * Tests at() when given a position in row-major array
+ */
+TEST(Indexable, at_2) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 5);
+
+	ostringstream a;
+
+	a << d.at(5);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+	b << d.at(0);
+	ASSERT_EQ(b.str(), ".");
+}
