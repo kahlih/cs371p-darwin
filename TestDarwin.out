@@ -1,23 +1,23 @@
-==23450== Memcheck, a memory error detector
-==23450== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==23450== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==23450== Command: ./TestDarwin
-==23450== 
+==24250== Memcheck, a memory error detector
+==24250== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==24250== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==24250== Command: ./TestDarwin
+==24250== 
 Running main() from gtest_main.cc
-[==========] Running 32 tests from 3 test cases.
+[==========] Running 36 tests from 3 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from Species
 [ RUN      ] Species.species_1
-[       OK ] Species.species_1 (26 ms)
+[       OK ] Species.species_1 (25 ms)
 [----------] 1 test from Species (32 ms total)
 
 [----------] 26 tests from Action_Instructions
 [ RUN      ] Action_Instructions.infect_1
 [       OK ] Action_Instructions.infect_1 (65 ms)
 [ RUN      ] Action_Instructions.infect_2
-[       OK ] Action_Instructions.infect_2 (13 ms)
+[       OK ] Action_Instructions.infect_2 (14 ms)
 [ RUN      ] Action_Instructions.infect_3
-[       OK ] Action_Instructions.infect_3 (12 ms)
+[       OK ] Action_Instructions.infect_3 (11 ms)
 [ RUN      ] Action_Instructions.if_wall_1
 [       OK ] Action_Instructions.if_wall_1 (6 ms)
 [ RUN      ] Action_Instructions.if_wall_2
@@ -33,15 +33,15 @@ Running main() from gtest_main.cc
 [ RUN      ] Action_Instructions.turn_left_4
 [       OK ] Action_Instructions.turn_left_4 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_1
-[       OK ] Action_Instructions.turn_right_1 (4 ms)
+[       OK ] Action_Instructions.turn_right_1 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_2
 [       OK ] Action_Instructions.turn_right_2 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_3
-[       OK ] Action_Instructions.turn_right_3 (3 ms)
+[       OK ] Action_Instructions.turn_right_3 (4 ms)
 [ RUN      ] Action_Instructions.turn_right_4
-[       OK ] Action_Instructions.turn_right_4 (4 ms)
+[       OK ] Action_Instructions.turn_right_4 (3 ms)
 [ RUN      ] Action_Instructions.hop_north
-[       OK ] Action_Instructions.hop_north (6 ms)
+[       OK ] Action_Instructions.hop_north (7 ms)
 [ RUN      ] Action_Instructions.hop_south
 [       OK ] Action_Instructions.hop_south (4 ms)
 [ RUN      ] Action_Instructions.hop_east
@@ -66,9 +66,9 @@ Running main() from gtest_main.cc
 [       OK ] Action_Instructions.hop_west_obstacle (5 ms)
 [----------] 26 tests from Action_Instructions (195 ms total)
 
-[----------] 5 tests from Control_Instructions
+[----------] 9 tests from Control_Instructions
 [ RUN      ] Control_Instructions.if_empty_1
-[       OK ] Control_Instructions.if_empty_1 (8 ms)
+[       OK ] Control_Instructions.if_empty_1 (7 ms)
 [ RUN      ] Control_Instructions.if_empty_2
 [       OK ] Control_Instructions.if_empty_2 (7 ms)
 [ RUN      ] Control_Instructions.if_empty_3
@@ -77,23 +77,31 @@ Running main() from gtest_main.cc
 [       OK ] Control_Instructions.go_1 (3 ms)
 [ RUN      ] Control_Instructions.go_2
 [       OK ] Control_Instructions.go_2 (4 ms)
-[----------] 5 tests from Control_Instructions (34 ms total)
+[ RUN      ] Control_Instructions.if_random_1
+[       OK ] Control_Instructions.if_random_1 (8 ms)
+[ RUN      ] Control_Instructions.if_random_2
+[       OK ] Control_Instructions.if_random_2 (7 ms)
+[ RUN      ] Control_Instructions.if_enemy_1
+[       OK ] Control_Instructions.if_enemy_1 (7 ms)
+[ RUN      ] Control_Instructions.if_enemy_2
+[       OK ] Control_Instructions.if_enemy_2 (6 ms)
+[----------] 9 tests from Control_Instructions (61 ms total)
 
 [----------] Global test environment tear-down
-[==========] 32 tests from 3 test cases ran. (292 ms total)
-[  PASSED  ] 32 tests.
-==23450== 
-==23450== HEAP SUMMARY:
-==23450==     in use at exit: 0 bytes in 0 blocks
-==23450==   total heap usage: 925 allocs, 925 frees, 125,928 bytes allocated
-==23450== 
-==23450== All heap blocks were freed -- no leaks are possible
-==23450== 
-==23450== For counts of detected and suppressed errors, rerun with: -v
-==23450== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 36 tests from 3 test cases ran. (320 ms total)
+[  PASSED  ] 36 tests.
+==24250== 
+==24250== HEAP SUMMARY:
+==24250==     in use at exit: 0 bytes in 0 blocks
+==24250==   total heap usage: 1,021 allocs, 1,021 frees, 135,794 bytes allocated
+==24250== 
+==24250== All heap blocks were freed -- no leaks are possible
+==24250== 
+==24250== For counts of detected and suppressed errors, rerun with: -v
+==24250== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestDarwin.c++'
-Lines executed:100.00% of 332
-Branches executed:81.34% of 1758
-Taken at least once:40.67% of 1758
-Calls executed:59.92% of 1587
+Lines executed:100.00% of 386
+Branches executed:82.30% of 2034
+Taken at least once:41.15% of 2034
+Calls executed:60.27% of 1802
 Creating 'TestDarwin.c++.gcov'
