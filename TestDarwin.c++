@@ -191,7 +191,6 @@ TEST(Action_Instructions, if_wall_2){
 	ostringstream w;
 	grid1.if_wall(c1,11,3);
 	ASSERT_EQ(c1._pc,3);
-
 }
 
 /* NOT If_Wall NORTH */
@@ -213,24 +212,6 @@ TEST(Action_Instructions, if_wall_3){
 	grid1.if_wall(c1,5,3);
 	ASSERT_EQ(c1._pc,0);
 }
-// TEST(Action_Instructions, hop_1) {
-// 	Species hopper('h');
-// 	hopper.addInstruction(Instruction(HOP));
-//     hopper.addInstruction(Instruction(GO,0));
-
-//     Creature c1(hopper, NORTH);
-
-//     Darwin grid(3,3);
-//     grid.addCreature(c1, 2, 2);
-
-//     ostringstream w;
-// 	grid1.simulate(1,w);
-// 	ASSERT_EQ(w.str(),"Turn = 0.\n 
-// 		012\n
-// 	   0...\n
-// 	   1.h.\n
-// 	   2...\n");
-// }
 
 /**
  * Tests the left() function when facing NORTH
@@ -287,8 +268,7 @@ TEST(Action_Instructions, turn_left_4)
 /**
  * Tests the right() function when facing NORTH
  */
-TEST(Action_Instructions, turn_right_1)
-{
+TEST(Action_Instructions, turn_right_1) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, NORTH);
@@ -300,8 +280,7 @@ TEST(Action_Instructions, turn_right_1)
 /**
  * Tests the right() function when facing EAST
  */
-TEST(Action_Instructions, turn_right_2)
-{
+TEST(Action_Instructions, turn_right_2) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, EAST);
@@ -313,8 +292,7 @@ TEST(Action_Instructions, turn_right_2)
 /**
  * Tests the right() function when facing SOUTH
  */
-TEST(Action_Instructions, turn_right_3)
-{
+TEST(Action_Instructions, turn_right_3) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, SOUTH);
@@ -326,8 +304,7 @@ TEST(Action_Instructions, turn_right_3)
 /**
  * Tests the right() function when facing WEST
  */
-TEST(Action_Instructions, turn_right_4)
-{
+TEST(Action_Instructions, turn_right_4) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, WEST);
@@ -335,6 +312,7 @@ TEST(Action_Instructions, turn_right_4)
 
     ASSERT_EQ(c._direction, NORTH);
 }
+
 
 TEST(Control_Instructions, if_empty_1){
 
@@ -409,5 +387,207 @@ TEST(Control_Instructions, if_empty_3){
 
 	grid1.if_empty(c4,3,0);
 	ASSERT_EQ(c1._pc,0);
+}
+/**
+ * Tests hopping NORTH
+ */
+TEST(Action_Instructions, hop_north) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, NORTH);
+	d.addCreature(c, 4);
+	d.hop(c, 4);
 
+	ostringstream w;
+	w << d << endl;
+
+	ASSERT_EQ(w.str(), " 012\n0.h.\n1...\n2...\n\n");
+}
+
+/**
+ * Tests hopping SOUTH
+ */
+TEST(Action_Instructions, hop_south) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 4);
+	d.hop(c, 4);
+
+	ostringstream w;
+	w << d << endl;
+
+	ASSERT_EQ(w.str(), " 012\n0...\n1...\n2.h.\n\n");
+}
+
+// /**
+//  * Tests hopping EAST
+//  */
+TEST(Action_Instructions, hop_east) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, EAST);
+	d.addCreature(c, 4);
+	d.hop(c, 4);
+
+	ostringstream w;
+	w << d << endl;
+
+	ASSERT_EQ(w.str(), " 012\n0...\n1..h\n2...\n\n");
+}
+
+// /**
+//  * Tests hopping WEST w/ obstacle or wall
+//  */
+TEST(Action_Instructions, hop_west) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, WEST);
+	d.addCreature(c, 4);
+	d.hop(c, 4);
+
+	ostringstream w;
+	w << d << endl;
+
+	ASSERT_EQ(w.str(), " 012\n0...\n1h..\n2...\n\n");
+}
+
+/**
+ * Tests hopping NORTH w/ wall
+ */
+TEST(Action_Instructions, hop_north_wall) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, NORTH);
+	d.addCreature(c, 1);
+	d.hop(c, 1);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0.h.\n1...\n2...\n\n");
+}
+
+/**
+ * Tests hopping SOUTH w/ wall
+ */
+TEST(Action_Instructions, hop_south_wall) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 7);
+	d.hop(c, 7);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1...\n2.h.\n\n");
+}
+
+/**
+ * Tests hopping EAST w/ wall
+ */
+TEST(Action_Instructions, hop_east_wall) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, EAST);
+	d.addCreature(c, 5);
+	d.hop(c, 5);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1..h\n2...\n\n");
+}
+
+/**
+ * Tests hopping WEST w/ wall
+ */
+TEST(Action_Instructions, hop_west_wall) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, WEST);
+	d.addCreature(c, 3);
+	d.hop(c, 3);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1h..\n2...\n\n");
+}
+
+/**
+ * Tests hopping NORTH w/ obstacle
+ */
+TEST(Action_Instructions, hop_north_obstacle) {
+	Species hopper('h');
+	Species food('f');
+
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, NORTH);
+
+	d.addCreature(c1, 1);
+	d.addCreature(c2, 4);
+	d.hop(c2, 4);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0.f.\n1.h.\n2...\n\n");
+}
+
+/**
+ * Tests hopping SOUTH w/ obstacle
+ */
+TEST(Action_Instructions, hop_south_obstacle) {
+	Species hopper('h');
+	Species food('f');
+
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, SOUTH);
+
+	d.addCreature(c1, 7);
+	d.addCreature(c2, 4);
+	d.hop(c2, 4);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1.h.\n2.f.\n\n");
+}
+
+/**
+ * Tests hopping EAST w/ obstacle
+ */
+TEST(Action_Instructions, hop_east_obstacle) {
+	Species hopper('h');
+	Species food('f');
+
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, EAST);
+
+	d.addCreature(c1, 5);
+	d.addCreature(c2, 4);
+	d.hop(c2, 4);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1.hf\n2...\n\n");
+}
+
+/**
+ * Tests hopping WEST w/ obstacle
+ */
+TEST(Action_Instructions, hop_west_obstacle) {
+	Species hopper('h');
+	Species food('f');
+
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, WEST);
+
+	d.addCreature(c1, 3);
+	d.addCreature(c2, 4);
+	d.hop(c2, 4);
+
+	ostringstream w;
+	w << d << endl;
+	ASSERT_EQ(w.str(), " 012\n0...\n1fh.\n2...\n\n");
 }
