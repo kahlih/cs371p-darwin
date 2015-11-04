@@ -224,3 +224,55 @@ TEST(Action_Instructions, turn_left_4)
 
     ASSERT_EQ(c._direction, SOUTH);
 }
+
+/**
+ * Tests the right() function when facing NORTH
+ */
+TEST(Action_Instructions, turn_right_1)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, NORTH);
+    d.right(c);
+
+    ASSERT_EQ(c._direction, EAST);
+}
+
+/**
+ * Tests the right() function when facing EAST
+ */
+TEST(Action_Instructions, turn_right_2)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, EAST);
+    d.right(c);
+
+    ASSERT_EQ(c._direction, SOUTH);
+}
+
+/**
+ * Tests the right() function when facing SOUTH
+ */
+TEST(Action_Instructions, turn_right_3)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, SOUTH);
+    d.right(c);
+
+    ASSERT_EQ(c._direction, WEST);
+}
+
+/**
+ * Tests the right() function when facing WEST
+ */
+TEST(Action_Instructions, turn_right_4)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, WEST);
+    d.right(c);
+
+    ASSERT_EQ(c._direction, NORTH);
+}

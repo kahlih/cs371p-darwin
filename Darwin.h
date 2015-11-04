@@ -57,6 +57,10 @@ class Creature {
 		FRIEND_TEST(Action_Instructions, turn_left_2);
 		FRIEND_TEST(Action_Instructions, turn_left_3);
 		FRIEND_TEST(Action_Instructions, turn_left_4);
+		FRIEND_TEST(Action_Instructions, turn_right_1);
+		FRIEND_TEST(Action_Instructions, turn_right_2);
+		FRIEND_TEST(Action_Instructions, turn_right_3);
+		FRIEND_TEST(Action_Instructions, turn_right_4);
 };
 
 class Darwin {
