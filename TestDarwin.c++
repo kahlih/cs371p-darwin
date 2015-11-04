@@ -313,6 +313,81 @@ TEST(Action_Instructions, turn_right_4) {
     ASSERT_EQ(c._direction, NORTH);
 }
 
+
+TEST(Control_Instructions, if_empty_1){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+
+	Darwin grid1(4,3);
+
+	grid1.addCreature(c1,0,1);
+	grid1.addCreature(c2,0,0);
+
+	ostringstream w;
+	grid1.if_empty(c1,1,3);
+	ASSERT_EQ(c1._pc,3);
+}
+
+// Not empty test
+TEST(Control_Instructions, if_empty_2){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+
+	Darwin grid1(4,3);
+
+	grid1.addCreature(c1,0,1);
+	grid1.addCreature(c2,0,0);
+
+	grid1.if_empty(c2,0,0);
+	ASSERT_EQ(c1._pc,0);
+
+}
+
+TEST(Control_Instructions, if_empty_3){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+	Creature c3(kahli, NORTH);
+	Creature c4(kahli, WEST);
+	Darwin grid1(2,2);
+
+	grid1.addCreature(c1,0,0);
+	grid1.addCreature(c2,0,1);
+	grid1.addCreature(c3,1,0);
+	grid1.addCreature(c4,1,1);
+
+	grid1.if_empty(c1,0,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c2,1,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c3,2,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c4,3,0);
+	ASSERT_EQ(c1._pc,0);
+}
 /**
  * Tests hopping NORTH
  */
@@ -579,4 +654,81 @@ TEST(Indexable, at_2) {
 	ostringstream b;
 	b << d.at(0);
 	ASSERT_EQ(b.str(), ".");
+}
+
+
+//if_random
+TEST(Control_Instructions, if_random_1){
+	srand(0);
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_RANDOM, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(HOP)) == 2);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,2)) == 4);
+
+	Creature k1(kahli, SOUTH);
+
+	Darwin grid1(4,3);
+	grid1.addCreature(k1, 2);
+	grid1.if_random(k1,3);
+	ASSERT_EQ(k1._pc,3);
+}
+
+//if_random
+TEST(Control_Instructions, if_random_2){
+	srand(0);
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_RANDOM, 5)) == 1);
+	assert(kahli.addInstruction(Instruction(HOP)) == 2);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
+	assert(kahli.addInstruction(Instruction(RIGHT)) == 4);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 5);
+	assert(kahli.addInstruction(Instruction(GO, 2)) == 6);
+
+	Creature k1(kahli, SOUTH);
+
+	Darwin grid1(4,3);
+	grid1.addCreature(k1, 2);
+	grid1.if_random(k1,5);
+	ASSERT_EQ(k1._pc,5);
+}
+
+//if_enemy
+TEST(Control_Instructions, if_enemy_1){
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_ENEMY, 5)) == 1);
+	assert(kahli.addInstruction(Instruction(HOP)) == 2);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
+	assert(kahli.addInstruction(Instruction(RIGHT)) == 4);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 5);
+	assert(kahli.addInstruction(Instruction(GO, 0)) == 6);
+
+	Creature k1(kahli, SOUTH);
+	Creature k2(kahli, NORTH);
+	Darwin grid1(4,3);
+
+	grid1.addCreature(k1, 2);
+	grid1.addCreature(k2, 5);
+	grid1.if_random(k1,5);
+	ASSERT_EQ(k1._pc,0);
+}
+
+
+
+//not if_enemy
+TEST(Control_Instructions, if_enemy_2){
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_ENEMY, 5)) == 1);
+	assert(kahli.addInstruction(Instruction(HOP)) == 2);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
+	assert(kahli.addInstruction(Instruction(RIGHT)) == 4);
+	assert(kahli.addInstruction(Instruction(LEFT)) == 5);
+	assert(kahli.addInstruction(Instruction(GO, 0)) == 6);
+
+	Creature k1(kahli, SOUTH);
+
+	Darwin grid1(4,3);
+	grid1.addCreature(k1, 2);
+	grid1.if_random(k1,5);
+	ASSERT_EQ(k1._pc,5);
 }

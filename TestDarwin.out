@@ -1,10 +1,10 @@
-==5197== Memcheck, a memory error detector
-==5197== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==5197== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==5197== Command: ./TestDarwin
-==5197== 
+==5246== Memcheck, a memory error detector
+==5246== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==5246== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==5246== Command: ./TestDarwin
+==5246== 
 Running main() from gtest_main.cc
-[==========] Running 31 tests from 4 test cases.
+[==========] Running 38 tests from 4 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from Species
 [ RUN      ] Species.species_1
@@ -13,31 +13,31 @@ Running main() from gtest_main.cc
 
 [----------] 26 tests from Action_Instructions
 [ RUN      ] Action_Instructions.infect_1
-[       OK ] Action_Instructions.infect_1 (57 ms)
+[       OK ] Action_Instructions.infect_1 (56 ms)
 [ RUN      ] Action_Instructions.infect_2
-[       OK ] Action_Instructions.infect_2 (12 ms)
+[       OK ] Action_Instructions.infect_2 (11 ms)
 [ RUN      ] Action_Instructions.infect_3
 [       OK ] Action_Instructions.infect_3 (10 ms)
 [ RUN      ] Action_Instructions.if_wall_1
-[       OK ] Action_Instructions.if_wall_1 (5 ms)
+[       OK ] Action_Instructions.if_wall_1 (6 ms)
 [ RUN      ] Action_Instructions.if_wall_2
 [       OK ] Action_Instructions.if_wall_2 (5 ms)
 [ RUN      ] Action_Instructions.if_wall_3
-[       OK ] Action_Instructions.if_wall_3 (4 ms)
+[       OK ] Action_Instructions.if_wall_3 (5 ms)
 [ RUN      ] Action_Instructions.turn_left_1
-[       OK ] Action_Instructions.turn_left_1 (4 ms)
+[       OK ] Action_Instructions.turn_left_1 (3 ms)
 [ RUN      ] Action_Instructions.turn_left_2
-[       OK ] Action_Instructions.turn_left_2 (2 ms)
+[       OK ] Action_Instructions.turn_left_2 (3 ms)
 [ RUN      ] Action_Instructions.turn_left_3
-[       OK ] Action_Instructions.turn_left_3 (2 ms)
+[       OK ] Action_Instructions.turn_left_3 (3 ms)
 [ RUN      ] Action_Instructions.turn_left_4
 [       OK ] Action_Instructions.turn_left_4 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_1
-[       OK ] Action_Instructions.turn_right_1 (3 ms)
+[       OK ] Action_Instructions.turn_right_1 (2 ms)
 [ RUN      ] Action_Instructions.turn_right_2
 [       OK ] Action_Instructions.turn_right_2 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_3
-[       OK ] Action_Instructions.turn_right_3 (2 ms)
+[       OK ] Action_Instructions.turn_right_3 (3 ms)
 [ RUN      ] Action_Instructions.turn_right_4
 [       OK ] Action_Instructions.turn_right_4 (3 ms)
 [ RUN      ] Action_Instructions.hop_north
@@ -45,56 +45,70 @@ Running main() from gtest_main.cc
 [ RUN      ] Action_Instructions.hop_south
 [       OK ] Action_Instructions.hop_south (3 ms)
 [ RUN      ] Action_Instructions.hop_east
-[       OK ] Action_Instructions.hop_east (4 ms)
+[       OK ] Action_Instructions.hop_east (3 ms)
 [ RUN      ] Action_Instructions.hop_west
 [       OK ] Action_Instructions.hop_west (5 ms)
 [ RUN      ] Action_Instructions.hop_north_wall
-[       OK ] Action_Instructions.hop_north_wall (3 ms)
+[       OK ] Action_Instructions.hop_north_wall (4 ms)
 [ RUN      ] Action_Instructions.hop_south_wall
-[       OK ] Action_Instructions.hop_south_wall (4 ms)
+[       OK ] Action_Instructions.hop_south_wall (3 ms)
 [ RUN      ] Action_Instructions.hop_east_wall
 [       OK ] Action_Instructions.hop_east_wall (3 ms)
 [ RUN      ] Action_Instructions.hop_west_wall
 [       OK ] Action_Instructions.hop_west_wall (4 ms)
 [ RUN      ] Action_Instructions.hop_north_obstacle
-[       OK ] Action_Instructions.hop_north_obstacle (5 ms)
+[       OK ] Action_Instructions.hop_north_obstacle (4 ms)
 [ RUN      ] Action_Instructions.hop_south_obstacle
-[       OK ] Action_Instructions.hop_south_obstacle (4 ms)
+[       OK ] Action_Instructions.hop_south_obstacle (5 ms)
 [ RUN      ] Action_Instructions.hop_east_obstacle
-[       OK ] Action_Instructions.hop_east_obstacle (5 ms)
+[       OK ] Action_Instructions.hop_east_obstacle (4 ms)
 [ RUN      ] Action_Instructions.hop_west_obstacle
-[       OK ] Action_Instructions.hop_west_obstacle (4 ms)
+[       OK ] Action_Instructions.hop_west_obstacle (5 ms)
 [----------] 26 tests from Action_Instructions (167 ms total)
 
-[----------] 2 tests from Control_Instructions
+[----------] 9 tests from Control_Instructions
+[ RUN      ] Control_Instructions.if_empty_1
+[       OK ] Control_Instructions.if_empty_1 (7 ms)
+[ RUN      ] Control_Instructions.if_empty_2
+[       OK ] Control_Instructions.if_empty_2 (6 ms)
+[ RUN      ] Control_Instructions.if_empty_3
+[       OK ] Control_Instructions.if_empty_3 (10 ms)
 [ RUN      ] Control_Instructions.go_1
-[       OK ] Control_Instructions.go_1 (2 ms)
+[       OK ] Control_Instructions.go_1 (3 ms)
 [ RUN      ] Control_Instructions.go_2
 [       OK ] Control_Instructions.go_2 (4 ms)
-[----------] 2 tests from Control_Instructions (7 ms total)
+[ RUN      ] Control_Instructions.if_random_1
+[       OK ] Control_Instructions.if_random_1 (7 ms)
+[ RUN      ] Control_Instructions.if_random_2
+[       OK ] Control_Instructions.if_random_2 (5 ms)
+[ RUN      ] Control_Instructions.if_enemy_1
+[       OK ] Control_Instructions.if_enemy_1 (6 ms)
+[ RUN      ] Control_Instructions.if_enemy_2
+[       OK ] Control_Instructions.if_enemy_2 (6 ms)
+[----------] 9 tests from Control_Instructions (54 ms total)
 
 [----------] 2 tests from Indexable
 [ RUN      ] Indexable.at_1
 [       OK ] Indexable.at_1 (5 ms)
 [ RUN      ] Indexable.at_2
-[       OK ] Indexable.at_2 (5 ms)
-[----------] 2 tests from Indexable (10 ms total)
+[       OK ] Indexable.at_2 (4 ms)
+[----------] 2 tests from Indexable (9 ms total)
 
 [----------] Global test environment tear-down
-[==========] 31 tests from 4 test cases ran. (236 ms total)
-[  PASSED  ] 31 tests.
-==5197== 
-==5197== HEAP SUMMARY:
-==5197==     in use at exit: 0 bytes in 0 blocks
-==5197==   total heap usage: 904 allocs, 904 frees, 128,265 bytes allocated
-==5197== 
-==5197== All heap blocks were freed -- no leaks are possible
-==5197== 
-==5197== For counts of detected and suppressed errors, rerun with: -v
-==5197== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 38 tests from 4 test cases ran. (282 ms total)
+[  PASSED  ] 38 tests.
+==5246== 
+==5246== HEAP SUMMARY:
+==5246==     in use at exit: 0 bytes in 0 blocks
+==5246==   total heap usage: 1,085 allocs, 1,085 frees, 145,265 bytes allocated
+==5246== 
+==5246== All heap blocks were freed -- no leaks are possible
+==5246== 
+==5246== For counts of detected and suppressed errors, rerun with: -v
+==5246== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestDarwin.c++'
-Lines executed:100.00% of 304
-Branches executed:80.79% of 1624
-Taken at least once:40.39% of 1624
-Calls executed:59.95% of 1493
+Lines executed:100.00% of 408
+Branches executed:81.90% of 2166
+Taken at least once:40.95% of 2166
+Calls executed:60.02% of 1926
 Creating 'TestDarwin.c++.gcov'
