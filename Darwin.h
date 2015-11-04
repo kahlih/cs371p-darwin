@@ -65,6 +65,8 @@ class Creature {
 		FRIEND_TEST(Action_Instructions, turn_right_2);
 		FRIEND_TEST(Action_Instructions, turn_right_3);
 		FRIEND_TEST(Action_Instructions, turn_right_4);
+		FRIEND_TEST(Control_Instructions, go_1);
+		FRIEND_TEST(Control_Instructions, go_2);
 };
 
 class Darwin {
@@ -72,6 +74,8 @@ class Darwin {
 		typedef vector<Creature>::iterator iterator;
 		Darwin(int col, int row);
 		~Darwin();
+
+
 		void addCreature(Creature& c, int x, int y);
 		void addCreature(Creature& c, int n);
 		iterator begin();

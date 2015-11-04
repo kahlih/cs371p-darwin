@@ -516,3 +516,29 @@ TEST(Action_Instructions, hop_west_obstacle) {
 	w << d << endl;
 	ASSERT_EQ(w.str(), " 012\n0...\n1fh.\n2...\n\n");
 }
+
+/**
+ * Tests go once, which changes the pc.
+ */
+TEST(Control_Instructions, go_1) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, WEST);
+	d.go(c, 5);
+	ASSERT_EQ(c._pc, 5);
+}
+
+/**
+ * Tests go multiple times, which changes the pc multiple times.
+ */
+TEST(Control_Instructions, go_2) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, WEST);
+	d.go(c, 5);
+	ASSERT_EQ(c._pc, 5);
+	d.go(c, 3);
+	ASSERT_EQ(c._pc, 3);
+	d.go(c, 1);
+	ASSERT_EQ(c._pc, 1);
+}
