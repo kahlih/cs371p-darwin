@@ -45,6 +45,9 @@ class Creature {
 		FRIEND_TEST(Action_Instructions, if_wall_1);
 		FRIEND_TEST(Action_Instructions, if_wall_2);
 		FRIEND_TEST(Action_Instructions, if_wall_3);
+		FRIEND_TEST(Control_Instructions, if_empty_1);
+		FRIEND_TEST(Control_Instructions, if_empty_2);
+		FRIEND_TEST(Control_Instructions, if_empty_3);
 		int _pc;
 		Species _species;
 		bool isNull;

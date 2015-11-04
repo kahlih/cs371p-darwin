@@ -335,3 +335,79 @@ TEST(Action_Instructions, turn_right_4)
 
     ASSERT_EQ(c._direction, NORTH);
 }
+
+TEST(Control_Instructions, if_empty_1){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+
+	Darwin grid1(4,3);
+
+	grid1.addCreature(c1,0,1);
+	grid1.addCreature(c2,0,0);
+
+	ostringstream w;
+	grid1.if_empty(c1,1,3);
+	ASSERT_EQ(c1._pc,3);
+}
+
+// Not empty test
+TEST(Control_Instructions, if_empty_2){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+
+	Darwin grid1(4,3);
+
+	grid1.addCreature(c1,0,1);
+	grid1.addCreature(c2,0,0);
+
+	grid1.if_empty(c2,0,0);
+	ASSERT_EQ(c1._pc,0);
+
+}
+
+TEST(Control_Instructions, if_empty_3){
+
+	Species kahli('k');
+	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
+	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
+	assert(kahli.addInstruction(Instruction(HOP)) == 3);
+	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+
+	Creature c1(kahli, SOUTH);
+	Creature c2(kahli, EAST);
+	Creature c3(kahli, NORTH);
+	Creature c4(kahli, WEST);
+	Darwin grid1(2,2);
+
+	grid1.addCreature(c1,0,0);
+	grid1.addCreature(c2,0,1);
+	grid1.addCreature(c3,1,0);
+	grid1.addCreature(c4,1,1);
+
+	grid1.if_empty(c1,0,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c2,1,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c3,2,0);
+	ASSERT_EQ(c1._pc,0);
+
+	grid1.if_empty(c4,3,0);
+	ASSERT_EQ(c1._pc,0);
+
+}
