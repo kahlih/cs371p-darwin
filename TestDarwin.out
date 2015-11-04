@@ -1,36 +1,46 @@
-==19116== Memcheck, a memory error detector
-==19116== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==19116== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==19116== Command: ./TestDarwin
-==19116== 
+==21687== Memcheck, a memory error detector
+==21687== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==21687== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==21687== Command: ./TestDarwin
+==21687== 
 Running main() from gtest_main.cc
-[==========] Running 2 tests from 2 test cases.
+[==========] Running 7 tests from 2 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from Species
 [ RUN      ] Species.species_1
 [       OK ] Species.species_1 (26 ms)
 [----------] 1 test from Species (32 ms total)
 
-[----------] 1 test from Action_Instructions
+[----------] 6 tests from Action_Instructions
 [ RUN      ] Action_Instructions.infect_1
 [       OK ] Action_Instructions.infect_1 (66 ms)
-[----------] 1 test from Action_Instructions (66 ms total)
+[ RUN      ] Action_Instructions.infect_2
+[       OK ] Action_Instructions.infect_2 (13 ms)
+[ RUN      ] Action_Instructions.infect_3
+[       OK ] Action_Instructions.infect_3 (11 ms)
+[ RUN      ] Action_Instructions.if_wall_1
+[       OK ] Action_Instructions.if_wall_1 (7 ms)
+[ RUN      ] Action_Instructions.if_wall_2
+[       OK ] Action_Instructions.if_wall_2 (6 ms)
+[ RUN      ] Action_Instructions.if_wall_3
+[       OK ] Action_Instructions.if_wall_3 (6 ms)
+[----------] 6 tests from Action_Instructions (110 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test cases ran. (127 ms total)
-[  PASSED  ] 2 tests.
-==19116== 
-==19116== HEAP SUMMARY:
-==19116==     in use at exit: 0 bytes in 0 blocks
-==19116==   total heap usage: 283 allocs, 283 frees, 52,431 bytes allocated
-==19116== 
-==19116== All heap blocks were freed -- no leaks are possible
-==19116== 
-==19116== For counts of detected and suppressed errors, rerun with: -v
-==19116== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 7 tests from 2 test cases ran. (171 ms total)
+[  PASSED  ] 7 tests.
+==21687== 
+==21687== HEAP SUMMARY:
+==21687==     in use at exit: 0 bytes in 0 blocks
+==21687==   total heap usage: 434 allocs, 434 frees, 66,795 bytes allocated
+==21687== 
+==21687== All heap blocks were freed -- no leaks are possible
+==21687== 
+==21687== For counts of detected and suppressed errors, rerun with: -v
+==21687== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestDarwin.c++'
-Lines executed:100.00% of 26
-Branches executed:74.74% of 190
-Taken at least once:37.37% of 190
-Calls executed:52.29% of 153
+Lines executed:100.00% of 98
+Branches executed:84.40% of 564
+Taken at least once:42.20% of 564
+Calls executed:59.28% of 447
 Creating 'TestDarwin.c++.gcov'

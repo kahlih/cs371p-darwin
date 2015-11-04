@@ -41,6 +41,10 @@ class Creature {
 	friend class Darwin;
 	private:
 		DIRECTION _direction;
+
+		FRIEND_TEST(Action_Instructions, if_wall_1);
+		FRIEND_TEST(Action_Instructions, if_wall_2);
+		FRIEND_TEST(Action_Instructions, if_wall_3);
 		int _pc;
 		Species _species;
 		bool isNull;
