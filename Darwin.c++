@@ -266,7 +266,6 @@ Darwin::iterator Darwin::end(){
 }
 void Darwin::simulate(int n, ostream& w){
 	w << "Turn = " << 0 << "." << endl;
-	//display();
 	w << *this;
 	w << endl;
 	for (int i = 1; i <= n; i++){ // # of turns
@@ -289,7 +288,6 @@ void Darwin::simulate(int n, ostream& w){
 			run(cur.first, cur.second);
 		}
 		if (i < 10 || (i >= 10 && i%100==0)){
-			//display();
 			w << *this;
 			w << endl;}
 	}
@@ -337,30 +335,7 @@ void Darwin::run(int location, Creature& c) {
 			break;
 
 	}
-	// get the instruction from program (species)
-
-	// execute the instruction (switch case)
-	// increment the pc (creature)
 }
-// void Darwin::display(){
-// 	int length = grid.size()/_row;
-// 	cout << " ";
-// 	for (int i = 0; i < length; i++){
-// 		cout << i % 10;
-// 	}
-
-// 	cout << endl;
-// 	for (int i = 0; i < (int)grid.size(); i++) {
-// 		if (i % length == 0) {
-// 			cout << (i / length) % 10;
-// 		}
-// 		cout << grid.at(i);
-// 		if (i % length == length - 1) {
-// 			cout << endl;
-// 		}
-// 	}
-
-// }
 Creature& Darwin::at(int n){
 	return grid[n];
 }

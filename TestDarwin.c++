@@ -53,7 +53,6 @@ TEST(Action_Instructions, infect_1){
 	// h * r
 	// * * *
 
-	//grid1.simulate(1);
 	ostringstream w;
 	grid1.simulate(1,w);
 	ASSERT_EQ(w.str(),"Turn = 0.\n 012\n0...\n1h.r\n2...\n\nTurn = 1.\n 012\n0...\n1.rr\n2...\n\n");
