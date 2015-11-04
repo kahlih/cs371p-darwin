@@ -53,6 +53,10 @@ class Creature {
 		friend ostream& operator<<(ostream& os, const Creature& creature);
 		int operator++(int);
 		~Creature();
+		FRIEND_TEST(Action_Instructions, turn_left_1);
+		FRIEND_TEST(Action_Instructions, turn_left_2);
+		FRIEND_TEST(Action_Instructions, turn_left_3);
+		FRIEND_TEST(Action_Instructions, turn_left_4);
 };
 
 class Darwin {

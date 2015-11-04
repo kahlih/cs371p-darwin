@@ -154,4 +154,73 @@ TEST(Action_Instructions, infect_1){
 
 // }
 
+// TEST(Action_Instructions, hop_1) {
+// 	Species hopper('h');
+// 	hopper.addInstruction(Instruction(HOP));
+//     hopper.addInstruction(Instruction(GO,0));
 
+//     Creature c1(hopper, NORTH);
+
+//     Darwin grid(3,3);
+//     grid.addCreature(c1, 2, 2);
+
+//     ostringstream w;
+// 	grid1.simulate(1,w);
+// 	ASSERT_EQ(w.str(),"Turn = 0.\n 
+// 		012\n
+// 	   0...\n
+// 	   1.h.\n
+// 	   2...\n");
+// }
+
+/**
+ * Tests the left() function when facing NORTH
+ */
+TEST(Action_Instructions, turn_left_1)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, NORTH);
+    d.left(c);
+
+    ASSERT_EQ(c._direction, WEST);
+}
+
+/**
+ * Tests the left() function when facing EAST
+ */
+TEST(Action_Instructions, turn_left_2)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, EAST);
+    d.left(c);
+
+    ASSERT_EQ(c._direction, NORTH);
+}
+
+/**
+ * Tests the left() function when facing SOUTH
+ */
+TEST(Action_Instructions, turn_left_3)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, SOUTH);
+    d.left(c);
+
+    ASSERT_EQ(c._direction, EAST);
+}
+
+/**
+ * Tests the left() function when facing WEST
+ */
+TEST(Action_Instructions, turn_left_4)
+{
+    Species hopper('h');
+    Darwin d(1,1);
+    Creature c(hopper, WEST);
+    d.left(c);
+
+    ASSERT_EQ(c._direction, SOUTH);
+}
