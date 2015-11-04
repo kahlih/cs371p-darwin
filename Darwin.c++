@@ -48,8 +48,8 @@ void Darwin::hop(Creature& c, int location){
 			}
 			break;
 		case SOUTH:
-			if ((location+_row < _row*_col) && (grid.at(location+_row).isNull)){
-				grid.at(location+_row) = c;
+			if ((location+_col < _row*_col) && (grid.at(location+_col).isNull)){
+				grid.at(location+_col) = c;
 				grid.at(location) = Creature();
 			}
 			break;
@@ -62,8 +62,8 @@ void Darwin::hop(Creature& c, int location){
 			}
 			break;
 		case NORTH:
-			if ((location-_row >= 0) && (grid.at(location-_row).isNull)) {
-				grid.at(location-_row) = c;
+			if ((location-_col >= 0) && (grid.at(location-_col).isNull)) {
+				grid.at(location-_col) = c;
 				grid.at(location) = Creature();
 			}
 			break;
@@ -104,6 +104,137 @@ void Darwin::right(Creature& c){
 void Darwin::go(Creature& c, int n) {
 	c._pc = n;
 }
+void Darwin::infect(Creature& c, int location) {
+	switch(c._direction){
+		case WEST: {
+				bool invalid = (location-1) % (_col) == (_col-1);
+				if (!invalid && !grid.at(location-1).isNull) {
+					Creature& neighbor = grid.at(location - 1);
+					if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
+						neighbor._species = c._species;
+						neighbor._pc = 0;
+					}				}
+			}
+			break;
+		case SOUTH:
+			if ((location+_col < _row*_col) && (!grid.at(location+_col).isNull)){
+				Creature& neighbor = grid.at(location+_row);
+				if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
+					neighbor._species = c._species;
+					neighbor._pc = 0;
+				}
+			}
+			break;
+		case EAST: {
+				bool invalid = (location+1) % (_col) == 0;
+				if (!invalid && !grid.at(location+1).isNull) {
+					Creature& neighbor = grid.at(location + 1);
+					if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
+						neighbor._species = c._species;
+						neighbor._pc = 0;
+					}					}
+			}
+			break;
+		case NORTH:
+			if ((location-_col >= 0) && (!grid.at(location-_col).isNull)) {
+				Creature& neighbor = grid.at(location-_col);
+				if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
+					neighbor._species = c._species;
+					neighbor._pc = 0;
+				}
+			}
+			break;
+	}
+}
+void Darwin::if_enemy(Creature& c, int location, int n) {
+	switch(c._direction){
+		case WEST: {
+				bool invalid = (location-1) % (_col) == (_col-1);
+				if (!invalid && !grid.at(location-1).isNull) {
+					go(c, n);
+				}
+			}
+			break;
+		case SOUTH:
+			if ((location+_col < _row*_col) && (!grid.at(location+_col).isNull)){
+				go(c, n);
+			}
+			break;
+		case EAST: {
+				bool invalid = (location+1) % (_col) == 0;
+				if (!invalid && !grid.at(location+1).isNull) {
+					go(c, n);
+				}
+			}
+			break;
+		case NORTH:
+			if ((location-_col >= 0) && (!grid.at(location-_col).isNull)) {
+				go(c, n);
+			}
+			break;
+	}
+}
+void Darwin::if_empty(Creature& c, int location, int n){
+	switch(c._direction){
+		case WEST: {
+				bool invalid = (location-1) % (_col) == (_col-1);
+				if (!invalid && grid.at(location-1).isNull) {
+					go(c, n);
+				}
+			}
+			break;
+		case SOUTH:
+			if ((location+_col < _row*_col) && (grid.at(location+_col).isNull)){
+				go(c, n);
+			}
+			break;
+		case EAST: {
+				bool invalid = (location+1) % (_col) == 0;
+				if (!invalid && grid.at(location+1).isNull) {
+					go(c, n);
+				}
+			}
+			break;
+		case NORTH:
+			if ((location-_col >= 0) && (grid.at(location-_col).isNull)) {
+				go(c, n);
+			}
+			break;
+	}
+}
+void Darwin::if_wall(Creature& c, int location, int n){
+	switch(c._direction){
+		case WEST: {
+				bool invalid = (location-1) % (_col) == (_col-1);
+				if (invalid) {
+					go(c, n);
+				}
+			}
+			break;
+		case SOUTH:
+			if ((location+_col >= _row*_col)){
+				go(c, n);
+			}
+			break;
+		case EAST: {
+				bool invalid = (location+1) % (_col) == 0;
+				if (invalid) {
+					go(c, n);
+				}
+			}
+			break;
+		case NORTH:
+			if ((location-_col < 0)) {
+				go(c, n);
+			}
+			break;
+	}
+}
+void Darwin::if_random(Creature& c, int n) {
+	if (rand() % 2 == 1) {
+		go(c, n);
+	}
+}
 ostream& operator<<(ostream& os, const Creature& creature) {
 	os << creature._species._name;
 	return os;
@@ -124,6 +255,9 @@ Darwin::~Darwin(){}
 void Darwin::addCreature(Creature& c, int x, int y){
 	grid[y + x*_col] = c;
 }
+void Darwin::addCreature(Creature& c, int n){
+	grid[n] = c;
+}
 Darwin::iterator Darwin::begin(){
 	return grid.begin();
 }
@@ -131,9 +265,12 @@ Darwin::iterator Darwin::end(){
 	return grid.end();
 }
 void Darwin::simulate(int n){
-	for (int i = 0; i < n; i++){ // # of turns
-		cout << "Turn = " << i << "." << endl;
-		display();
+	cout << "Turn = " << 0 << "." << endl;
+	display();
+	cout << endl;
+	for (int i = 1; i <= n; i++){ // # of turns
+		if (i < 10 || (i >= 10 && i%100==0)){
+			cout << "Turn = " << i << "." << endl;}
 		// Way to not modify the grid
 		// Grab all the Creatures that need to be process, THEN process their instruction
 		std::deque<pair<int,Creature>> list_of_creatures;
@@ -146,16 +283,19 @@ void Darwin::simulate(int n){
 		}
 		// Now process creatures
 		typedef deque<pair<int,Creature>>::iterator iter;
-		for (iter i = list_of_creatures.begin(); i != list_of_creatures.end(); i++){
-			pair<int,Creature> cur = *i;
+		for (iter it = list_of_creatures.begin(); it != list_of_creatures.end(); it++){
+			pair<int,Creature> cur = *it;
 			run(cur.first, cur.second);
 		}
+		if (i < 10 || (i >= 10 && i%100==0)){
+			display();
+			cout << endl;}
 	}
 }
 void Darwin::run(int location, Creature& c) {
 	int pc = c++;
 	Instruction i = c.getInstruction(pc);
-	//cout << i.instruction_name << " " << c << " " << pc << endl;  
+	// cout << i.instruction_name << " " << c << " " << pc << endl;  
 
 	switch(i.instruction_name){
 		/* Actions */
@@ -169,6 +309,7 @@ void Darwin::run(int location, Creature& c) {
 			right(c);
 			break;
 		case INFECT: 
+			infect(c, location);
 			break;
 
 		/* Controls */
@@ -177,12 +318,20 @@ void Darwin::run(int location, Creature& c) {
 			run(location, c);
 			break;
 		case IF_EMPTY: 
+			if_empty(c, location, i._n);
+			run(location, c);
 			break;
 		case IF_WALL: 
+			if_wall(c, location, i._n);
+			run(location, c);
 			break;
 		case IF_RANDOM: 
+			if_random(c, i._n);
+			run(location, c);
 			break;
 		case IF_ENEMY: 
+			if_enemy(c, location, i._n);
+			run(location, c);
 			break;
 
 	}

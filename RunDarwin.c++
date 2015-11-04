@@ -162,7 +162,7 @@ int main () {
     grid2.addCreature(d3,5,4);
     grid2.addCreature(d4,6,8);
 
-    grid2.display();
+    grid2.simulate(5);
 
     // ------------
     // darwin 72x72
@@ -187,6 +187,41 @@ int main () {
     Print every 100th grid after that (i.e. 100, 200, 300...1000).
     */
 
+    Darwin grid_without_best(72,72);
+
+    // Create food species/creature
+    for (int i = 0; i < 10; i++){
+        int pos = rand() % 5184;
+        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+        Creature b1(food, direction);
+        grid_without_best.addCreature(b1, pos);      
+    }
+
+    //Create hopper species/creature
+    for (int i = 0; i < 10; i++){
+        int pos = rand() % 5184;
+        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+        Creature b1(hopper, direction);
+        grid_without_best.addCreature(b1, pos);      
+    }
+
+    // Create rover species/creature
+    for (int i = 0; i < 10; i++){
+        int pos = rand() % 5184;
+        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+        Creature b1(rover, direction);
+        grid_without_best.addCreature(b1, pos);      
+    }
+
+    // Create trap species/creature
+    for (int i = 0; i < 10; i++){
+        int pos = rand() % 5184;
+        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+        Creature b1(trap, direction);
+        grid_without_best.addCreature(b1, pos);      
+    }
+
+    grid_without_best.simulate(1000);    
     // ------------
     // darwin 72x72
     // with best

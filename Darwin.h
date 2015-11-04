@@ -12,7 +12,7 @@
 using namespace std;
 
 enum INSTRUCTION_NAME {HOP, LEFT, RIGHT, INFECT, IF_EMPTY, IF_WALL, IF_RANDOM, IF_ENEMY, GO};
-enum DIRECTION {NORTH, SOUTH, EAST, WEST};
+enum DIRECTION {WEST, NORTH, EAST, SOUTH};
 
 class Instruction {
 	friend class Creature;
@@ -61,6 +61,7 @@ class Darwin {
 		Darwin(int col, int row);
 		~Darwin();
 		void addCreature(Creature& c, int x, int y);
+		void addCreature(Creature& c, int n);
 		iterator begin();
 		iterator end();
 		void simulate(int n);
@@ -72,6 +73,11 @@ class Darwin {
 		void right(Creature& c);
 		void go(Creature& c, int n);
 		void hop(Creature& c,int location);
+		void infect(Creature& c, int location);
+		void if_enemy(Creature& c, int location, int n);
+		void if_empty(Creature& c, int location, int n);
+		void if_wall(Creature& c, int location, int n);
+		void if_random(Creature&c, int n);
 	private:
 		vector<Creature> grid; //row-major order
 		int _row;
