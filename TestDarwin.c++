@@ -17,29 +17,27 @@ TEST(Species, species_1) {
 	ASSERT_EQ(s._name,'h');
 }
 
-    // ------
-    // hopper
-    // ------
+// ------------
+// Infect Tests
+// ------------
 
-    /*
-     0: hop
-     1: go 0
-    */
-
-
-/* INFECT WEST */
-TEST(Action_Instructions, infect_1){
+/**
+ * Tests the infect() function when facing WEST
+ * @param Infect_Tests a fixture
+ * @param infect_1 test name
+ */
+TEST(Infect_Tests, infect_1) {
 
 	Species hopper('h');
-    assert(hopper.addInstruction(Instruction(HOP)) == 1);
-    assert(hopper.addInstruction(Instruction(GO,0)) == 2);
+    hopper.addInstruction(Instruction(HOP));
+    hopper.addInstruction(Instruction(GO,0));
 
 	Species rover('r');
-	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
-	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
-	assert(rover.addInstruction(Instruction(INFECT)) == 3);
-	assert(rover.addInstruction(Instruction(HOP)) == 4);
-	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+	rover.addInstruction(Instruction(IF_ENEMY, 2));
+	rover.addInstruction(Instruction(IF_EMPTY, 4));
+	rover.addInstruction(Instruction(INFECT));
+	rover.addInstruction(Instruction(HOP));
+	rover.addInstruction(Instruction(GO,0));
 
 	Creature c1(hopper, EAST);
 	Creature c2(rover, WEST);
@@ -49,28 +47,28 @@ TEST(Action_Instructions, infect_1){
 	grid1.addCreature(c1,1,0);
 	grid1.addCreature(c2,1,2);
 
-	// * * *
-	// h * r
-	// * * *
-
 	ostringstream w;
 	grid1.simulate(1,w);
 	ASSERT_EQ(w.str(),"Turn = 0.\n 012\n0...\n1h.r\n2...\n\nTurn = 1.\n 012\n0...\n1.rr\n2...\n\n");
 }
 
-/* INFECT EAST */
-TEST(Action_Instructions, infect_2){
+/**
+ * Tests the infect() function when facing EAST
+ * @param Infect_Tests a fixture
+ * @param infect_2 test name
+ */
+TEST(Infect_Tests, infect_2){
 
 	Species hopper('h');
-    assert(hopper.addInstruction(Instruction(HOP)) == 1);
-    assert(hopper.addInstruction(Instruction(GO,0)) == 2);
+    hopper.addInstruction(Instruction(HOP));
+    hopper.addInstruction(Instruction(GO,0));
 
 	Species rover('r');
-	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
-	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
-	assert(rover.addInstruction(Instruction(INFECT)) == 3);
-	assert(rover.addInstruction(Instruction(HOP)) == 4);
-	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+	rover.addInstruction(Instruction(IF_ENEMY, 2));
+	rover.addInstruction(Instruction(IF_EMPTY, 4));
+	rover.addInstruction(Instruction(INFECT));
+	rover.addInstruction(Instruction(HOP));
+	rover.addInstruction(Instruction(GO,0));
 
 	Creature c1(hopper, SOUTH);
 	Creature c2(rover, EAST);
@@ -80,30 +78,29 @@ TEST(Action_Instructions, infect_2){
 	grid1.addCreature(c1,0,1);
 	grid1.addCreature(c2,1,0);
 
-	// * h *
-	// r * *
-	// * * *
-	// * * *
-
 	ostringstream w;
 	grid1.simulate(1,w);
 	ASSERT_EQ(w.str(),"Turn = 0.\n 012\n0.h.\n1r..\n2...\n3...\n\nTurn = 1.\n 012\n0...\n1rr.\n2...\n3...\n\n");
 
 }
 
-// /* INFECT NORTH */
-TEST(Action_Instructions, infect_3){
+/**
+ * Tests the infect() function when facing NORTH
+ * @param Infect_Tests a fixture
+ * @param infect_3 test name
+ */
+TEST(Infect_Tests, infect_3){
 
     Species food('f');
-    assert(food.addInstruction(Instruction(LEFT)) == 1);
-    assert(food.addInstruction(Instruction(GO,0)) == 2);
+    food.addInstruction(Instruction(LEFT));
+    food.addInstruction(Instruction(GO,0));
 
 	Species rover('r');
-	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
-	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
-	assert(rover.addInstruction(Instruction(INFECT)) == 3);
-	assert(rover.addInstruction(Instruction(HOP)) == 4);
-	assert(rover.addInstruction(Instruction(GO,0)) == 5);
+	rover.addInstruction(Instruction(IF_ENEMY, 2));
+	rover.addInstruction(Instruction(IF_EMPTY, 4));
+	rover.addInstruction(Instruction(INFECT));
+	rover.addInstruction(Instruction(HOP));
+	rover.addInstruction(Instruction(GO,0));
 
 	Creature c1(food, WEST);
 	Creature c2(rover, NORTH);
@@ -119,8 +116,16 @@ TEST(Action_Instructions, infect_3){
 
 }
 
-/* If_Wall WEST */
-TEST(Control_Instructions, if_wall_1) {
+// -------------
+// If Wall Tests
+// -------------
+
+/**
+ * Tests if_wall() when facing WEST
+ * @param Control_Instructions a fixture
+ * @param if_wall_1 test name
+ */
+TEST(If_Wall_Tests, if_wall_1) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -140,8 +145,12 @@ TEST(Control_Instructions, if_wall_1) {
 }
 
 
-/* If_Wall SOUTH */
-TEST(Control_Instructions, if_wall_2) {
+/**
+ * Tests if_wall() when facing SOUTH
+ * @param Control_Instructions a fixture
+ * @param if_wall_3 test name
+ */
+TEST(If_Wall_Tests, if_wall_2) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -160,8 +169,12 @@ TEST(Control_Instructions, if_wall_2) {
 	ASSERT_EQ(c1._pc,3);
 }
 
-/* NOT If_Wall NORTH */
-TEST(Control_Instructions, if_wall_3) {
+/**
+ * Tests if_wall() when facing SOUTH (failure case)
+ * @param Control_Instructions a fixture
+ * @param if_wall_3 test name
+ */
+TEST(If_Wall_Tests, if_wall_3) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -180,10 +193,16 @@ TEST(Control_Instructions, if_wall_3) {
 	ASSERT_EQ(c1._pc,0);
 }
 
+// ----------
+// Left Tests
+// ----------
+
 /**
  * Tests the left() function when facing NORTH
+ * @param Left_Tests a fixture
+ * @param turn_left_1 test name
  */
-TEST(Action_Instructions, turn_left_1) {
+TEST(Left_Tests, turn_left_1) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, NORTH);
@@ -194,8 +213,10 @@ TEST(Action_Instructions, turn_left_1) {
 
 /**
  * Tests the left() function when facing EAST
+ * @param Left_Tests a fixture
+ * @param turn_left_2 test name
  */
-TEST(Action_Instructions, turn_left_2) {
+TEST(Left_Tests, turn_left_2) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, EAST);
@@ -206,8 +227,10 @@ TEST(Action_Instructions, turn_left_2) {
 
 /**
  * Tests the left() function when facing SOUTH
+ * @param Left_Tests a fixture
+ * @param turn_left_3 test name
  */
-TEST(Action_Instructions, turn_left_3) {
+TEST(Left_Tests, turn_left_3) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, SOUTH);
@@ -218,8 +241,10 @@ TEST(Action_Instructions, turn_left_3) {
 
 /**
  * Tests the left() function when facing WEST
+ * @param Left_Tests a fixture
+ * @param turn_left_4 test name
  */
-TEST(Action_Instructions, turn_left_4) {
+TEST(Left_Tests, turn_left_4) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, WEST);
@@ -228,10 +253,16 @@ TEST(Action_Instructions, turn_left_4) {
     ASSERT_EQ(c._direction, SOUTH);
 }
 
+// -----------
+// Right Tests
+// -----------
+
 /**
  * Tests the right() function when facing NORTH
+ * @param Right_Tests a fixture
+ * @param turn_right_1 test name
  */
-TEST(Action_Instructions, turn_right_1) {
+TEST(Right_Tests, turn_right_1) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, NORTH);
@@ -242,8 +273,10 @@ TEST(Action_Instructions, turn_right_1) {
 
 /**
  * Tests the right() function when facing EAST
+ * @param Right_Tests a fixture
+ * @param turn_right_2 test name
  */
-TEST(Action_Instructions, turn_right_2) {
+TEST(Right_Tests, turn_right_2) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, EAST);
@@ -254,8 +287,10 @@ TEST(Action_Instructions, turn_right_2) {
 
 /**
  * Tests the right() function when facing SOUTH
+ * @param Right_Tests a fixture
+ * @param turn_right_3 test name
  */
-TEST(Action_Instructions, turn_right_3) {
+TEST(Right_Tests, turn_right_3) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, SOUTH);
@@ -266,8 +301,10 @@ TEST(Action_Instructions, turn_right_3) {
 
 /**
  * Tests the right() function when facing WEST
+ * @param Right_Tests a fixture
+ * @param turn_right_4 test name
  */
-TEST(Action_Instructions, turn_right_4) {
+TEST(Right_Tests, turn_right_4) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, WEST);
@@ -276,14 +313,22 @@ TEST(Action_Instructions, turn_right_4) {
     ASSERT_EQ(c._direction, NORTH);
 }
 
+// --------------
+// If Empty Tests
+// --------------
 
-TEST(Control_Instructions, if_empty_1) {
+/**
+ * Tests the if_empty() function when facing SOUTH
+ * @param If_Empty_Tests a fixture
+ * @param if_empty_1 test name
+ */
+TEST(If_Empty_Tests, if_empty_1) {
 
 	Species kahli('k');
-	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
-	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
-	assert(kahli.addInstruction(Instruction(HOP)) == 3);
-	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+	kahli.addInstruction(Instruction(IF_EMPTY, 3));
+	kahli.addInstruction(Instruction(RIGHT, 4));
+	kahli.addInstruction(Instruction(HOP));
+	kahli.addInstruction(Instruction(GO,0));
 
 	Creature c1(kahli, SOUTH);
 	Creature c2(kahli, EAST);
@@ -298,14 +343,18 @@ TEST(Control_Instructions, if_empty_1) {
 	ASSERT_EQ(c1._pc,3);
 }
 
-// Not empty test
-TEST(Control_Instructions, if_empty_2) {
+/**
+ * Tests the if_empty() function when facing EAST
+ * @param If_Empty_Tests a fixture
+ * @param if_empty_2 test name
+ */
+TEST(If_Empty_Tests, if_empty_2) {
 
 	Species kahli('k');
-	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
-	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
-	assert(kahli.addInstruction(Instruction(HOP)) == 3);
-	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+	kahli.addInstruction(Instruction(IF_EMPTY, 3));
+	kahli.addInstruction(Instruction(RIGHT, 4));
+	kahli.addInstruction(Instruction(HOP));
+	kahli.addInstruction(Instruction(GO,0));
 
 	Creature c1(kahli, SOUTH);
 	Creature c2(kahli, EAST);
@@ -320,13 +369,18 @@ TEST(Control_Instructions, if_empty_2) {
 
 }
 
-TEST(Control_Instructions, if_empty_3) {
+/**
+ * Tests the if_empty() function
+ * @param If_Empty_Tests a fixture
+ * @param if_empty_3 test name
+ */
+TEST(If_Empty_Tests, if_empty_3) {
 
 	Species kahli('k');
-	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
-	assert(kahli.addInstruction(Instruction(RIGHT, 4)) == 2);
-	assert(kahli.addInstruction(Instruction(HOP)) == 3);
-	assert(kahli.addInstruction(Instruction(GO,0)) == 4);
+	kahli.addInstruction(Instruction(IF_EMPTY, 3));
+	kahli.addInstruction(Instruction(RIGHT, 4));
+	kahli.addInstruction(Instruction(HOP));
+	kahli.addInstruction(Instruction(GO,0));
 
 	Creature c1(kahli, SOUTH);
 	Creature c2(kahli, EAST);
@@ -351,10 +405,17 @@ TEST(Control_Instructions, if_empty_3) {
 	grid1.if_empty(c4,3,0);
 	ASSERT_EQ(c1._pc,0);
 }
+
+// ---------
+// Hop Tests
+// ---------
+
 /**
- * Tests hopping NORTH
+ * Tests hop() when facing NORTH
+ * @param Hop_Tests a fixture
+ * @param hop_north test name
  */
-TEST(Action_Instructions, hop_north) {
+TEST(Hop_Tests, hop_north) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, NORTH);
@@ -368,9 +429,11 @@ TEST(Action_Instructions, hop_north) {
 }
 
 /**
- * Tests hopping SOUTH
+ * Tests hop() when facing SOUTH
+ * @param Hop_Tests a fixture
+ * @param hop_south test name
  */
-TEST(Action_Instructions, hop_south) {
+TEST(Hop_Tests, hop_south) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, SOUTH);
@@ -383,10 +446,12 @@ TEST(Action_Instructions, hop_south) {
 	ASSERT_EQ(w.str(), " 012\n0...\n1...\n2.h.\n\n");
 }
 
-// /**
-//  * Tests hopping EAST
-//  */
-TEST(Action_Instructions, hop_east) {
+/**
+ * Tests hop() when facing EAST
+ * @param Hop_Tests a fixture
+ * @param hop_east test name
+ */
+TEST(Hop_Tests, hop_east) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, EAST);
@@ -399,10 +464,12 @@ TEST(Action_Instructions, hop_east) {
 	ASSERT_EQ(w.str(), " 012\n0...\n1..h\n2...\n\n");
 }
 
-// /**
-//  * Tests hopping WEST w/ obstacle or wall
-//  */
-TEST(Action_Instructions, hop_west) {
+/**
+ * Tests hop() when facing WEST
+ * @param Hop_Tests a fixture
+ * @param hop_west test name
+ */
+TEST(Hop_Tests, hop_west) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, WEST);
@@ -416,9 +483,11 @@ TEST(Action_Instructions, hop_west) {
 }
 
 /**
- * Tests hopping NORTH w/ wall
+ * Tests hop() NORTH w/ wall
+ * @param Hop_Tests a fixture
+ * @param hop_north_wall test name
  */
-TEST(Action_Instructions, hop_north_wall) {
+TEST(Hop_Tests, hop_north_wall) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, NORTH);
@@ -431,9 +500,11 @@ TEST(Action_Instructions, hop_north_wall) {
 }
 
 /**
- * Tests hopping SOUTH w/ wall
+ * Tests hop() SOUTH w/ wall
+ * @param Hop_Tests a fixture
+ * @param hop_south_wall test name
  */
-TEST(Action_Instructions, hop_south_wall) {
+TEST(Hop_Tests, hop_south_wall) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, SOUTH);
@@ -446,9 +517,11 @@ TEST(Action_Instructions, hop_south_wall) {
 }
 
 /**
- * Tests hopping EAST w/ wall
+ * Tests hop() EAST w/ wall
+ * @param Hop_Tests a fixture
+ * @param hop_east_wall test name
  */
-TEST(Action_Instructions, hop_east_wall) {
+TEST(Hop_Tests, hop_east_wall) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, EAST);
@@ -461,9 +534,11 @@ TEST(Action_Instructions, hop_east_wall) {
 }
 
 /**
- * Tests hopping WEST w/ wall
+ * Tests hop() WEST w/ wall
+ * @param Hop_Tests a fixture
+ * @param hop_west_wall test name
  */
-TEST(Action_Instructions, hop_west_wall) {
+TEST(Hop_Tests, hop_west_wall) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, WEST);
@@ -476,9 +551,11 @@ TEST(Action_Instructions, hop_west_wall) {
 }
 
 /**
- * Tests hopping NORTH w/ obstacle
+ * Tests hop() NORTH w/ obstacle
+ * @param Hop_Tests a fixture
+ * @param hop_north_obstacle test name
  */
-TEST(Action_Instructions, hop_north_obstacle) {
+TEST(Hop_Tests, hop_north_obstacle) {
 	Species hopper('h');
 	Species food('f');
 
@@ -496,9 +573,11 @@ TEST(Action_Instructions, hop_north_obstacle) {
 }
 
 /**
- * Tests hopping SOUTH w/ obstacle
+ * Tests hop() SOUTH w/ obstacle
+ * @param Hop_Tests a fixture
+ * @param hop_south_obstacle test name
  */
-TEST(Action_Instructions, hop_south_obstacle) {
+TEST(Hop_Tests, hop_south_obstacle) {
 	Species hopper('h');
 	Species food('f');
 
@@ -516,9 +595,11 @@ TEST(Action_Instructions, hop_south_obstacle) {
 }
 
 /**
- * Tests hopping EAST w/ obstacle
+ * Tests hop() EAST w/ obstacle
+ * @param Hop_Tests a fixture
+ * @param hop_east_obstacle test name
  */
-TEST(Action_Instructions, hop_east_obstacle) {
+TEST(Hop_Tests, hop_east_obstacle) {
 	Species hopper('h');
 	Species food('f');
 
@@ -536,9 +617,11 @@ TEST(Action_Instructions, hop_east_obstacle) {
 }
 
 /**
- * Tests hopping WEST w/ obstacle
+ * Tests hop() WEST w/ obstacle
+ * @param Hop_Tests a fixture
+ * @param hop_west_obstacle test name
  */
-TEST(Action_Instructions, hop_west_obstacle) {
+TEST(Hop_Tests, hop_west_obstacle) {
 	Species hopper('h');
 	Species food('f');
 
@@ -555,10 +638,16 @@ TEST(Action_Instructions, hop_west_obstacle) {
 	ASSERT_EQ(w.str(), " 012\n0...\n1fh.\n2...\n\n");
 }
 
+// --------
+// Go Tests
+// --------
+
 /**
- * Tests go once, which changes the pc.
+ * Tests go() function once, which changes the pc.
+ * @param Go_Tests a fixture
+ * @param go_1 test name
  */
-TEST(Control_Instructions, go_1) {
+TEST(Go_Tests, go_1) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, WEST);
@@ -567,9 +656,11 @@ TEST(Control_Instructions, go_1) {
 }
 
 /**
- * Tests go multiple times, which changes the pc multiple times.
+ * Tests go() function multiple times, which changes the pc multiple times.
+ * @param Go_Tests a fixture
+ * @param go_2 test name
  */
-TEST(Control_Instructions, go_2) {
+TEST(Go_Tests, go_2) {
 	Species hopper('h');
 	Darwin d(3,3);
 	Creature c(hopper, WEST);
@@ -581,8 +672,16 @@ TEST(Control_Instructions, go_2) {
 	ASSERT_EQ(c._pc, 1);
 }
 
-//if_random
-TEST(Control_Instructions, if_random_1) {
+// ---------------
+// If Random Tests
+// ---------------
+
+/**
+ * Tests if_random() function, which may change the pc.
+ * @param If_Random_Tests a fixture
+ * @param if_random_1 test name
+ */
+TEST(If_Random_Tests, if_random_1) {
 	srand(0);
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_RANDOM, 3)) == 1);
@@ -598,8 +697,12 @@ TEST(Control_Instructions, if_random_1) {
 	ASSERT_EQ(k1._pc,3);
 }
 
-//if_random
-TEST(Control_Instructions, if_random_2) {
+/**
+ * Tests if_random() function, which may change the pc.
+ * @param If_Random_Tests a fixture
+ * @param if_random_2 test name
+ */
+TEST(If_Random_Tests, if_random_2) {
 	srand(0);
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_RANDOM, 5)) == 1);
@@ -617,10 +720,16 @@ TEST(Control_Instructions, if_random_2) {
 	ASSERT_EQ(k1._pc,5);
 }
 
+// --------------
+// If Enemy Tests
+// --------------
+
 /**
- * Tests checking for enemy when facing NORTH
+ * Tests if_enemy() function when facing NORTH
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_north test name
  */
-TEST(Control_Instructions, if_enemy_north) {
+TEST(If_Enemy_Tests, if_enemy_north) {
 	Species hopper('h');
 	Species food('f');
 
@@ -635,9 +744,11 @@ TEST(Control_Instructions, if_enemy_north) {
 }
 
 /**
- * Tests checking for enemy when facing SOUTH
+ * Tests if_enemy() function when facing SOUTH
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_south test name
  */
-TEST(Control_Instructions, if_enemy_south) {
+TEST(If_Enemy_Tests, if_enemy_south) {
 	Species hopper('h');
 	Species food('f');
 
@@ -652,9 +763,11 @@ TEST(Control_Instructions, if_enemy_south) {
 }
 
 /**
- * Tests checking for enemy when facing EAST
+ * Tests if_enemy() function when facing EAST
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_east test name
  */
-TEST(Control_Instructions, if_enemy_east) {
+TEST(If_Enemy_Tests, if_enemy_east) {
 	Species hopper('h');
 	Species food('f');
 
@@ -669,9 +782,11 @@ TEST(Control_Instructions, if_enemy_east) {
 }
 
 /**
- * Tests checking for enemy when facing WEST
+ * Tests if_enemy() function when facing WEST
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_west test name
  */
-TEST(Control_Instructions, if_enemy_west) {
+TEST(If_Enemy_Tests, if_enemy_west) {
 	Species hopper('h');
 	Species food('f');
 
@@ -686,7 +801,9 @@ TEST(Control_Instructions, if_enemy_west) {
 }
 
 /**
- * Tests checking for enemy when facing NORTH
+ * Tests if_enemy() function when facing NORTH, failure case
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_north_fail test name
  */
 TEST(Control_Instructions, if_enemy_north_fail) {
 	Species hopper('h');
@@ -700,7 +817,9 @@ TEST(Control_Instructions, if_enemy_north_fail) {
 }
 
 /**
- * Tests checking for enemy when facing SOUTH
+ * Tests if_enemy() function when facing SOUTH, failure case
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_south_fail test name
  */
 TEST(Control_Instructions, if_enemy_south_fail) {
 	Species hopper('h');
@@ -714,7 +833,9 @@ TEST(Control_Instructions, if_enemy_south_fail) {
 }
 
 /**
- * Tests checking for enemy when facing EAST
+ * Tests if_enemy() function when facing EAST, failure case
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_east_fail test name
  */
 TEST(Control_Instructions, if_enemy_east_fail) {
 	Species hopper('h');
@@ -728,7 +849,9 @@ TEST(Control_Instructions, if_enemy_east_fail) {
 }
 
 /**
- * Tests checking for enemy when facing WEST
+ * Tests if_enemy() function when facing WEST, failure case
+ * @param If_Enemy_Tests a fixture
+ * @param if_enemy_west_fail test name
  */
 TEST(Control_Instructions, if_enemy_west_fail) {
 	Species hopper('h');
@@ -936,8 +1059,6 @@ TEST(Iterable, iterator_1) {
 	a << *it;
 
 	ASSERT_EQ(a.str(), "p");
-
-	// ASSERT_EQ(*it, c1);
 }
 
 /**
@@ -1038,6 +1159,35 @@ TEST(Iterable, iterator_5) {
 // ---------------------
 // Add Instruction Tests
 // ---------------------
+
+/**
+ * Tests that a new species should have no instructions
+ * @param Add_Instruction a fixture
+ * @param add_instruction_1 test name
+ */
+TEST(Add_Instruction, add_instruction_1) {
+	Species hopper('h');
+	ASSERT_EQ(hopper.program.size(), 0);
+}
+
+/**
+ * Tests the addInstruction() function and the size of the program vector
+ * @param Add_Instruction a fixture
+ * @param add_instruction_1 test name
+ */
+TEST(Add_Instruction, add_instruction_2) {
+	Species s('h');
+	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 1);
+	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 2);
+	ASSERT_EQ(s.addInstruction(Instruction(LEFT)), 3);
+	ASSERT_EQ(s.addInstruction(Instruction(GO,0)), 4);
+}
+
+
+// TEST(Add_Instruction, add_instruction_2) {
+// 	Species hopper('h');
+// 	ASSERT_EQ(hopper.program.size(), 0);
+// }
 
 // -----------------
 // Constructor Tests

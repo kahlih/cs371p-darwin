@@ -28,32 +28,36 @@ class Instruction {
 
 class Species {
 	friend class Creature;
+	private:
+		vector<Instruction> program;
 	public:
 		Species();
 	    Species(char c);
 		int addInstruction(Instruction instruction);
 	    char _name;
-	private:
-		vector<Instruction> program;
+	    FRIEND_TEST(Add_Instruction, add_instruction_1);
 };
 
 class Creature {
 	friend class Darwin;
 	private:
 		DIRECTION _direction;
-
-		FRIEND_TEST(Control_Instructions, if_wall_1);
-		FRIEND_TEST(Control_Instructions, if_wall_2);
-		FRIEND_TEST(Control_Instructions, if_wall_3);
-		FRIEND_TEST(Control_Instructions, if_empty_1);
-		FRIEND_TEST(Control_Instructions, if_empty_2);
-		FRIEND_TEST(Control_Instructions, if_empty_3);
-		FRIEND_TEST(Control_Instructions, if_random_1);
-		FRIEND_TEST(Control_Instructions, if_random_2);
-		FRIEND_TEST(Control_Instructions, if_enemy_north);
-		FRIEND_TEST(Control_Instructions, if_enemy_south);
-		FRIEND_TEST(Control_Instructions, if_enemy_west);
-		FRIEND_TEST(Control_Instructions, if_enemy_east);
+		FRIEND_TEST(If_Wall_Tests, if_wall_1);
+		FRIEND_TEST(If_Wall_Tests, if_wall_2);
+		FRIEND_TEST(If_Wall_Tests, if_wall_3);
+		FRIEND_TEST(Left_Tests, turn_left_1);
+		FRIEND_TEST(Left_Tests, turn_left_2);
+		FRIEND_TEST(Left_Tests, turn_left_3);
+		FRIEND_TEST(Left_Tests, turn_left_4);
+		FRIEND_TEST(If_Empty_Tests, if_empty_1);
+		FRIEND_TEST(If_Empty_Tests, if_empty_2);
+		FRIEND_TEST(If_Empty_Tests, if_empty_3);
+		FRIEND_TEST(If_Random_Tests, if_random_1);
+		FRIEND_TEST(If_Random_Tests, if_random_2);
+		FRIEND_TEST(If_Enemy_Tests, if_enemy_north);
+		FRIEND_TEST(If_Enemy_Tests, if_enemy_south);
+		FRIEND_TEST(If_Enemy_Tests, if_enemy_west);
+		FRIEND_TEST(If_Enemy_Tests, if_enemy_east);
 		FRIEND_TEST(Control_Instructions, if_enemy_north_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_south_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_west_fail);
@@ -70,16 +74,12 @@ class Creature {
 		friend ostream& operator<<(ostream& os, const Creature& creature);
 		int operator++(int);
 		~Creature();
-		FRIEND_TEST(Action_Instructions, turn_left_1);
-		FRIEND_TEST(Action_Instructions, turn_left_2);
-		FRIEND_TEST(Action_Instructions, turn_left_3);
-		FRIEND_TEST(Action_Instructions, turn_left_4);
-		FRIEND_TEST(Action_Instructions, turn_right_1);
-		FRIEND_TEST(Action_Instructions, turn_right_2);
-		FRIEND_TEST(Action_Instructions, turn_right_3);
-		FRIEND_TEST(Action_Instructions, turn_right_4);
-		FRIEND_TEST(Control_Instructions, go_1);
-		FRIEND_TEST(Control_Instructions, go_2);
+		FRIEND_TEST(Right_Tests, turn_right_1);
+		FRIEND_TEST(Right_Tests, turn_right_2);
+		FRIEND_TEST(Right_Tests, turn_right_3);
+		FRIEND_TEST(Right_Tests, turn_right_4);
+		FRIEND_TEST(Go_Tests, go_1);
+		FRIEND_TEST(Go_Tests, go_2);
 };
 
 
@@ -88,15 +88,13 @@ class Darwin {
 		typedef vector<Creature>::iterator iterator;
 		Darwin(int col, int row);
 		~Darwin();
-
-
 		void addCreature(Creature& c, int x, int y);
 		void addCreature(Creature& c, int n);
 		iterator begin();
 		iterator end();
 		void simulate(int n, ostream& w);
-		Creature& at(int n);	// if you have the specific index
-		Creature& at(int x, int y);   // if you have coordinates
+		Creature& at(int n);
+		Creature& at(int x, int y);
 		void run(int location, Creature& c);
 		friend ostream& operator<<(ostream& os, const Darwin& d);
 		void left(Creature& c);
@@ -111,7 +109,7 @@ class Darwin {
 
 		FRIEND_TEST(Iterable, iterator_2);
 	private:
-		vector<Creature> grid; //row-major order
+		vector<Creature> grid;
 		int _row;
 		int _col;
 };
