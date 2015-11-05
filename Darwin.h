@@ -39,7 +39,8 @@ class Instruction {
 		// Unit tests that need access to Instruction's private members
 		FRIEND_TEST(Add_Instruction, add_instruction_3);
 		FRIEND_TEST(Add_Instruction, add_instruction_4);
-
+		FRIEND_TEST(Constructors, instruction_1);
+		FRIEND_TEST(Constructors, instruction_2);
 	private:
 
 		// ----------------
@@ -94,7 +95,9 @@ class Species {
 	    FRIEND_TEST(Add_Instruction, add_instruction_2);
 	    FRIEND_TEST(Add_Instruction, add_instruction_3);
 	    FRIEND_TEST(Add_Instruction, add_instruction_4);
-
+		FRIEND_TEST(Constructors, species_1);
+		FRIEND_TEST(Constructors, species_2);
+		FRIEND_TEST(Constructors, species_3);
 	private:
 
 		// --------------
@@ -154,7 +157,8 @@ class Creature {
 		FRIEND_TEST(Control_Instructions, if_enemy_south_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_west_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_east_fail);
-
+		FRIEND_TEST(Constructors, creature_2);
+		FRIEND_TEST(Constructors, creature_3);
 	private:
 		DIRECTION _direction;
 		int _pc;
@@ -200,7 +204,8 @@ class Darwin {
 		FRIEND_TEST(Add_Creature, add_creature_2);
 		FRIEND_TEST(Add_Creature, add_creature_3);
 		FRIEND_TEST(Add_Creature, add_creature_4);
-
+		FRIEND_TEST(Constructors, darwin_1);
+		FRIEND_TEST(Constructors, darwin_2);
 	private:
 		vector<Creature> grid;
 		int _row;

@@ -1345,3 +1345,144 @@ TEST(Add_Creature, add_creature_4) {
 // -----------------
 // Constructor Tests
 // -----------------
+
+/**
+Testing Action Instruction instance (Constructor)
+*/
+TEST(Constructors, instruction_1){
+	Instruction i(HOP);
+	ASSERT_EQ(i.instruction_name, HOP);
+	ASSERT_EQ(i._n,-1);
+}
+
+/**
+Testing Control Instruction instance (Constructor)
+*/
+TEST(Constructors, instruction_2){
+	Instruction i(GO,6);
+	ASSERT_EQ(i.instruction_name, GO);
+	ASSERT_EQ(i._n,6);
+}
+
+/**
+Testing Null Species instance
+*/
+TEST(Constructors, species_1){
+	Species s;
+	ostringstream v;
+	v << s;
+	ASSERT_EQ(v.str(), ".");
+	ASSERT_EQ(s.program.size(),0);
+}
+/**
+Testing NON Null Species instance
+*/
+TEST(Constructors, species_2){
+	Species s('x');
+	ostringstream v;
+	v << s;
+	ASSERT_EQ(v.str(), "x");
+	ASSERT_EQ(s.program.size(),0);
+}
+/**
+Testing Creation (Construction) of multiple Species instances
+*/
+TEST(Constructors, species_3){
+	Species s1('y');
+	Species s2('y');
+	ostringstream v1;
+	ostringstream v2;
+	v1 << s1;
+	v2 << s2;
+	ASSERT_EQ(v1.str(), v2.str());
+	ASSERT_EQ(s1.program.size(),s2.program.size());
+
+	s1.addInstruction(Instruction(HOP));
+
+	ASSERT_FALSE(s1.program.size() == s2.program.size());
+}
+/**
+Testing Null Creature cunstructor instance
+*/
+TEST(Constructors, creature_1){
+	Creature c;
+	ostringstream v;
+	v << c;
+	ASSERT_EQ(v.str(), ".");
+	// ASSERT_EQ(s.program.size(),0);
+}
+
+/**
+Testing NON Null Creature cunstructor instance
+*/
+TEST(Constructors, creature_2){
+	// Creature depends on a species
+	Species s('k');
+
+	Creature c(s,WEST);
+	ostringstream v;
+	v << c;
+	ASSERT_EQ(v.str(), "k");
+	ASSERT_EQ(c._direction, WEST);
+	ASSERT_EQ(c._pc,0);
+	ASSERT_FALSE(c.isNull);
+}
+
+/**
+Testing Multiple Creature cunstructor instances
+*/
+TEST(Constructors, creature_3){
+	// Creature depends on a species
+	Species s1('k');
+	Species s2('p');
+	Creature c1(s1,WEST);
+	Creature c2(s2,WEST);
+	Creature c3;
+	ostringstream v1;
+	ostringstream v2;
+	v1 << c1;
+	v2 << c2;
+	ASSERT_FALSE(v1.str() == v2.str());
+	ASSERT_EQ(c1._direction, c2._direction);
+	ASSERT_EQ(c1._pc,c2._pc);
+	c1++;
+	ASSERT_FALSE(c1._pc == c2._pc);
+	ASSERT_FALSE(c1.isNull);
+	ASSERT_FALSE(c2.isNull);
+	ASSERT_TRUE(c3.isNull);
+}
+
+/**
+Testing Darwin Grid Construction (square)
+*/
+TEST(Constructors, darwin_1){
+	// Creature depends on a species
+	Darwin d(3,3);
+
+	ASSERT_EQ(d.grid.size(), 9);
+	ASSERT_EQ(d._row, 3);	
+	ASSERT_EQ(d._col, 3);	
+
+	ostringstream v;
+	v << d;
+
+	ASSERT_EQ(v.str(), " 012\n0...\n1...\n2...\n");
+}
+
+/**
+Testing Darwin Grid Construction (rectangle)
+*/
+TEST(Constructors, darwin_2){
+	// Creature depends on a species
+	Darwin d(4,3);
+
+	ASSERT_EQ(d.grid.size(), 12);
+	ASSERT_EQ(d._row, 4);	
+	ASSERT_EQ(d._col, 3);	
+
+	ostringstream v;
+	v << d;
+
+	ASSERT_EQ(v.str(), " 012\n0...\n1...\n2...\n3...\n");
+}
+
