@@ -42,16 +42,22 @@ class Creature {
 	private:
 		DIRECTION _direction;
 
-		FRIEND_TEST(Action_Instructions, if_wall_1);
-		FRIEND_TEST(Action_Instructions, if_wall_2);
-		FRIEND_TEST(Action_Instructions, if_wall_3);
+		FRIEND_TEST(Control_Instructions, if_wall_1);
+		FRIEND_TEST(Control_Instructions, if_wall_2);
+		FRIEND_TEST(Control_Instructions, if_wall_3);
 		FRIEND_TEST(Control_Instructions, if_empty_1);
 		FRIEND_TEST(Control_Instructions, if_empty_2);
 		FRIEND_TEST(Control_Instructions, if_empty_3);
 		FRIEND_TEST(Control_Instructions, if_random_1);
 		FRIEND_TEST(Control_Instructions, if_random_2);
-		FRIEND_TEST(Control_Instructions, if_enemy_1);
-		FRIEND_TEST(Control_Instructions, if_enemy_2);
+		FRIEND_TEST(Control_Instructions, if_enemy_north);
+		FRIEND_TEST(Control_Instructions, if_enemy_south);
+		FRIEND_TEST(Control_Instructions, if_enemy_west);
+		FRIEND_TEST(Control_Instructions, if_enemy_east);
+		FRIEND_TEST(Control_Instructions, if_enemy_north_fail);
+		FRIEND_TEST(Control_Instructions, if_enemy_south_fail);
+		FRIEND_TEST(Control_Instructions, if_enemy_west_fail);
+		FRIEND_TEST(Control_Instructions, if_enemy_east_fail);
 		int _pc;
 		Species _species;
 		bool isNull;

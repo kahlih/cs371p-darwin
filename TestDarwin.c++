@@ -153,7 +153,7 @@ TEST(Action_Instructions, infect_3){
 
 
 /* If_Wall WEST */
-TEST(Action_Instructions, if_wall_1){
+TEST(Control_Instructions, if_wall_1){
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -174,7 +174,7 @@ TEST(Action_Instructions, if_wall_1){
 
 
 /* If_Wall SOUTH */
-TEST(Action_Instructions, if_wall_2){
+TEST(Control_Instructions, if_wall_2){
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -194,7 +194,7 @@ TEST(Action_Instructions, if_wall_2){
 }
 
 /* NOT If_Wall NORTH */
-TEST(Action_Instructions, if_wall_3){
+TEST(Control_Instructions, if_wall_3){
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -693,42 +693,126 @@ TEST(Control_Instructions, if_random_2){
 	ASSERT_EQ(k1._pc,5);
 }
 
-//if_enemy
-TEST(Control_Instructions, if_enemy_1){
-	Species kahli('k');
-	assert(kahli.addInstruction(Instruction(IF_ENEMY, 5)) == 1);
-	assert(kahli.addInstruction(Instruction(HOP)) == 2);
-	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
-	assert(kahli.addInstruction(Instruction(RIGHT)) == 4);
-	assert(kahli.addInstruction(Instruction(LEFT)) == 5);
-	assert(kahli.addInstruction(Instruction(GO, 0)) == 6);
+/**
+ * Tests checking for enemy when facing NORTH
+ */
+TEST(Control_Instructions, if_enemy_north) {
+	Species hopper('h');
+	Species food('f');
 
-	Creature k1(kahli, SOUTH);
-	Creature k2(kahli, NORTH);
-	Darwin grid1(4,3);
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, NORTH);
 
-	grid1.addCreature(k1, 2);
-	grid1.addCreature(k2, 5);
-	grid1.if_random(k1,5);
-	ASSERT_EQ(k1._pc,0);
+	d.addCreature(c1, 1);
+	d.addCreature(c2, 4);
+	d.if_enemy(c2, 4, 5);
+	ASSERT_EQ(c2._pc, 5);
 }
 
+/**
+ * Tests checking for enemy when facing SOUTH
+ */
+TEST(Control_Instructions, if_enemy_south) {
+	Species hopper('h');
+	Species food('f');
 
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, SOUTH);
 
-//not if_enemy
-TEST(Control_Instructions, if_enemy_2){
-	Species kahli('k');
-	assert(kahli.addInstruction(Instruction(IF_ENEMY, 5)) == 1);
-	assert(kahli.addInstruction(Instruction(HOP)) == 2);
-	assert(kahli.addInstruction(Instruction(LEFT)) == 3);
-	assert(kahli.addInstruction(Instruction(RIGHT)) == 4);
-	assert(kahli.addInstruction(Instruction(LEFT)) == 5);
-	assert(kahli.addInstruction(Instruction(GO, 0)) == 6);
+	d.addCreature(c1, 7);
+	d.addCreature(c2, 4);
+	d.if_enemy(c2, 4, 5);
+	ASSERT_EQ(c2._pc, 5);
+}
 
-	Creature k1(kahli, SOUTH);
+/**
+ * Tests checking for enemy when facing EAST
+ */
+TEST(Control_Instructions, if_enemy_east) {
+	Species hopper('h');
+	Species food('f');
 
-	Darwin grid1(4,3);
-	grid1.addCreature(k1, 2);
-	grid1.if_random(k1,5);
-	ASSERT_EQ(k1._pc,5);
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, EAST);
+
+	d.addCreature(c1, 5);
+	d.addCreature(c2, 4);
+	d.if_enemy(c2, 4, 5);
+	ASSERT_EQ(c2._pc, 5);
+}
+
+/**
+ * Tests checking for enemy when facing WEST
+ */
+TEST(Control_Instructions, if_enemy_west) {
+	Species hopper('h');
+	Species food('f');
+
+	Darwin d(3,3);
+	Creature c1(food, NORTH);
+	Creature c2(hopper, WEST);
+
+	d.addCreature(c1, 3);
+	d.addCreature(c2, 4);
+	d.if_enemy(c2, 4, 5);
+	ASSERT_EQ(c2._pc, 5);
+}
+
+/**
+ * Tests checking for enemy when facing NORTH
+ */
+TEST(Control_Instructions, if_enemy_north_fail) {
+	Species hopper('h');
+
+	Darwin d(3,3);
+	Creature c(hopper, NORTH);
+
+	d.addCreature(c, 4);
+	d.if_enemy(c, 4, 5);
+	ASSERT_EQ(c._pc, 0);
+}
+
+/**
+ * Tests checking for enemy when facing SOUTH
+ */
+TEST(Control_Instructions, if_enemy_south_fail) {
+	Species hopper('h');
+
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+
+	d.addCreature(c, 4);
+	d.if_enemy(c, 4, 5);
+	ASSERT_EQ(c._pc, 0);
+}
+
+/**
+ * Tests checking for enemy when facing EAST
+ */
+TEST(Control_Instructions, if_enemy_east_fail) {
+	Species hopper('h');
+
+	Darwin d(3,3);
+	Creature c(hopper, EAST);
+
+	d.addCreature(c, 4);
+	d.if_enemy(c, 4, 5);
+	ASSERT_EQ(c._pc, 0);
+}
+
+/**
+ * Tests checking for enemy when facing WEST
+ */
+TEST(Control_Instructions, if_enemy_west_fail) {
+	Species hopper('h');
+
+	Darwin d(3,3);
+	Creature c(hopper, WEST);
+
+	d.addCreature(c, 4);
+	d.if_enemy(c, 4, 5);
+	ASSERT_EQ(c._pc, 0);
 }
