@@ -245,8 +245,6 @@ int Creature::operator++(int){
 	++this->_pc;
 	return t;
 }
-
-
 /* Darwin */
 Darwin::Darwin(int row, int col) : grid(row*col) {
 	_row = row;

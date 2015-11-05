@@ -119,41 +119,8 @@ TEST(Action_Instructions, infect_3){
 
 }
 
-//  INFECT SOUTH 
-// TEST(Action_Instructions, infect_3){
-
-// 	Species hopper('h');
-//     assert(hopper.addInstruction(Instruction(HOP)) == 1);
-//     assert(hopper.addInstruction(Instruction(GO,0)) == 2);
-
-// 	Species rover('r');
-// 	assert(rover.addInstruction(Instruction(IF_ENEMY, 2)) == 1);
-// 	assert(rover.addInstruction(Instruction(IF_EMPTY, 4)) == 2);
-// 	assert(rover.addInstruction(Instruction(INFECT)) == 3);
-// 	assert(rover.addInstruction(Instruction(HOP)) == 4);
-// 	assert(rover.addInstruction(Instruction(GO,0)) == 5);
-
-// 	Creature c1(hopper, EAST);
-// 	Creature c2(rover, SOUTH);
-
-// 	Darwin grid1(3,4);
-
-// 	grid1.addCreature(c1,1,3);
-// 	grid1.addCreature(c2,0,3);
-
-// 	// * * * r
-// 	// * * * h
-// 	// * * * *
-
-// 	ostringstream w;
-// 	grid1.simulate(1,w);
-// 	ASSERT_EQ(w.str(),"Turn = 0.\n 0123\n0...r\n1...h\n2....\n\nTurn = 1.\n 0123\n0...r\n1...r\n2....\n\n");
-
-// }
-
-
 /* If_Wall WEST */
-TEST(Control_Instructions, if_wall_1){
+TEST(Control_Instructions, if_wall_1) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -174,7 +141,7 @@ TEST(Control_Instructions, if_wall_1){
 
 
 /* If_Wall SOUTH */
-TEST(Control_Instructions, if_wall_2){
+TEST(Control_Instructions, if_wall_2) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -194,7 +161,7 @@ TEST(Control_Instructions, if_wall_2){
 }
 
 /* NOT If_Wall NORTH */
-TEST(Control_Instructions, if_wall_3){
+TEST(Control_Instructions, if_wall_3) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_WALL, 3)) == 1);
@@ -216,8 +183,7 @@ TEST(Control_Instructions, if_wall_3){
 /**
  * Tests the left() function when facing NORTH
  */
-TEST(Action_Instructions, turn_left_1)
-{
+TEST(Action_Instructions, turn_left_1) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, NORTH);
@@ -229,8 +195,7 @@ TEST(Action_Instructions, turn_left_1)
 /**
  * Tests the left() function when facing EAST
  */
-TEST(Action_Instructions, turn_left_2)
-{
+TEST(Action_Instructions, turn_left_2) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, EAST);
@@ -242,8 +207,7 @@ TEST(Action_Instructions, turn_left_2)
 /**
  * Tests the left() function when facing SOUTH
  */
-TEST(Action_Instructions, turn_left_3)
-{
+TEST(Action_Instructions, turn_left_3) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, SOUTH);
@@ -255,8 +219,7 @@ TEST(Action_Instructions, turn_left_3)
 /**
  * Tests the left() function when facing WEST
  */
-TEST(Action_Instructions, turn_left_4)
-{
+TEST(Action_Instructions, turn_left_4) {
     Species hopper('h');
     Darwin d(1,1);
     Creature c(hopper, WEST);
@@ -314,7 +277,7 @@ TEST(Action_Instructions, turn_right_4) {
 }
 
 
-TEST(Control_Instructions, if_empty_1){
+TEST(Control_Instructions, if_empty_1) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
@@ -336,7 +299,7 @@ TEST(Control_Instructions, if_empty_1){
 }
 
 // Not empty test
-TEST(Control_Instructions, if_empty_2){
+TEST(Control_Instructions, if_empty_2) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
@@ -357,7 +320,7 @@ TEST(Control_Instructions, if_empty_2){
 
 }
 
-TEST(Control_Instructions, if_empty_3){
+TEST(Control_Instructions, if_empty_3) {
 
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_EMPTY, 3)) == 1);
@@ -619,7 +582,7 @@ TEST(Control_Instructions, go_2) {
 }
 
 //if_random
-TEST(Control_Instructions, if_random_1){
+TEST(Control_Instructions, if_random_1) {
 	srand(0);
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_RANDOM, 3)) == 1);
@@ -636,7 +599,7 @@ TEST(Control_Instructions, if_random_1){
 }
 
 //if_random
-TEST(Control_Instructions, if_random_2){
+TEST(Control_Instructions, if_random_2) {
 	srand(0);
 	Species kahli('k');
 	assert(kahli.addInstruction(Instruction(IF_RANDOM, 5)) == 1);
@@ -778,8 +741,14 @@ TEST(Control_Instructions, if_enemy_west_fail) {
 	ASSERT_EQ(c._pc, 0);
 }
 
+// ---------------
+// Indexable tests
+// ---------------
+
 /**
  * Tests at() when given coordinates
+ * @param Indexable a fixture
+ * @param at_1 test name
  */
 TEST(Indexable, at_1) {
 	Species hopper('h');
@@ -799,6 +768,8 @@ TEST(Indexable, at_1) {
 
 /**
  * Tests at() when given a position in row-major array
+ * @param Indexable a fixture
+ * @param at_2 test name
  */
 TEST(Indexable, at_2) {
 	Species hopper('h');
@@ -818,6 +789,8 @@ TEST(Indexable, at_2) {
 
 /**
  * Tests at() when given coordinates with multiple creatures
+ * @param Indexable a fixture
+ * @param at_3 test name
  */
 TEST(Indexable, at_3) {
 	Species hopper('h');
@@ -852,6 +825,8 @@ TEST(Indexable, at_3) {
 
 /**
  * Tests at() when given a position in row-major array with multiple creatures
+ * @param Indexable a fixture
+ * @param at_4 test name
  */
 TEST(Indexable, at_4) {
 	Species hopper('h');
@@ -884,6 +859,11 @@ TEST(Indexable, at_4) {
 	ASSERT_EQ(c.str(), "s");
 }
 
+/**
+ * Tests at() when out of bounds
+ * @param Indexable a fixture
+ * @param at_5 test name
+ */
 TEST(Indexable, at_5) {
 	Darwin d(3,3);
 	try {
@@ -893,6 +873,11 @@ TEST(Indexable, at_5) {
     }
 }
 
+/**
+ * Tests at() when out of bounds
+ * @param Indexable a fixture
+ * @param at_6 test name
+ */
 TEST(Indexable, at_6) {
 	Darwin d(3,3);
 	try {
@@ -902,6 +887,11 @@ TEST(Indexable, at_6) {
     }
 }
 
+/**
+ * Tests at() when out of bounds
+ * @param Indexable a fixture
+ * @param at_7 test name
+ */
 TEST(Indexable, at_7) {
 	Darwin d(3,3);
 	try {
@@ -911,6 +901,11 @@ TEST(Indexable, at_7) {
     }
 }
 
+/**
+ * Tests at() when out of bounds
+ * @param Indexable a fixture
+ * @param at_8 test name
+ */
 TEST(Indexable, at_8) {
 	Darwin d(3,3);
 	try {
@@ -919,3 +914,139 @@ TEST(Indexable, at_8) {
        ASSERT_STREQ("input is out of bounds", ex.what());
     }
 }
+
+// --------------
+// Iterable Tests
+// --------------
+
+/**
+ * Tests the correctness of the first element of the iterator
+ * @param Iterable a fixture
+ * @param iterator_1 test name
+ */
+TEST(Iterable, iterator_1) {
+	Darwin d(3, 4);
+	Species potato('p');
+	Creature c1(potato, NORTH);
+	d.addCreature(c1, 0, 0);
+
+	vector<Creature>::iterator it = d.begin();
+
+	ostringstream a;
+	a << *it;
+
+	ASSERT_EQ(a.str(), "p");
+
+	// ASSERT_EQ(*it, c1);
+}
+
+/**
+ * Tests the correctness of the size of the iterator
+ * @param Iterable a fixture
+ * @param iterator_2 test name
+ */
+TEST(Iterable, iterator_2) {
+	Darwin d(3, 4);
+	vector<Creature>::iterator b = d.begin();
+	vector<Creature>::iterator e = d.end();
+
+	ASSERT_EQ(e, b + d.grid.size());
+}
+
+/**
+ * Tests iteration
+ * @param Iterable a fixture
+ * @param iterator_3 test name
+ */
+TEST(Iterable, iterator_3) {
+	Darwin d(4, 4);
+	vector<Creature>::iterator b = d.begin();
+	vector<Creature>::iterator e = d.end();
+
+	while (b != e)
+		b++;
+
+	ASSERT_EQ(b, e);
+}
+
+/**
+ * Tests iteration over an empty grid
+ * @param Iterable a fixture
+ * @param iterator_4 test name
+ */
+TEST(Iterable, iterator_4) {
+	Darwin d(4, 4);
+	vector<Creature>::iterator b = d.begin();
+	vector<Creature>::iterator e = d.end();
+
+	while (b != e) {
+		ostringstream a;
+		a << *b;
+		ASSERT_EQ(a.str(), ".");
+		b++;
+	}
+	
+	ASSERT_EQ(b, e);
+}
+
+/**
+ * Tests iteration and correct values over the iteration
+ * @param Iterable a fixture
+ * @param iterator_5 test name
+ */
+TEST(Iterable, iterator_5) {
+	Species hopper('h');
+	Species potato('p');
+	Species squash('s');
+
+	Darwin d(3,3);
+
+	Creature c1(hopper, SOUTH);
+	Creature c2(potato, SOUTH);
+	Creature c3(squash, SOUTH);
+
+	d.addCreature(c1, 0);
+	d.addCreature(c2, 4);
+	d.addCreature(c3, 8);
+
+	vector<Creature>::iterator b = d.begin();
+	vector<Creature>::iterator e = d.end();
+
+	vector<Creature>::iterator b_copy = b;
+
+	while (b != e) {
+
+		ostringstream a;
+		a << *b;
+
+		if (b == b_copy + 0) {
+			ASSERT_EQ(a.str(), "h");
+		} else if (b == b_copy + 4) {
+			ASSERT_EQ(a.str(), "p");
+		} else if (b == b_copy + 8) {
+			ASSERT_EQ(a.str(), "s");
+		} else {
+			ASSERT_EQ(a.str(), ".");
+		}
+
+		b++;
+	}
+
+	ASSERT_EQ(b, e);
+}
+
+// ---------------------
+// Add Instruction Tests
+// ---------------------
+
+// -----------------
+// Constructor Tests
+// -----------------
+
+// ---------------------
+// Adding Creature Tests
+// ---------------------
+
+// ----------------
+// Simulation Tests
+// ----------------

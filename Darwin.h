@@ -82,6 +82,7 @@ class Creature {
 		FRIEND_TEST(Control_Instructions, go_2);
 };
 
+
 class Darwin {
 	public:
 		typedef vector<Creature>::iterator iterator;
@@ -107,6 +108,8 @@ class Darwin {
 		void if_empty(Creature& c, int location, int n);
 		void if_wall(Creature& c, int location, int n);
 		void if_random(Creature&c, int n);
+
+		FRIEND_TEST(Iterable, iterator_2);
 	private:
 		vector<Creature> grid; //row-major order
 		int _row;
