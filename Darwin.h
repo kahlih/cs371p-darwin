@@ -20,7 +20,6 @@ class Instruction {
 	public:
 		Instruction(INSTRUCTION_NAME name,int n=-1);
 		Instruction();
-		bool isControl();
 		FRIEND_TEST(Add_Instruction, add_instruction_3);
 		FRIEND_TEST(Add_Instruction, add_instruction_4);
 	private:
@@ -113,6 +112,10 @@ class Darwin {
 		void if_random(Creature&c, int n);
 
 		FRIEND_TEST(Iterable, iterator_2);
+		FRIEND_TEST(Add_Creature, add_creature_1);
+		FRIEND_TEST(Add_Creature, add_creature_2);
+		FRIEND_TEST(Add_Creature, add_creature_3);
+		FRIEND_TEST(Add_Creature, add_creature_4);
 	private:
 		vector<Creature> grid;
 		int _row;

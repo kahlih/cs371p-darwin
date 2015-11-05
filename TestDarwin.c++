@@ -1227,14 +1227,121 @@ TEST(Add_Instruction, add_instruction_4) {
 	ASSERT_EQ(hopper.program[3]._n, 5);
 }
 
-// -----------------
-// Constructor Tests
-// -----------------
-
 // ---------------------
 // Adding Creature Tests
 // ---------------------
 
+/**
+ * Tests addCreature() when given coordinates
+ * @param Add_Creature a fixture
+ * @param add_creature_1 test name
+ */
+TEST(Add_Creature, add_creature_1) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 1,1);
+
+	ostringstream a;
+
+	a << d.grid[4];
+	ASSERT_EQ(a.str(), "h");
+}
+
+/**
+ * Tests addCreature() when given a position in row-major array
+ * @param Add_Creature a fixture
+ * @param add_creature_2 test name
+ */
+TEST(Add_Creature, add_creature_2) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 5);
+
+	ostringstream a;
+
+	a << d.grid[5];
+	ASSERT_EQ(a.str(), "h");
+}
+
+/**
+ * Tests addCreature() when given coordinates with multiple creatures
+ * @param Add_Creature a fixture
+ * @param add_creature_3 test name
+ */
+TEST(Add_Creature, add_creature_3) {
+	Species hopper('h');
+	Species potato('p');
+	Species squash('s');
+
+	Darwin d(3,3);
+
+	Creature c1(hopper, SOUTH);
+	Creature c2(potato, SOUTH);
+	Creature c3(squash, SOUTH);
+
+	d.addCreature(c1, 0, 0);
+	d.addCreature(c2, 1, 1);
+	d.addCreature(c3, 2, 2);
+
+	ostringstream a;
+
+	a << d.grid[0];
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+
+	b << d.grid[4];
+	ASSERT_EQ(b.str(), "p");
+
+	ostringstream c;
+
+	c << d.grid[8];
+	ASSERT_EQ(c.str(), "s");
+}
+
+/**
+ * Tests addCreature() when given a position in row-major array with multiple creatures
+ * @param Add_Creature a fixture
+ * @param add_creature_4 test name
+ */
+TEST(Add_Creature, add_creature_4) {
+	Species hopper('h');
+	Species potato('p');
+	Species squash('s');
+
+	Darwin d(3,3);
+
+	Creature c1(hopper, SOUTH);
+	Creature c2(potato, SOUTH);
+	Creature c3(squash, SOUTH);
+
+	d.addCreature(c1, 0);
+	d.addCreature(c2, 4);
+	d.addCreature(c3, 8);
+
+	ostringstream a;
+
+	a << d.grid[0];
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+
+	b << d.grid[4];
+	ASSERT_EQ(b.str(), "p");
+
+	ostringstream c;
+
+	c << d.grid[8];
+	ASSERT_EQ(c.str(), "s");
+}
+
 // ----------------
 // Simulation Tests
 // ----------------
+
+
+// -----------------
+// Constructor Tests
+// -----------------

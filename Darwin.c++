@@ -8,9 +8,6 @@ Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 	instruction_name = name;
 	_n = n;
 }
-bool Instruction::isControl(){
-	return (_n>-1);
-}
 // Action::Action(){}
 // Action::Action(INSTRUCTION_NAME name) : Instruction(name) {}
 
