@@ -21,6 +21,8 @@ class Instruction {
 		Instruction(INSTRUCTION_NAME name,int n=-1);
 		Instruction();
 		bool isControl();
+		FRIEND_TEST(Add_Instruction, add_instruction_3);
+		FRIEND_TEST(Add_Instruction, add_instruction_4);
 	private:
 		INSTRUCTION_NAME instruction_name;
 		int _n;
@@ -36,6 +38,9 @@ class Species {
 		int addInstruction(Instruction instruction);
 	    char _name;
 	    FRIEND_TEST(Add_Instruction, add_instruction_1);
+	    FRIEND_TEST(Add_Instruction, add_instruction_2);
+	    FRIEND_TEST(Add_Instruction, add_instruction_3);
+	    FRIEND_TEST(Add_Instruction, add_instruction_4);
 };
 
 class Creature {

@@ -1,3 +1,12 @@
+/** @file TestDarwin.c++
+ *  @brief This file contains unit tests to test the functions and methods
+ *         contained in Darwin.c++.
+ */
+
+// --------
+// includes
+// --------
+
 #include <iostream> // cout, endl
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
@@ -7,15 +16,6 @@
 #include "Darwin.h"
 
 using namespace std;
-
-TEST(Species, species_1) {
-	Species s('h');
-	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 1);
-	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 2);
-	ASSERT_EQ(s.addInstruction(Instruction(LEFT)), 3);
-	ASSERT_EQ(s.addInstruction(Instruction(GO,0)), 4);
-	ASSERT_EQ(s._name,'h');
-}
 
 // ------------
 // Infect Tests
@@ -1171,23 +1171,61 @@ TEST(Add_Instruction, add_instruction_1) {
 }
 
 /**
- * Tests the addInstruction() function and the size of the program vector
+ * Tests the addInstruction() function, correctness of the size of the program vector
  * @param Add_Instruction a fixture
- * @param add_instruction_1 test name
+ * @param add_instruction_2 test name
  */
 TEST(Add_Instruction, add_instruction_2) {
-	Species s('h');
-	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 1);
-	ASSERT_EQ(s.addInstruction(Instruction(HOP)), 2);
-	ASSERT_EQ(s.addInstruction(Instruction(LEFT)), 3);
-	ASSERT_EQ(s.addInstruction(Instruction(GO,0)), 4);
+	Species hopper('h');
+	hopper.addInstruction(Instruction(HOP));
+	ASSERT_EQ(hopper.program.size(), 1);
+	hopper.addInstruction(Instruction(HOP));
+	ASSERT_EQ(hopper.program.size(), 2);
+	hopper.addInstruction(Instruction(LEFT));
+	ASSERT_EQ(hopper.program.size(), 3);
+	hopper.addInstruction(Instruction(GO,0));
+	ASSERT_EQ(hopper.program.size(), 4);
 }
 
+/**
+ * Tests the addInstruction() function, correctness of the contents of the program vector
+ * @param Add_Instruction a fixture
+ * @param add_instruction_3 test name
+ */
+TEST(Add_Instruction, add_instruction_3) {
+	Species hopper('h');
+	hopper.addInstruction(Instruction(HOP));
+	hopper.addInstruction(Instruction(HOP));
+	hopper.addInstruction(Instruction(LEFT));
+	hopper.addInstruction(Instruction(GO,0));
 
-// TEST(Add_Instruction, add_instruction_2) {
-// 	Species hopper('h');
-// 	ASSERT_EQ(hopper.program.size(), 0);
-// }
+	ASSERT_EQ(hopper.program[0].instruction_name, HOP);
+	ASSERT_EQ(hopper.program[1].instruction_name, HOP);
+	ASSERT_EQ(hopper.program[2].instruction_name, LEFT);
+	ASSERT_EQ(hopper.program[3].instruction_name, GO);
+	ASSERT_EQ(hopper.program[3]._n, 0);
+}
+
+/**
+ * Tests the addInstruction() function, correctness of the contents of the program vector
+ * @param Add_Instruction a fixture
+ * @param add_instruction_4 test name
+ */
+TEST(Add_Instruction, add_instruction_4) {
+	Species hopper('h');
+	hopper.addInstruction(Instruction(IF_EMPTY, 6));
+	hopper.addInstruction(Instruction(HOP));
+	hopper.addInstruction(Instruction(IF_WALL, 4));
+	hopper.addInstruction(Instruction(IF_RANDOM, 5));
+
+	ASSERT_EQ(hopper.program[0].instruction_name, IF_EMPTY);
+	ASSERT_EQ(hopper.program[0]._n, 6);
+	ASSERT_EQ(hopper.program[1].instruction_name, HOP);
+	ASSERT_EQ(hopper.program[2].instruction_name, IF_WALL);
+	ASSERT_EQ(hopper.program[2]._n, 4);
+	ASSERT_EQ(hopper.program[3].instruction_name, IF_RANDOM);
+	ASSERT_EQ(hopper.program[3]._n, 5);
+}
 
 // -----------------
 // Constructor Tests
