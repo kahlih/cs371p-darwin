@@ -1,4 +1,5 @@
 // ------------------------------
+// Darwin.h
 // Copyright (C) 2015
 // Kahli Holmes
 // Phillip Pan
@@ -17,11 +18,14 @@ enum DIRECTION {WEST, NORTH, EAST, SOUTH};
 class Instruction {
 	friend class Creature;
 	friend class Darwin;
+
 	public:
 		Instruction(INSTRUCTION_NAME name,int n=-1);
 		Instruction();
+
 		FRIEND_TEST(Add_Instruction, add_instruction_3);
 		FRIEND_TEST(Add_Instruction, add_instruction_4);
+
 	private:
 		INSTRUCTION_NAME instruction_name;
 		int _n;
@@ -29,23 +33,42 @@ class Instruction {
 
 class Species {
 	friend class Creature;
-	private:
-		vector<Instruction> program;
+	friend class Darwin;
+
 	public:
 		Species();
 	    Species(char c);
 		int addInstruction(Instruction instruction);
-	    char _name;
+	    friend ostream& operator<<(ostream& os, const Species& species);
+
 	    FRIEND_TEST(Add_Instruction, add_instruction_1);
 	    FRIEND_TEST(Add_Instruction, add_instruction_2);
 	    FRIEND_TEST(Add_Instruction, add_instruction_3);
 	    FRIEND_TEST(Add_Instruction, add_instruction_4);
+
+	private:
+		vector<Instruction> program;
+		char _name;
 };
 
 class Creature {
 	friend class Darwin;
-	private:
-		DIRECTION _direction;
+
+	public:
+		Creature();
+		Creature(Species species, DIRECTION direction);
+		Creature(Species species, DIRECTION direction, int n);
+		Instruction& getInstruction(int pc);
+		friend ostream& operator<<(ostream& os, const Creature& creature);
+		int operator++(int);
+		~Creature();
+
+		FRIEND_TEST(Right_Tests, turn_right_1);
+		FRIEND_TEST(Right_Tests, turn_right_2);
+		FRIEND_TEST(Right_Tests, turn_right_3);
+		FRIEND_TEST(Right_Tests, turn_right_4);
+		FRIEND_TEST(Go_Tests, go_1);
+		FRIEND_TEST(Go_Tests, go_2);
 		FRIEND_TEST(If_Wall_Tests, if_wall_1);
 		FRIEND_TEST(If_Wall_Tests, if_wall_2);
 		FRIEND_TEST(If_Wall_Tests, if_wall_3);
@@ -66,28 +89,17 @@ class Creature {
 		FRIEND_TEST(Control_Instructions, if_enemy_south_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_west_fail);
 		FRIEND_TEST(Control_Instructions, if_enemy_east_fail);
+
+	private:
+		DIRECTION _direction;
 		int _pc;
 		Species _species;
 		bool isNull;
-
-	public:
-		Creature();
-		Creature(Species species, DIRECTION direction);
-		Creature(Species species, DIRECTION direction, int n);
-		Instruction& getInstruction(int pc);
-		friend ostream& operator<<(ostream& os, const Creature& creature);
-		int operator++(int);
-		~Creature();
-		FRIEND_TEST(Right_Tests, turn_right_1);
-		FRIEND_TEST(Right_Tests, turn_right_2);
-		FRIEND_TEST(Right_Tests, turn_right_3);
-		FRIEND_TEST(Right_Tests, turn_right_4);
-		FRIEND_TEST(Go_Tests, go_1);
-		FRIEND_TEST(Go_Tests, go_2);
 };
 
 
 class Darwin {
+
 	public:
 		typedef vector<Creature>::iterator iterator;
 		Darwin(int col, int row);
@@ -116,6 +128,7 @@ class Darwin {
 		FRIEND_TEST(Add_Creature, add_creature_2);
 		FRIEND_TEST(Add_Creature, add_creature_3);
 		FRIEND_TEST(Add_Creature, add_creature_4);
+
 	private:
 		vector<Creature> grid;
 		int _row;

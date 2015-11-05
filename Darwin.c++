@@ -1,24 +1,35 @@
+// ------------------------------
+// Darwin.c++
+// Copyright (C) 2015
+// Kahli Holmes
+// Phillip Pan
+// ------------------------------
+
+// --------
+// includes
+// --------
+
 #include "Darwin.h"
 #include <iostream>
 #include <deque>
-#include <stdexcept> // invalid_argument
+#include <stdexcept>
+
 /* Instruction */
 Instruction::Instruction(){}
 Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 	instruction_name = name;
 	_n = n;
 }
-// Action::Action(){}
-// Action::Action(INSTRUCTION_NAME name) : Instruction(name) {}
-
-// Control::Control(INSTRUCTION_NAME name,int n) : Instruction(name) {}
-
 /* Species */
 Species::Species() { _name = '.';}
 Species::Species(char c) { _name = c; }
 int Species::addInstruction(Instruction instruction) {
 	program.push_back(instruction);
 	return program.size();
+}
+ostream& operator<<(ostream& os, const Species& species) {
+	os << species._name;
+	return os;
 }
 Instruction& Creature::getInstruction(int pc){
 	return _species.program[pc];
@@ -234,7 +245,7 @@ void Darwin::if_random(Creature& c, int n) {
 	}
 }
 ostream& operator<<(ostream& os, const Creature& creature) {
-	os << creature._species._name;
+	os << creature._species;
 	return os;
 }
 int Creature::operator++(int){
