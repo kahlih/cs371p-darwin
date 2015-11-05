@@ -618,45 +618,6 @@ TEST(Control_Instructions, go_2) {
 	ASSERT_EQ(c._pc, 1);
 }
 
-/**
- * Tests at() when given coordinates
- */
-TEST(Indexable, at_1) {
-	Species hopper('h');
-	Darwin d(3,3);
-	Creature c(hopper, SOUTH);
-	d.addCreature(c, 1, 1);
-
-	ostringstream a;
-
-	a << d.at(1,1);
-	ASSERT_EQ(a.str(), "h");
-
-	ostringstream b;
-	b << d.at(0,0);
-	ASSERT_EQ(b.str(), ".");
-}
-
-/**
- * Tests at() when given a position in row-major array
- */
-TEST(Indexable, at_2) {
-	Species hopper('h');
-	Darwin d(3,3);
-	Creature c(hopper, SOUTH);
-	d.addCreature(c, 5);
-
-	ostringstream a;
-
-	a << d.at(5);
-	ASSERT_EQ(a.str(), "h");
-
-	ostringstream b;
-	b << d.at(0);
-	ASSERT_EQ(b.str(), ".");
-}
-
-
 //if_random
 TEST(Control_Instructions, if_random_1){
 	srand(0);
@@ -815,4 +776,146 @@ TEST(Control_Instructions, if_enemy_west_fail) {
 	d.addCreature(c, 4);
 	d.if_enemy(c, 4, 5);
 	ASSERT_EQ(c._pc, 0);
+}
+
+/**
+ * Tests at() when given coordinates
+ */
+TEST(Indexable, at_1) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 1, 1);
+
+	ostringstream a;
+
+	a << d.at(1,1);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+	b << d.at(0,0);
+	ASSERT_EQ(b.str(), ".");
+}
+
+/**
+ * Tests at() when given a position in row-major array
+ */
+TEST(Indexable, at_2) {
+	Species hopper('h');
+	Darwin d(3,3);
+	Creature c(hopper, SOUTH);
+	d.addCreature(c, 5);
+
+	ostringstream a;
+
+	a << d.at(5);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+	b << d.at(0);
+	ASSERT_EQ(b.str(), ".");
+}
+
+/**
+ * Tests at() when given coordinates with multiple creatures
+ */
+TEST(Indexable, at_3) {
+	Species hopper('h');
+	Species potato('p');
+	Species squash('s');
+
+	Darwin d(3,3);
+
+	Creature c1(hopper, SOUTH);
+	Creature c2(potato, SOUTH);
+	Creature c3(squash, SOUTH);
+
+	d.addCreature(c1, 0, 0);
+	d.addCreature(c2, 1, 1);
+	d.addCreature(c3, 2, 2);
+
+	ostringstream a;
+
+	a << d.at(0,0);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+
+	b << d.at(1,1);
+	ASSERT_EQ(b.str(), "p");
+
+	ostringstream c;
+
+	c << d.at(2,2);
+	ASSERT_EQ(c.str(), "s");
+}
+
+/**
+ * Tests at() when given a position in row-major array with multiple creatures
+ */
+TEST(Indexable, at_4) {
+	Species hopper('h');
+	Species potato('p');
+	Species squash('s');
+
+	Darwin d(3,3);
+
+	Creature c1(hopper, SOUTH);
+	Creature c2(potato, SOUTH);
+	Creature c3(squash, SOUTH);
+
+	d.addCreature(c1, 0);
+	d.addCreature(c2, 4);
+	d.addCreature(c3, 8);
+
+	ostringstream a;
+
+	a << d.at(0);
+	ASSERT_EQ(a.str(), "h");
+
+	ostringstream b;
+
+	b << d.at(4);
+	ASSERT_EQ(b.str(), "p");
+
+	ostringstream c;
+
+	c << d.at(8);
+	ASSERT_EQ(c.str(), "s");
+}
+
+TEST(Indexable, at_5) {
+	Darwin d(3,3);
+	try {
+        d.at(-1);
+    } catch (std::exception& ex) {
+       ASSERT_STREQ("n is out of bounds", ex.what());
+    }
+}
+
+TEST(Indexable, at_6) {
+	Darwin d(3,3);
+	try {
+        d.at(9);
+    } catch (std::exception& ex) {
+       ASSERT_STREQ("n is out of bounds", ex.what());
+    }
+}
+
+TEST(Indexable, at_7) {
+	Darwin d(3,3);
+	try {
+        d.at(-1, -1);
+    } catch (std::exception& ex) {
+       ASSERT_STREQ("input is out of bounds", ex.what());
+    }
+}
+
+TEST(Indexable, at_8) {
+	Darwin d(3,3);
+	try {
+        d.at(3,3);
+    } catch (std::exception& ex) {
+       ASSERT_STREQ("input is out of bounds", ex.what());
+    }
 }

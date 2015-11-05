@@ -1,6 +1,7 @@
 #include "Darwin.h"
 #include <iostream>
- #include <deque>
+#include <deque>
+#include <stdexcept> // invalid_argument
 /* Instruction */
 Instruction::Instruction(){}
 Instruction::Instruction(INSTRUCTION_NAME name, int n) {
@@ -337,9 +338,15 @@ void Darwin::run(int location, Creature& c) {
 	}
 }
 Creature& Darwin::at(int n){
+	if (n < 0 || n >= _row * _col) {
+		throw invalid_argument("n is out of bounds");
+	}
 	return grid[n];
 }
 Creature& Darwin::at(int x, int y){
+	if (x < 0 || y < 0 || x >= _row || y >= _col) {
+		throw invalid_argument("input is out of bounds");
+	}
 	return grid[x + y*_col];
 }
 ostream& operator<<(ostream& os, const Darwin& d) {
