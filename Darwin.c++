@@ -15,7 +15,6 @@
 #include <stdexcept>
 
 /* Instruction */
-Instruction::Instruction(){}
 Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 	instruction_name = name;
 	_n = n;

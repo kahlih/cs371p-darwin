@@ -1,19 +1,19 @@
-==14188== Memcheck, a memory error detector
-==14188== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==14188== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==14188== Command: ./TestDarwin
-==14188== 
+==14277== Memcheck, a memory error detector
+==14277== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==14277== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==14277== Command: ./TestDarwin
+==14277== 
 Running main() from gtest_main.cc
 [==========] Running 62 tests from 14 test cases.
 [----------] Global test environment set-up.
 [----------] 3 tests from Infect_Tests
 [ RUN      ] Infect_Tests.infect_1
-[       OK ] Infect_Tests.infect_1 (71 ms)
+[       OK ] Infect_Tests.infect_1 (70 ms)
 [ RUN      ] Infect_Tests.infect_2
 [       OK ] Infect_Tests.infect_2 (11 ms)
 [ RUN      ] Infect_Tests.infect_3
-[       OK ] Infect_Tests.infect_3 (9 ms)
-[----------] 3 tests from Infect_Tests (96 ms total)
+[       OK ] Infect_Tests.infect_3 (10 ms)
+[----------] 3 tests from Infect_Tests (97 ms total)
 
 [----------] 3 tests from If_Wall_Tests
 [ RUN      ] If_Wall_Tests.if_wall_1
@@ -21,27 +21,27 @@ Running main() from gtest_main.cc
 [ RUN      ] If_Wall_Tests.if_wall_2
 [       OK ] If_Wall_Tests.if_wall_2 (5 ms)
 [ RUN      ] If_Wall_Tests.if_wall_3
-[       OK ] If_Wall_Tests.if_wall_3 (5 ms)
-[----------] 3 tests from If_Wall_Tests (16 ms total)
+[       OK ] If_Wall_Tests.if_wall_3 (4 ms)
+[----------] 3 tests from If_Wall_Tests (15 ms total)
 
 [----------] 4 tests from Left_Tests
 [ RUN      ] Left_Tests.turn_left_1
 [       OK ] Left_Tests.turn_left_1 (3 ms)
 [ RUN      ] Left_Tests.turn_left_2
-[       OK ] Left_Tests.turn_left_2 (2 ms)
+[       OK ] Left_Tests.turn_left_2 (3 ms)
 [ RUN      ] Left_Tests.turn_left_3
-[       OK ] Left_Tests.turn_left_3 (3 ms)
+[       OK ] Left_Tests.turn_left_3 (2 ms)
 [ RUN      ] Left_Tests.turn_left_4
 [       OK ] Left_Tests.turn_left_4 (3 ms)
-[----------] 4 tests from Left_Tests (12 ms total)
+[----------] 4 tests from Left_Tests (11 ms total)
 
 [----------] 4 tests from Right_Tests
 [ RUN      ] Right_Tests.turn_right_1
 [       OK ] Right_Tests.turn_right_1 (3 ms)
 [ RUN      ] Right_Tests.turn_right_2
-[       OK ] Right_Tests.turn_right_2 (2 ms)
+[       OK ] Right_Tests.turn_right_2 (3 ms)
 [ RUN      ] Right_Tests.turn_right_3
-[       OK ] Right_Tests.turn_right_3 (3 ms)
+[       OK ] Right_Tests.turn_right_3 (2 ms)
 [ RUN      ] Right_Tests.turn_right_4
 [       OK ] Right_Tests.turn_right_4 (3 ms)
 [----------] 4 tests from Right_Tests (11 ms total)
@@ -52,7 +52,7 @@ Running main() from gtest_main.cc
 [ RUN      ] If_Empty_Tests.if_empty_2
 [       OK ] If_Empty_Tests.if_empty_2 (6 ms)
 [ RUN      ] If_Empty_Tests.if_empty_3
-[       OK ] If_Empty_Tests.if_empty_3 (9 ms)
+[       OK ] If_Empty_Tests.if_empty_3 (10 ms)
 [----------] 3 tests from If_Empty_Tests (22 ms total)
 
 [----------] 12 tests from Hop_Tests
@@ -61,66 +61,66 @@ Running main() from gtest_main.cc
 [ RUN      ] Hop_Tests.hop_south
 [       OK ] Hop_Tests.hop_south (4 ms)
 [ RUN      ] Hop_Tests.hop_east
-[       OK ] Hop_Tests.hop_east (3 ms)
+[       OK ] Hop_Tests.hop_east (4 ms)
 [ RUN      ] Hop_Tests.hop_west
 [       OK ] Hop_Tests.hop_west (5 ms)
 [ RUN      ] Hop_Tests.hop_north_wall
-[       OK ] Hop_Tests.hop_north_wall (4 ms)
+[       OK ] Hop_Tests.hop_north_wall (3 ms)
 [ RUN      ] Hop_Tests.hop_south_wall
-[       OK ] Hop_Tests.hop_south_wall (3 ms)
+[       OK ] Hop_Tests.hop_south_wall (4 ms)
 [ RUN      ] Hop_Tests.hop_east_wall
-[       OK ] Hop_Tests.hop_east_wall (4 ms)
+[       OK ] Hop_Tests.hop_east_wall (3 ms)
 [ RUN      ] Hop_Tests.hop_west_wall
-[       OK ] Hop_Tests.hop_west_wall (3 ms)
+[       OK ] Hop_Tests.hop_west_wall (4 ms)
 [ RUN      ] Hop_Tests.hop_north_obstacle
-[       OK ] Hop_Tests.hop_north_obstacle (5 ms)
+[       OK ] Hop_Tests.hop_north_obstacle (4 ms)
 [ RUN      ] Hop_Tests.hop_south_obstacle
-[       OK ] Hop_Tests.hop_south_obstacle (4 ms)
+[       OK ] Hop_Tests.hop_south_obstacle (5 ms)
 [ RUN      ] Hop_Tests.hop_east_obstacle
-[       OK ] Hop_Tests.hop_east_obstacle (5 ms)
+[       OK ] Hop_Tests.hop_east_obstacle (4 ms)
 [ RUN      ] Hop_Tests.hop_west_obstacle
-[       OK ] Hop_Tests.hop_west_obstacle (4 ms)
-[----------] 12 tests from Hop_Tests (49 ms total)
+[       OK ] Hop_Tests.hop_west_obstacle (5 ms)
+[----------] 12 tests from Hop_Tests (50 ms total)
 
 [----------] 2 tests from Go_Tests
 [ RUN      ] Go_Tests.go_1
-[       OK ] Go_Tests.go_1 (2 ms)
+[       OK ] Go_Tests.go_1 (3 ms)
 [ RUN      ] Go_Tests.go_2
-[       OK ] Go_Tests.go_2 (4 ms)
-[----------] 2 tests from Go_Tests (6 ms total)
+[       OK ] Go_Tests.go_2 (3 ms)
+[----------] 2 tests from Go_Tests (7 ms total)
 
 [----------] 2 tests from If_Random_Tests
 [ RUN      ] If_Random_Tests.if_random_1
 [       OK ] If_Random_Tests.if_random_1 (7 ms)
 [ RUN      ] If_Random_Tests.if_random_2
-[       OK ] If_Random_Tests.if_random_2 (6 ms)
-[----------] 2 tests from If_Random_Tests (13 ms total)
+[       OK ] If_Random_Tests.if_random_2 (5 ms)
+[----------] 2 tests from If_Random_Tests (12 ms total)
 
 [----------] 4 tests from If_Enemy_Tests
 [ RUN      ] If_Enemy_Tests.if_enemy_north
 [       OK ] If_Enemy_Tests.if_enemy_north (4 ms)
 [ RUN      ] If_Enemy_Tests.if_enemy_south
-[       OK ] If_Enemy_Tests.if_enemy_south (4 ms)
+[       OK ] If_Enemy_Tests.if_enemy_south (5 ms)
 [ RUN      ] If_Enemy_Tests.if_enemy_east
 [       OK ] If_Enemy_Tests.if_enemy_east (4 ms)
 [ RUN      ] If_Enemy_Tests.if_enemy_west
 [       OK ] If_Enemy_Tests.if_enemy_west (4 ms)
-[----------] 4 tests from If_Enemy_Tests (16 ms total)
+[----------] 4 tests from If_Enemy_Tests (17 ms total)
 
 [----------] 4 tests from Control_Instructions
 [ RUN      ] Control_Instructions.if_enemy_north_fail
-[       OK ] Control_Instructions.if_enemy_north_fail (2 ms)
+[       OK ] Control_Instructions.if_enemy_north_fail (3 ms)
 [ RUN      ] Control_Instructions.if_enemy_south_fail
 [       OK ] Control_Instructions.if_enemy_south_fail (3 ms)
 [ RUN      ] Control_Instructions.if_enemy_east_fail
-[       OK ] Control_Instructions.if_enemy_east_fail (3 ms)
+[       OK ] Control_Instructions.if_enemy_east_fail (2 ms)
 [ RUN      ] Control_Instructions.if_enemy_west_fail
-[       OK ] Control_Instructions.if_enemy_west_fail (3 ms)
-[----------] 4 tests from Control_Instructions (12 ms total)
+[       OK ] Control_Instructions.if_enemy_west_fail (2 ms)
+[----------] 4 tests from Control_Instructions (11 ms total)
 
 [----------] 8 tests from Indexable
 [ RUN      ] Indexable.at_1
-[       OK ] Indexable.at_1 (6 ms)
+[       OK ] Indexable.at_1 (5 ms)
 [ RUN      ] Indexable.at_2
 [       OK ] Indexable.at_2 (4 ms)
 [ RUN      ] Indexable.at_3
@@ -135,7 +135,7 @@ Running main() from gtest_main.cc
 [       OK ] Indexable.at_7 (3 ms)
 [ RUN      ] Indexable.at_8
 [       OK ] Indexable.at_8 (2 ms)
-[----------] 8 tests from Indexable (64 ms total)
+[----------] 8 tests from Indexable (63 ms total)
 
 [----------] 5 tests from Iterable
 [ RUN      ] Iterable.iterator_1
@@ -163,27 +163,27 @@ Running main() from gtest_main.cc
 
 [----------] 4 tests from Add_Creature
 [ RUN      ] Add_Creature.add_creature_1
-[       OK ] Add_Creature.add_creature_1 (4 ms)
+[       OK ] Add_Creature.add_creature_1 (3 ms)
 [ RUN      ] Add_Creature.add_creature_2
 [       OK ] Add_Creature.add_creature_2 (3 ms)
 [ RUN      ] Add_Creature.add_creature_3
-[       OK ] Add_Creature.add_creature_3 (8 ms)
+[       OK ] Add_Creature.add_creature_3 (7 ms)
 [ RUN      ] Add_Creature.add_creature_4
-[       OK ] Add_Creature.add_creature_4 (7 ms)
+[       OK ] Add_Creature.add_creature_4 (8 ms)
 [----------] 4 tests from Add_Creature (22 ms total)
 
 [----------] Global test environment tear-down
-[==========] 62 tests from 14 test cases ran. (409 ms total)
+[==========] 62 tests from 14 test cases ran. (408 ms total)
 [  PASSED  ] 62 tests.
-==14188== 
-==14188== HEAP SUMMARY:
-==14188==     in use at exit: 0 bytes in 0 blocks
-==14188==   total heap usage: 1,807 allocs, 1,807 frees, 247,745 bytes allocated
-==14188== 
-==14188== All heap blocks were freed -- no leaks are possible
-==14188== 
-==14188== For counts of detected and suppressed errors, rerun with: -v
-==14188== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==14277== 
+==14277== HEAP SUMMARY:
+==14277==     in use at exit: 0 bytes in 0 blocks
+==14277==   total heap usage: 1,807 allocs, 1,807 frees, 247,751 bytes allocated
+==14277== 
+==14277== All heap blocks were freed -- no leaks are possible
+==14277== 
+==14277== For counts of detected and suppressed errors, rerun with: -v
+==14277== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestDarwin.c++'
 Lines executed:100.00% of 657
 Branches executed:77.79% of 3422

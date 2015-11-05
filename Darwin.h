@@ -5,7 +5,6 @@
 // Phillip Pan
 // ------------------------------
 
-
 #include <vector>
 #include <iostream>
 #include "gtest/gtest_prod.h"
@@ -15,43 +14,109 @@ using namespace std;
 enum INSTRUCTION_NAME {HOP, LEFT, RIGHT, INFECT, IF_EMPTY, IF_WALL, IF_RANDOM, IF_ENEMY, GO};
 enum DIRECTION {WEST, NORTH, EAST, SOUTH};
 
+// -----------
+// Instruction
+// -----------
+
 class Instruction {
+
+	// -------
+	// friends
+	// -------
 	friend class Creature;
 	friend class Darwin;
 
 	public:
-		Instruction(INSTRUCTION_NAME name,int n=-1);
-		Instruction();
+		// -----------
+        // constructor
+        // -----------
+        /**
+		 * Creates an instruction with instruction_name name and _n n.
+		 * If the Instruction is an action, n will be defaulted to -1.
+        */
+		Instruction(INSTRUCTION_NAME name, int n=-1);
 
+		// Unit tests that need access to Instruction's private members
 		FRIEND_TEST(Add_Instruction, add_instruction_3);
 		FRIEND_TEST(Add_Instruction, add_instruction_4);
 
 	private:
+
+		// ----------------
+        // instruction name
+        // ----------------
 		INSTRUCTION_NAME instruction_name;
+
+		// ---------------------
+        // instruction parameter
+        // ---------------------
 		int _n;
 };
 
+// -------
+// Species
+// -------
+
 class Species {
+
+	// -------
+	// friends
+	// -------
 	friend class Creature;
 	friend class Darwin;
 
 	public:
+		// ------------
+        // constructors
+        // ------------
+        /**
+         * Default constructor that sets up a species with a default identifier of "."
+        */
 		Species();
+
+		/**
+         * Constructor that sets up a species with a default identifier of c.
+        */
 	    Species(char c);
+
+	    // --------------
+        // addInstruction
+        // --------------
 		int addInstruction(Instruction instruction);
+
+		// -----------
+        // operator <<
+        // -----------
 	    friend ostream& operator<<(ostream& os, const Species& species);
 
+	    // Unit tests that need access to Species's private members
 	    FRIEND_TEST(Add_Instruction, add_instruction_1);
 	    FRIEND_TEST(Add_Instruction, add_instruction_2);
 	    FRIEND_TEST(Add_Instruction, add_instruction_3);
 	    FRIEND_TEST(Add_Instruction, add_instruction_4);
 
 	private:
+
+		// --------------
+        // program vector
+        // --------------
 		vector<Instruction> program;
+
+		// ------------------
+        // species identifier
+        // ------------------
 		char _name;
 };
 
+// --------
+// Creature
+// --------
+
 class Creature {
+
+	// -------
+	// Friends
+	// -------
 	friend class Darwin;
 
 	public:
@@ -97,11 +162,18 @@ class Creature {
 		bool isNull;
 };
 
+// ------
+// Darwin
+// ------
 
 class Darwin {
 
 	public:
+		// --------
+        // typedefs
+        // --------
 		typedef vector<Creature>::iterator iterator;
+
 		Darwin(int col, int row);
 		~Darwin();
 		void addCreature(Creature& c, int x, int y);
