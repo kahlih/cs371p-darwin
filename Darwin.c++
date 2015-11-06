@@ -157,13 +157,14 @@ void Darwin::infect(Creature& c, int location) {
 void Darwin::if_enemy(Creature& c, int location, int n) {
 	switch(c._direction){
 		case WEST: {
-				bool invalid = (location-1) % (_col) == (_col-1);
-				if (!invalid && !grid.at(location-1).isNull) {
-					go(c, n);
+				bool valid = ((location-1) % (_col) != (_col-1)) && (location-1 >= 0);
+				if (valid && !grid.at(location-1).isNull) {
+						go(c, n);
 				}
 			}
 			break;
 		case SOUTH:
+
 			if ((location+_col < _row*_col) && (!grid.at(location+_col).isNull)){
 				go(c, n);
 			}
@@ -279,19 +280,21 @@ void Darwin::simulate(int n, ostream& w){
 			w << "Turn = " << i << "." << endl;}
 		// Way to not modify the grid
 		// Grab all the Creatures that need to be process, THEN process their instruction
-		std::deque<pair<int,Creature>> list_of_creatures;
+		std::deque<pair<int,Creature&>> list_of_creatures;
 		for (int j = 0; j < (int) grid.size(); j++) {
 			Creature& current = at(j);
 			if(!current.isNull) {
-				pair<int,Creature> p(j,current);
+				pair<int,Creature&> p(j,current);
 				list_of_creatures.push_back(p);
 			}
 		}
 		// Now process creatures
-		typedef deque<pair<int,Creature>>::iterator iter;
+		typedef deque<pair<int,Creature&>>::iterator iter;
 		for (iter it = list_of_creatures.begin(); it != list_of_creatures.end(); it++){
-			pair<int,Creature> cur = *it;
+			pair<int,Creature&> cur = *it;
+			// cout << " c: " << cur.second << " dir " << cur.second._direction << endl; 
 			run(cur.first, cur.second);
+			// cout << " c: " << cur.second << " dir " << cur.second._direction << endl; 
 		}
 		if (i < 10 || (i >= 10 && i%100==0)){
 			w << *this;
@@ -302,10 +305,10 @@ void Darwin::run(int location, Creature& c) {
 	int pc = c++;
 	Instruction i = c.getInstruction(pc);
 	// cout << i.instruction_name << " " << c << " " << pc << endl;  
-
 	switch(i.instruction_name){
 		/* Actions */
 		case HOP : 
+
 			hop(c,location);
 			break;
 		case LEFT: 

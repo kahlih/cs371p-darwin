@@ -159,6 +159,8 @@ class Creature {
 		FRIEND_TEST(Control_Instructions, if_enemy_east_fail);
 		FRIEND_TEST(Constructors, creature_2);
 		FRIEND_TEST(Constructors, creature_3);
+		FRIEND_TEST(Simulation, simulate_1);
+
 	private:
 		DIRECTION _direction;
 		int _pc;
@@ -206,6 +208,7 @@ class Darwin {
 		FRIEND_TEST(Add_Creature, add_creature_4);
 		FRIEND_TEST(Constructors, darwin_1);
 		FRIEND_TEST(Constructors, darwin_2);
+		FRIEND_TEST(Simulation, simulate_1);
 	private:
 		vector<Creature> grid;
 		int _row;

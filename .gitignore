@@ -5,3 +5,9 @@ darwin-tests
 *.gcno
 RunDarwin
 TestDarwin
+.DS_Store
+.Darwin.c++.swp
+._.DS_Store
+compare.txt
+pbcopy
+
