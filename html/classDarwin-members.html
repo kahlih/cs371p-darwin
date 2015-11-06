@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,16 +87,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classDarwin.html">Darwin</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>addCreature</b>(Creature &amp;c, int x, int y) (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>at</b>(int n) (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>at</b>(int x, int y) (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Darwin</b>(int length, int height) (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>display</b>() (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Darwin</b>() (defined in <a class="el" href="classDarwin.html">Darwin</a>)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a3ab6a04e1ab4fcc20a89f5d55336de95">_col</a></td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a9b51a334a18aae2ebf8df34cab00f22a">_row</a></td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a64bb78ab0f529301e94b398628eae2b7">addCreature</a>(Creature &amp;c, int x, int y)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a840acc9c46444341bb9efa9e153d9814">addCreature</a>(Creature &amp;c, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a3b17e0e4ea48345055ffe7caf4695dc1">at</a>(int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a5fa30e184f0e23642b1a01c54ea438d4">at</a>(int x, int y)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a39221d181c1af664c645e7b42f179d73">begin</a>()</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a3f6508531e25987345ed4773bc0b475f">Darwin</a>(int col, int row)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#af59ea64f92d3c426881b99d117a29496">end</a>()</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a2bd4673b43bd1f4ad725adf51799f611">FRIEND_TEST</a>(Iterable, iterator_2)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a1d9263a609a472c16e7cfcb669550eb9">FRIEND_TEST</a>(Add_Creature, add_creature_1)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#afc764f9977b0611d06a251d21fd821b3">FRIEND_TEST</a>(Add_Creature, add_creature_2)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#aacad904b6d4f7e0ff243989f772e4f39">FRIEND_TEST</a>(Add_Creature, add_creature_3)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#adc642a2010f7a8fd2465b5d99d89c5ba">FRIEND_TEST</a>(Add_Creature, add_creature_4)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#aa855335564b0bb6992fc626857fbda3e">FRIEND_TEST</a>(Constructors, darwin_1)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#aa1e97fe0d7d392b2532403d7946120fd">FRIEND_TEST</a>(Constructors, darwin_2)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a3c8bd6e5b32fcf86461d7ae77fec936b">FRIEND_TEST</a>(Simulation, simulate_1)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a5ba978fd91ce75c6f585b5b972a47079">FRIEND_TEST</a>(Simulation, simulate_2)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a7f774e281323d357ccb316523caca438">FRIEND_TEST</a>(Simulation, simulate_3)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a4ff591f43bc90198cb4b2a510193377b">go</a>(Creature &amp;c, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a00b98588e47180b125671da4f8415138">grid</a></td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a17ad5799c42f69994ba385753e20bee5">hop</a>(Creature &amp;c, int location)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a7e4b00eca802039173dc79b8165aec5b">if_empty</a>(Creature &amp;c, int location, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a446466f39eb9653540b56f30b65d4036">if_enemy</a>(Creature &amp;c, int location, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#abe6da6695948d2344c22d7fd2b357061">if_random</a>(Creature &amp;c, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a4667df14df4a5a5f9f2093b18081b0b9">if_wall</a>(Creature &amp;c, int location, int n)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#aa9270e05bb80736d6f5fdbe68ac2a6b2">infect</a>(Creature &amp;c, int location)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a45cdbfdfb488fc1d43fd51be51d6dac4">iterator</a> typedef</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#a957d6fd556f566c4e463fb80eb9d62cf">left</a>(Creature &amp;c)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#acbee2a2cde1121cc01fd02e7ff033dd6">operator&lt;&lt;</a>(ostream &amp;os, const Darwin &amp;d)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#aa648e65d6b71b4c12f98056eb34b4e69">right</a>(Creature &amp;c)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#abc5315fb12478b070f88c0ad090694be">run</a>(int location, Creature &amp;c)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDarwin.html#ab98bd07ff861ec492dcd1d0b3aa47e81">simulate</a>(int n, ostream &amp;w)</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDarwin.html#a7f5e817f79502317976f90c3043c2168">~Darwin</a>()</td><td class="entry"><a class="el" href="classDarwin.html">Darwin</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 30 2015 17:58:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 5 2015 20:37:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

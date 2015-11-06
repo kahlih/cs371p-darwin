@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,14 +87,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classCreature.html">Creature</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Creature</b>() (defined in <a class="el" href="classCreature.html">Creature</a>)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Creature</b>(Species species, DIRECTION direction, int n) (defined in <a class="el" href="classCreature.html">Creature</a>)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator&lt;&lt;</b> (defined in <a class="el" href="classCreature.html">Creature</a>)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Creature</b>() (defined in <a class="el" href="classCreature.html">Creature</a>)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#aed9a9e4ef5c65f75f640bb14f0c7aa1e">_direction</a></td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a5778942540a7c320e5b582651afbd269">_pc</a></td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a65ebdf76d906172cd5292ce96e28665f">_species</a></td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a597cc3b08ee17de46c3e7ec3cf0d9b58">Creature</a>()</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a1b8b4c91960b934ef73ec3efe49ec7c1">Creature</a>(Species species, DIRECTION direction)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a6ac2e0ca8870970bb0d9df3a1c3b163a">Creature</a>(Species species, DIRECTION direction, int n)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#aae4fdf24dfdd3936f1ba810d44088f64">Darwin</a> class</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#aa98fd13935151716d76198a9c8d8a7ca">FRIEND_TEST</a>(Right_Tests, turn_right_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a02e28e29a0a707022fc8c9c4018b6c84">FRIEND_TEST</a>(Right_Tests, turn_right_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a1c76663023b1c0ed9b0522ee3ed0a223">FRIEND_TEST</a>(Right_Tests, turn_right_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#ac7a52f1541f45ab23c967ac11cac4698">FRIEND_TEST</a>(Right_Tests, turn_right_4)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a3620632dec3dd3da9f3944442f8aaa94">FRIEND_TEST</a>(Go_Tests, go_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#aca8acc7527456b7bcbc8644c0f9eef8f">FRIEND_TEST</a>(Go_Tests, go_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#af7e6e43889fb27ee26764a06cd962d42">FRIEND_TEST</a>(If_Wall_Tests, if_wall_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#ae140e4b2d6b53868a2280c908bbfb58a">FRIEND_TEST</a>(If_Wall_Tests, if_wall_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#aa9a8773194ec858da06aaad53a13d6d3">FRIEND_TEST</a>(If_Wall_Tests, if_wall_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#af65489dc8563c733f1fa2d70f149c32e">FRIEND_TEST</a>(Left_Tests, turn_left_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a7e542825d96cab3519a964bb44e44565">FRIEND_TEST</a>(Left_Tests, turn_left_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#add761280215076c951dfe3b1cf8e6f39">FRIEND_TEST</a>(Left_Tests, turn_left_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a57b8330bd6dd5b488e2bb89be48a7ead">FRIEND_TEST</a>(Left_Tests, turn_left_4)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#ad9fba81347002beb35f6dbd504f37c40">FRIEND_TEST</a>(If_Empty_Tests, if_empty_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#ac1943fa1ce05972ed3373d93e74b2176">FRIEND_TEST</a>(If_Empty_Tests, if_empty_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a2aa12a035caea29d89c0451a46c295c6">FRIEND_TEST</a>(If_Empty_Tests, if_empty_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#abcfc1f345b3bc155aae53bbf3d5bbf25">FRIEND_TEST</a>(If_Random_Tests, if_random_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#ae3e03d9b41d7821b5b39925f67dd2b88">FRIEND_TEST</a>(If_Random_Tests, if_random_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a90868808f7bbbafeddb0de34d80256c8">FRIEND_TEST</a>(If_Enemy_Tests, if_enemy_north)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a19a397b54d7b65e6f1b52bf15e2715fc">FRIEND_TEST</a>(If_Enemy_Tests, if_enemy_south)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a83a41cb2217a0a3e1bcf9409751ec8d4">FRIEND_TEST</a>(If_Enemy_Tests, if_enemy_west)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#aa92ad5c1f42c35711a7653380fa4302a">FRIEND_TEST</a>(If_Enemy_Tests, if_enemy_east)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#afd4cb3341f5707606416b50038df078f">FRIEND_TEST</a>(Control_Instructions, if_enemy_north_fail)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#ad9d51108e0b21f4fa330398b04f32661">FRIEND_TEST</a>(Control_Instructions, if_enemy_south_fail)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#abca13c7b424783ddf7e74e593cce9308">FRIEND_TEST</a>(Control_Instructions, if_enemy_west_fail)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a20820ff7242e987427bb5dd59d4035e1">FRIEND_TEST</a>(Control_Instructions, if_enemy_east_fail)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a358c4e6296330168693c73fdeeb0cfad">FRIEND_TEST</a>(Constructors, creature_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a86e9d20d9a9e9e1468b38ae705058b41">FRIEND_TEST</a>(Constructors, creature_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#ade2f762e87fa5a444744d9a8980489a5">FRIEND_TEST</a>(Simulation, simulate_1)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a65eaa61f0df9f28008c02b4769a9a42e">FRIEND_TEST</a>(Simulation, simulate_2)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a65dc2125e417b0f2d1bce0e489ce6fbc">FRIEND_TEST</a>(Simulation, simulate_3)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a835783d79f957228eb23de4c407a098f">getInstruction</a>(int pc)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#a38637bca6404ecf82079d00603b23f1d">isNull</a></td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#a90bfeeceed08038669e5fd968eb144a5">operator++</a>(int)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCreature.html#ad1d42de70c042f069da9e7c71d4ed390">operator&lt;&lt;</a>(ostream &amp;os, const Creature &amp;creature)</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCreature.html#aa991b23f4813fbdb6f875204ed49814d">~Creature</a>()</td><td class="entry"><a class="el" href="classCreature.html">Creature</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 30 2015 17:58:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 5 2015 20:37:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

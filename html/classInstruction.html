@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,36 +82,271 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classInstruction-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Instruction Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for Instruction:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classInstruction.png" usemap="#Instruction_map" alt=""/>
-  <map id="Instruction_map" name="Instruction_map">
-<area href="classAction.html" alt="Action" shape="rect" coords="0,56,70,80"/>
-<area href="classControl.html" alt="Control" shape="rect" coords="80,56,150,80"/>
-</map>
- </div></div>
+
+<p><code>#include &lt;<a class="el" href="Darwin_8h_source.html">Darwin.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8505db49193c9dbf3168c9be88456d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8505db49193c9dbf3168c9be88456d6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Instruction</b> (INSTRUCTION_NAME name)</td></tr>
-<tr class="separator:aa8505db49193c9dbf3168c9be88456d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e5c192dff38337681c1ccfa6022e88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#ad0e5c192dff38337681c1ccfa6022e88">Instruction</a> (<a class="el" href="Darwin_8h.html#a06a0dde8da1a02bc5c14c68f8aadfb56">INSTRUCTION_NAME</a> name, int n=-1)</td></tr>
+<tr class="separator:ad0e5c192dff38337681c1ccfa6022e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acddad13c1f5e07a75ef6c90cd1db4af7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#acddad13c1f5e07a75ef6c90cd1db4af7">FRIEND_TEST</a> (Add_Instruction, add_instruction_3)</td></tr>
+<tr class="separator:acddad13c1f5e07a75ef6c90cd1db4af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4193547ed943c8b130914fc223ff46ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a4193547ed943c8b130914fc223ff46ff">FRIEND_TEST</a> (Add_Instruction, add_instruction_4)</td></tr>
+<tr class="separator:a4193547ed943c8b130914fc223ff46ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a010a47c93083168286747beb8369e0e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a010a47c93083168286747beb8369e0e2">FRIEND_TEST</a> (Constructors, instruction_1)</td></tr>
+<tr class="separator:a010a47c93083168286747beb8369e0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a4a765410ce4afefc03a8556e19d986"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a0a4a765410ce4afefc03a8556e19d986">FRIEND_TEST</a> (Constructors, instruction_2)</td></tr>
+<tr class="separator:a0a4a765410ce4afefc03a8556e19d986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8ede487b8b078b4a4ed6a64a232ec609"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Darwin_8h.html#a06a0dde8da1a02bc5c14c68f8aadfb56">INSTRUCTION_NAME</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a8ede487b8b078b4a4ed6a64a232ec609">instruction_name</a></td></tr>
+<tr class="separator:a8ede487b8b078b4a4ed6a64a232ec609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a8f6a250ae6808c1027e5fdd616263"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a88a8f6a250ae6808c1027e5fdd616263">_n</a></td></tr>
+<tr class="separator:a88a8f6a250ae6808c1027e5fdd616263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a61c90c9560acd7d537ef938505c429c0"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#a61c90c9560acd7d537ef938505c429c0">Creature</a></td></tr>
+<tr class="separator:a61c90c9560acd7d537ef938505c429c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4fdf24dfdd3936f1ba810d44088f64"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstruction.html#aae4fdf24dfdd3936f1ba810d44088f64">Darwin</a></td></tr>
+<tr class="separator:aae4fdf24dfdd3936f1ba810d44088f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad0e5c192dff38337681c1ccfa6022e88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::Instruction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="Darwin_8h.html#a06a0dde8da1a02bc5c14c68f8aadfb56">INSTRUCTION_NAME</a>&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates an instruction with instruction_name name and _n n. If the <a class="el" href="classInstruction.html">Instruction</a> is an action, n will be defaulted to -1.</p>
+<p>Instructions</p>
+<ul>
+<li>Constructor -&gt; Will default n to a negative value if the instruction is not a control</li>
+<li>Identified with enums </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="acddad13c1f5e07a75ef6c90cd1db4af7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::FRIEND_TEST </td>
+          <td>(</td>
+          <td class="paramtype">Add_Instruction&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">add_instruction_3&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4193547ed943c8b130914fc223ff46ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::FRIEND_TEST </td>
+          <td>(</td>
+          <td class="paramtype">Add_Instruction&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">add_instruction_4&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a010a47c93083168286747beb8369e0e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::FRIEND_TEST </td>
+          <td>(</td>
+          <td class="paramtype">Constructors&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instruction_1&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0a4a765410ce4afefc03a8556e19d986"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::FRIEND_TEST </td>
+          <td>(</td>
+          <td class="paramtype">Constructors&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instruction_2&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a61c90c9560acd7d537ef938505c429c0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classCreature.html">Creature</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aae4fdf24dfdd3936f1ba810d44088f64"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classDarwin.html">Darwin</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a88a8f6a250ae6808c1027e5fdd616263"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Instruction::_n</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8ede487b8b078b4a4ed6a64a232ec609"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Darwin_8h.html#a06a0dde8da1a02bc5c14c68f8aadfb56">INSTRUCTION_NAME</a> Instruction::instruction_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Darwin_8h_source.html">Darwin.h</a></li>
-<li>Darwin.c++</li>
+<li><a class="el" href="Darwin_8c_09_09.html">Darwin.c++</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 30 2015 17:58:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 5 2015 20:37:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
