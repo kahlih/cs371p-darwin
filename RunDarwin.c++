@@ -112,7 +112,8 @@ int main () {
      assert(best1.addInstruction(Instruction(HOP)) == 8);
      assert(best1.addInstruction(Instruction(GO,0)) == 9);
      assert(best1.addInstruction(Instruction(INFECT)) == 10);
-     assert(best1.addInstruction(Instruction(GO,0)) == 11);
+     assert(best1.addInstruction(Instruction(LEFT)) == 11);
+     assert(best1.addInstruction(Instruction(GO,0)) == 12);
 
      Species best('b');
      assert(best.addInstruction(Instruction(IF_ENEMY, 6)) == 1);
