@@ -1,3 +1,15 @@
+commit fdc2708bffbc39ec7e31da74831ef626a918c190
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Thu Nov 5 20:52:41 2015 -0600
+
+    merging dev and master
+
+commit e4572e35d68d36f783630ef4d8c9cf1f81d0ee16
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:48:01 2015 -0600
+
+    cleaning up, closes #8, closes #7, closes #14
+
 commit f7d8b62c8591235439b617e5b4a0d623e287f8bc
 Author: Kahli Holmes <kahliholmes@utexas.edu>
 Date:   Thu Nov 5 20:45:42 2015 -0600
