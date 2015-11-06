@@ -275,47 +275,47 @@ int main () {
     Print every 100th grid after that (i.e. 100, 200, 300...1000).
     */
 
-    Darwin grid_with_best(72,72);
+    // Darwin grid_with_best(72,72);
 
-    // Create food species/creature
-    for (int i = 0; i < 10; i++){
-        int pos = rand() % 5184;
-        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
-        Creature b1(food, direction);
-        grid_with_best.addCreature(b1, pos);      
-    }
+    // // Create food species/creature
+    // for (int i = 0; i < 10; i++){
+    //     int pos = rand() % 5184;
+    //     DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+    //     Creature b1(food, direction);
+    //     grid_with_best.addCreature(b1, pos);      
+    // }
 
-    //Create hopper species/creature
-    for (int i = 0; i < 10; i++){
-        int pos = rand() % 5184;
-        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
-        Creature b1(hopper, direction);
-        grid_with_best.addCreature(b1, pos);      
-    }
+    // //Create hopper species/creature
+    // for (int i = 0; i < 10; i++){
+    //     int pos = rand() % 5184;
+    //     DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+    //     Creature b1(hopper, direction);
+    //     grid_with_best.addCreature(b1, pos);      
+    // }
 
-    // Create rover species/creature
-    for (int i = 0; i < 10; i++){
-        int pos = rand() % 5184;
-        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
-        Creature b1(rover, direction);
-        grid_with_best.addCreature(b1, pos);      
-    }
+    // // Create rover species/creature
+    // for (int i = 0; i < 10; i++){
+    //     int pos = rand() % 5184;
+    //     DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+    //     Creature b1(rover, direction);
+    //     grid_with_best.addCreature(b1, pos);      
+    // }
 
-    // Create trap species/creature
-    for (int i = 0; i < 10; i++){
-        int pos = rand() % 5184;
-        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
-        Creature b1(trap, direction);
-        grid_with_best.addCreature(b1, pos);      
-    }
+    // // Create trap species/creature
+    // for (int i = 0; i < 10; i++){
+    //     int pos = rand() % 5184;
+    //     DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+    //     Creature b1(trap, direction);
+    //     grid_with_best.addCreature(b1, pos);      
+    // }
 
-    // Create trap species/creature
-    for (int i = 0; i < 10; i++){
-        int pos = rand() % 5184;
-        DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
-        Creature b1(best1, direction);
-        grid_with_best.addCreature(b1, pos);      
-    }
+    // // Create trap species/creature
+    // for (int i = 0; i < 10; i++){
+    //     int pos = rand() % 5184;
+    //     DIRECTION direction =  static_cast<DIRECTION>(rand() % 4);
+    //     Creature b1(best1, direction);
+    //     grid_with_best.addCreature(b1, pos);      
+    // }
 
-    grid_with_best.simulate(1000,cout);    
+    // grid_with_best.simulate(1000,cout);    
     return 0;}

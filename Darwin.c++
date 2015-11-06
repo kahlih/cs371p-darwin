@@ -14,12 +14,30 @@
 #include <deque>
 #include <stdexcept>
 
+
 /* Instruction */
+
+/** Instructions
+ *	- Constructor -> Will default n to a negative value if the instruction is not a control
+ *	- Identified with enums
+*/
 Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 	instruction_name = name;
 	_n = n;
 }
+
 /* Species */
+
+/** Species
+ *	- Constructors 
+ *        - No Parameters: meaning a null creature, meaning representative of a '.' on board
+ 		  - One Parameter: meaning creation of a species, meaning representative of letter on board
+ 		  - Three Paramters: used for copying Species over when infecting a creature/species
+ *	- addInstruction
+ *  	  - inserts an instruction object into the program listing
+ *  - getInstruction
+ *  	  - retrieve specified instruction and that index within the list 
+*/
 Species::Species() { _name = '.';}
 Species::Species(char c) { _name = c; }
 Species::Species(char c, vector<Instruction>::iterator b, vector<Instruction>::iterator e){
@@ -43,6 +61,12 @@ Instruction& Creature::getInstruction(int pc){
 }
 
 /* Creature */
+
+/** Creatures
+ *	- Constructors 
+ *        - No Parameters: meaning a null creature, meaning representative of a '.' on board /(calls upon Species())
+ *		  - One Parameter: meaning creation of a creature with a direction and a NON NULL species
+*/
 Creature::Creature() {
 	isNull = true;
 }
@@ -268,6 +292,15 @@ int Creature::operator++(int){
 	return t;
 }
 /* Darwin */
+
+/** Darwin
+ * Darwin class manages a board of creatures
+ * Darwin is iterable, and can be iterated through to perform actions on creatures
+ *	- Constructors 
+ * 		  - Two Paramters: Creates a board of creatures
+ *	- simulate(n,ostringstream)
+ * 		  - performs n simulations of iterating through the board and the creatures program counters to perform actions
+*/
 Darwin::Darwin(int row, int col) : grid(row*col) {
 	_row = row;
 	_col = col;

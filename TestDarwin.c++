@@ -1486,6 +1486,10 @@ TEST(Constructors, darwin_2){
 	ASSERT_EQ(v.str(), " 012\n0...\n1...\n2...\n3...\n");
 }
 
+
+/**
+Testing Complete (multiple) Simulations and the respective states afterwards
+*/
 TEST(Simulation, simulate_1){
 	Species kahli('k');
     assert(kahli.addInstruction(Instruction(IF_ENEMY,3)) == 1);
@@ -1534,7 +1538,9 @@ TEST(Simulation, simulate_1){
     ASSERT_EQ(d.grid.at(1)._direction, SOUTH);
     //ASSERT_EQ(d.grid.at(0)._direction, NORTH);
 }
-
+/**
+Testing Complete (multiple) Simulations and the respective states afterwards
+*/
 TEST(Simulation, simulate_2){
 	Species kahli('k');
     assert(kahli.addInstruction(Instruction(IF_ENEMY,3)) == 1);
@@ -1574,7 +1580,9 @@ TEST(Simulation, simulate_2){
     ASSERT_EQ(d.grid.at(2)._direction, WEST);
 
 }
-
+/**
+Testing Complete (multiple) Simulations and the respective states afterwards
+*/
 TEST(Simulation, simulate_3){
 
 	Species hopper('h');
@@ -1612,4 +1620,5 @@ TEST(Simulation, simulate_3){
     ASSERT_EQ(d.grid.at(3)._direction, SOUTH);
 
 }
+
 
