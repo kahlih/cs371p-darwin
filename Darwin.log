@@ -1,3 +1,260 @@
+commit f7d8b62c8591235439b617e5b4a0d623e287f8bc
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:45:42 2015 -0600
+
+    updated uml
+
+commit d79be21c5d39901ca9fdd9183ab9cb679ca84e57
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:37:46 2015 -0600
+
+    added html with documentation
+
+commit e362f160651b95cb4a7a52af890166b0d21ead81
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:33:29 2015 -0600
+
+    added comments
+
+commit 21f590c3ca90e5c363ade43379d17b15c56c8970
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:19:50 2015 -0600
+
+    was able to get best working
+
+commit 0a20107282a53d3d7b19e617dbf7255c1ae13994
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:13:30 2015 -0600
+
+    almost have a best creature/ 23 need 26
+
+commit 81bcf1958ab60cc64eb39dcac63c3c45fb50c7f1
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 20:09:50 2015 -0600
+
+    added all simulate tests and debugged a bit
+
+commit 8e3128647b8246bcc737497b35bd124ac8eedeb3
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 18:13:15 2015 -0600
+
+    fixed bug, added a simulate case
+
+commit a6b0bff78dcd28a6e53b81266bfc968772d28cca
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Thu Nov 5 13:05:16 2015 -0600
+
+    constructors tested
+
+commit d7499f65f8d54b73d4f5631879b6b3a3207aaa40
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 22:07:38 2015 -0600
+
+    refactoring Darwin.h
+
+commit 3925a8272c3574eb6453d503adefaf1b14ff41eb
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 21:54:56 2015 -0600
+
+    made _name private, Closes #19
+
+commit f302e14b1f4836edbd99bc555c5d141d3518d7de
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 21:41:13 2015 -0600
+
+    finish add creature tests
+
+commit d02b00c2da90aff429065995e7b121676e6765e8
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 21:27:25 2015 -0600
+
+    finish add instruction tests
+
+commit 9fcbd9da6233a7085ffc36db2d6b13f269b666cc
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 21:14:50 2015 -0600
+
+    refactored tests
+
+commit 6c5c5442364e02d139edba5e0c7dc83feaf1df60
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 19:46:28 2015 -0600
+
+    add iterable tests
+
+commit ad8a00e24366afc4508e67a309318caad1d5d43e
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 18:37:31 2015 -0600
+
+    adding indexable tests
+
+commit a2b1e5941941ca87fe75000e838e833fd87ce222
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 18:13:08 2015 -0600
+
+    adding if_enemy tests
+
+commit 75377c58c651db8758fedf5e1c65bd867120241b
+Merge: eebc102 15902e4
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 17:58:27 2015 -0600
+
+    merge and add some at tests
+
+commit eebc1023f384e97d285ea378220ef0a429abed1a
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 17:56:48 2015 -0600
+
+    adding some at tests
+
+commit 15902e46e978f8bf9a12987966ebfae1092b5976
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 17:51:52 2015 -0600
+
+    adding if_rand and if_enemy tests
+
+commit 3aa47611528566a8cc5382859986f71a62f324c0
+Merge: 804c9e7 103ace2
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 17:28:38 2015 -0600
+
+    merged
+
+commit 804c9e73351be87c79f86cbed250fabc0fb4194d
+Merge: 0b21a84 0fd9c67
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 17:27:02 2015 -0600
+
+    merged
+
+commit 103ace26804df2d27a2d6b7227e547de31ff636a
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 17:25:35 2015 -0600
+
+    adding go tests
+
+commit 0b21a845f9ef2229ba28e903533f0129abeb5dcf
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 17:24:52 2015 -0600
+
+    finished if_empty tests
+
+commit 0fd9c673059708d7ba6614ea73d128fb7ed229ea
+Merge: d01c0b5 e124f6e
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 17:06:29 2015 -0600
+
+    merge and add hop tests
+
+commit d01c0b5352211eed2055776ae86f8643d1a69385
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 17:04:56 2015 -0600
+
+    finish hop tests
+
+commit e124f6efa11645cbb30049e6479ba027ab0e4a55
+Merge: 01f1564 b227e3c
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 16:59:59 2015 -0600
+
+    adding more tests, solved merge conflict
+
+commit 01f156446d0f5f038e05d7dc0016a113fde8e82a
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 16:55:32 2015 -0600
+
+    added if_wall and infect tests
+
+commit b227e3c346956003861442e3e79896df22fef8d6
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 16:30:20 2015 -0600
+
+    adding right tests
+
+commit d7c767977f63cba165836431d65bd75373d8e06f
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Wed Nov 4 16:27:10 2015 -0600
+
+    adding left tests
+
+commit 63808310a41dee9d6e3194566ec36d3ac02a0e44
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 16:00:26 2015 -0600
+
+    cleaned up comments
+
+commit 2c95442b531da0ba4881b5c555d238c6bf425f39
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Wed Nov 4 15:58:48 2015 -0600
+
+    refactored to get tests running
+
+commit 1e7a62d5e45dd8194ce838bde997e56a9c53c8c6
+Author: Phillip Pan <phillipp@cs.utexas.edu>
+Date:   Tue Nov 3 21:19:38 2015 -0600
+
+    fully working implementation, still needs testing
+
+commit 2c9f81bec00a1c423863caaea346182324e6cfac
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Mon Nov 2 15:46:30 2015 -0600
+
+    refactored, we can go from here
+
+commit 15edfed9e2c8f5b40b193db24c720313476430c0
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Mon Nov 2 15:34:54 2015 -0600
+
+    fixed test file
+
+commit 0dc21d6c0c6da13c411577251f46ba3f20e6c203
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Mon Nov 2 15:33:39 2015 -0600
+
+    modified code to utilize a queue of location/creature pairs
+
+commit ce88654473bf75611163d80d32fae6133a784126
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Sun Nov 1 19:05:45 2015 -0600
+
+    hop partially implemented
+
+commit 76a2f1e47265e7d50d641fad6cde10025c93dd36
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Sun Nov 1 17:42:27 2015 -0600
+
+    redid Instructions, fixes #16
+
+commit 42d5258f4473004458b3aa4d2e0ec53b9feaca50
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Sun Nov 1 17:07:29 2015 -0600
+
+    working on issue #15 and issue #16
+
+commit c8475ab8ddcc41ebebd1375f46aebf5a13cb33ba
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Sun Nov 1 14:06:02 2015 -0600
+
+    refactored and fixed the math for row-major ordering
+
+commit 38d811e02278e166646a1085f5b00cd2bfa3e7c1
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Fri Oct 30 18:08:36 2015 -0500
+
+    fixing travis file
+
+commit d6c01a54d4535e7c8cf27904dc7e576325725050
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Fri Oct 30 18:04:11 2015 -0500
+
+    trying to get travis to pass
+
+commit 6c3d63ffbf2b5aa58b3ee7880dccb550e047c31c
+Author: Kahli Holmes <kahliholmes@utexas.edu>
+Date:   Fri Oct 30 18:01:30 2015 -0500
+
+    added travis file, trying to get working build
+
 commit b705241d73fa5c17eb2a6a8507588294c92e8774
 Author: Kahli Holmes <kahliholmes@utexas.edu>
 Date:   Fri Oct 30 12:45:19 2015 -0500

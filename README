@@ -1,7 +1,0 @@
-
-yUML text:
-[Darwin||] <1...*---1...*> [Creature|Species s; enum direction; int pc;|]
-[Creature] <1...*---1> [Species|Program; string id;|]
-[Species] <1...*---1...*> [Instructions||]
-
-editable link: http://yuml.me/diagram/scruffy/class/[Darwin||] <1...*---1...*> [Creature|Species s; enum direction; int pc;|], [Creature] <1...*---1> [Species|Program; string id;|], [Species] <1...*---1...*> [Instructions||].pdf
