@@ -1508,7 +1508,6 @@ TEST(Simulation, simulate_1){
 
     ostringstream v1;
     d.simulate(1,v1);
-
     ASSERT_EQ(v1.str(), "Turn = 0.\n 01\n0fk\n1..\n\nTurn = 1.\n 01\n0fk\n1..\n\n");
     ASSERT_EQ(d.grid.at(1)._direction, NORTH);
     ASSERT_EQ(d.grid.at(0)._direction, WEST);
@@ -1528,11 +1527,89 @@ TEST(Simulation, simulate_1){
     ASSERT_EQ(d.grid.at(1)._direction, WEST);
     ASSERT_EQ(d.grid.at(0)._direction, EAST);
 
-    // ostringstream v4;
-    // d.simulate(1,v4);
+    ostringstream v4;
+    d.simulate(1,v4);
 
-    // ASSERT_EQ(v4.str(), "Turn = 0.\n 01\n0kk\n1..\n\nTurn = 1.\n 01\n0kk\n1..\n\n");
-    // ASSERT_EQ(d.grid.at(1)._direction, SOUTH);
-    // ASSERT_EQ(d.grid.at(0)._direction, NORTH);
+    ASSERT_EQ(v4.str(), "Turn = 0.\n 01\n0kk\n1..\n\nTurn = 1.\n 01\n0kk\n1..\n\n");
+    ASSERT_EQ(d.grid.at(1)._direction, SOUTH);
+    //ASSERT_EQ(d.grid.at(0)._direction, NORTH);
+}
+
+TEST(Simulation, simulate_2){
+	Species kahli('k');
+    assert(kahli.addInstruction(Instruction(IF_ENEMY,3)) == 1);
+    assert(kahli.addInstruction(Instruction(LEFT)) == 2);
+    assert(kahli.addInstruction(Instruction(GO,0)) == 3);
+    assert(kahli.addInstruction(Instruction(INFECT)) == 4);
+    assert(kahli.addInstruction(Instruction(GO,0)) == 5);
+
+    Species food('f');
+    assert(food.addInstruction(Instruction(LEFT)) == 1);
+    assert(food.addInstruction(Instruction(GO,0)) == 2);
+
+	Species hopper('h');
+	assert(hopper.addInstruction(Instruction(HOP)) == 1);
+	assert(hopper.addInstruction(Instruction(GO,0)) == 2);
+
+    Creature c1(kahli, NORTH);
+    Creature c2(food, NORTH);
+    Creature c3(hopper, WEST);
+
+    Darwin d(2,3);
+
+    d.addCreature(c1,2);
+    d.addCreature(c2,1);
+    d.addCreature(c3,3);
+
+    ostringstream v1;
+    d.simulate(1,v1);
+
+    ASSERT_EQ(v1.str(),"Turn = 0.\n 012\n0.fk\n1h..\n\nTurn = 1.\n 012\n0.fk\n1h..\n\n");
+    ASSERT_EQ(d.grid.at(2)._direction, WEST);
+
+    ostringstream v2;
+    d.simulate(1,v2);
+
+    ASSERT_EQ(v2.str(),"Turn = 0.\n 012\n0.fk\n1h..\n\nTurn = 1.\n 012\n0.kk\n1h..\n\n");
+    ASSERT_EQ(d.grid.at(2)._direction, WEST);
 
 }
+
+TEST(Simulation, simulate_3){
+
+	Species hopper('h');
+	assert(hopper.addInstruction(Instruction(HOP)) == 1);
+	assert(hopper.addInstruction(Instruction(RIGHT)) == 2);	
+	assert(hopper.addInstruction(Instruction(GO,0)) == 3);
+
+    Creature c1(hopper, EAST);
+    Creature c2(hopper, WEST);
+
+    Darwin d(2,2);
+
+    d.addCreature(c1,0);
+    d.addCreature(c2,3);
+
+    ostringstream v1;
+    d.simulate(1,v1);
+
+    ASSERT_EQ(v1.str(),"Turn = 0.\n 01\n0h.\n1.h\n\nTurn = 1.\n 01\n0.h\n1h.\n\n");
+    ASSERT_EQ(d.grid.at(1)._direction, EAST);
+    ASSERT_EQ(d.grid.at(2)._direction, WEST);
+
+    ostringstream v2;
+    d.simulate(1,v2);
+
+    ASSERT_EQ(v2.str(),"Turn = 0.\n 01\n0.h\n1h.\n\nTurn = 1.\n 01\n0.h\n1h.\n\n");
+    ASSERT_EQ(d.grid.at(1)._direction, SOUTH);
+    ASSERT_EQ(d.grid.at(2)._direction, NORTH);
+
+    ostringstream v3;
+    d.simulate(1,v3);
+
+    ASSERT_EQ(v3.str(),"Turn = 0.\n 01\n0.h\n1h.\n\nTurn = 1.\n 01\n0h.\n1.h\n\n");
+    ASSERT_EQ(d.grid.at(0)._direction, NORTH);
+    ASSERT_EQ(d.grid.at(3)._direction, SOUTH);
+
+}
+

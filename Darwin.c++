@@ -22,6 +22,14 @@ Instruction::Instruction(INSTRUCTION_NAME name, int n) {
 /* Species */
 Species::Species() { _name = '.';}
 Species::Species(char c) { _name = c; }
+Species::Species(char c, vector<Instruction>::iterator b, vector<Instruction>::iterator e){
+	_name = c;
+	while(b != e){
+		program.push_back(*b);
+		b++;
+	}
+}
+
 int Species::addInstruction(Instruction instruction) {
 	program.push_back(instruction);
 	return program.size();
@@ -119,17 +127,21 @@ void Darwin::infect(Creature& c, int location) {
 				if (!invalid && !grid.at(location-1).isNull) {
 					Creature& neighbor = grid.at(location - 1);
 					if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
-						neighbor._species = c._species;
-						neighbor._pc = 0;
-					}				}
+						neighbor = Creature(Species(c._species._name,c._species.program.begin(),c._species.program.end()),neighbor._direction);
+						// neighbor._species = c._species;
+						// neighbor._pc = 0;
+						// grid.at(location-1) = neighbor;
+					}				
+				}
 			}
 			break;
 		case SOUTH:
 			if ((location+_col < _row*_col) && (!grid.at(location+_col).isNull)){
 				Creature& neighbor = grid.at(location+_row);
 				if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
-					neighbor._species = c._species;
-					neighbor._pc = 0;
+					neighbor = Creature(Species(c._species._name, c._species.program.begin(),c._species.program.end()),neighbor._direction);
+					// neighbor._species = c._species;
+					// neighbor._pc = 0;
 				}
 			}
 			break;
@@ -138,17 +150,20 @@ void Darwin::infect(Creature& c, int location) {
 				if (!invalid && !grid.at(location+1).isNull) {
 					Creature& neighbor = grid.at(location + 1);
 					if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
-						neighbor._species = c._species;
-						neighbor._pc = 0;
-					}					}
+						neighbor = Creature(Species(c._species._name, c._species.program.begin(),c._species.program.end()),neighbor._direction);
+						// neighbor._species = c._species;
+						// neighbor._pc = 0;
+					}					
+				}
 			}
 			break;
 		case NORTH:
 			if ((location-_col >= 0) && (!grid.at(location-_col).isNull)) {
 				Creature& neighbor = grid.at(location-_col);
 				if (neighbor._species._name != '.' && neighbor._species._name != c._species._name) {
-					neighbor._species = c._species;
-					neighbor._pc = 0;
+					neighbor = Creature(Species(c._species._name, c._species.program.begin(),c._species.program.end()),neighbor._direction);
+					// neighbor._species = c._species;
+					// neighbor._pc = 0;
 				}
 			}
 			break;
@@ -158,20 +173,19 @@ void Darwin::if_enemy(Creature& c, int location, int n) {
 	switch(c._direction){
 		case WEST: {
 				bool valid = ((location-1) % (_col) != (_col-1)) && (location-1 >= 0);
-				if (valid && !grid.at(location-1).isNull) {
+				if (valid && !grid.at(location-1).isNull && grid.at(location-1)._species._name != c._species._name) {
 						go(c, n);
 				}
 			}
 			break;
 		case SOUTH:
-
 			if ((location+_col < _row*_col) && (!grid.at(location+_col).isNull)){
 				go(c, n);
 			}
 			break;
 		case EAST: {
-				bool invalid = (location+1) % (_col) == 0;
-				if (!invalid && !grid.at(location+1).isNull) {
+				bool valid = ((((location+1) % (_col)) != 0) && (location+1 < _col*_row));
+				if (valid && !grid.at(location+1).isNull) {
 					go(c, n);
 				}
 			}
@@ -186,8 +200,8 @@ void Darwin::if_enemy(Creature& c, int location, int n) {
 void Darwin::if_empty(Creature& c, int location, int n){
 	switch(c._direction){
 		case WEST: {
-				bool invalid = (location-1) % (_col) == (_col-1);
-				if (!invalid && grid.at(location-1).isNull) {
+				bool valid = (((location-1) % (_col) != (_col-1)) && (location-1 >=0));
+				if (valid && grid.at(location-1).isNull) {
 					go(c, n);
 				}
 			}
@@ -198,8 +212,8 @@ void Darwin::if_empty(Creature& c, int location, int n){
 			}
 			break;
 		case EAST: {
-				bool invalid = (location+1) % (_col) == 0;
-				if (!invalid && grid.at(location+1).isNull) {
+				bool valid = (((location+1) % (_col) != 0) && (location+1 < _row*_col));
+				if (valid && grid.at(location+1).isNull) {
 					go(c, n);
 				}
 			}
@@ -299,6 +313,7 @@ void Darwin::simulate(int n, ostream& w){
 		if (i < 10 || (i >= 10 && i%100==0)){
 			w << *this;
 			w << endl;}
+
 	}
 }
 void Darwin::run(int location, Creature& c) {
@@ -308,7 +323,6 @@ void Darwin::run(int location, Creature& c) {
 	switch(i.instruction_name){
 		/* Actions */
 		case HOP : 
-
 			hop(c,location);
 			break;
 		case LEFT: 
@@ -330,7 +344,7 @@ void Darwin::run(int location, Creature& c) {
 			if_empty(c, location, i._n);
 			run(location, c);
 			break;
-		case IF_WALL: 
+		case IF_WALL:
 			if_wall(c, location, i._n);
 			run(location, c);
 			break;
@@ -342,20 +356,19 @@ void Darwin::run(int location, Creature& c) {
 			if_enemy(c, location, i._n);
 			run(location, c);
 			break;
-
 	}
 }
 Creature& Darwin::at(int n){
 	if (n < 0 || n >= _row * _col) {
 		throw invalid_argument("n is out of bounds");
 	}
-	return grid[n];
+	return this->grid[n];
 }
 Creature& Darwin::at(int x, int y){
 	if (x < 0 || y < 0 || x >= _row || y >= _col) {
 		throw invalid_argument("input is out of bounds");
 	}
-	return grid[x + y*_col];
+	return this->grid[x + y*_col];
 }
 ostream& operator<<(ostream& os, const Darwin& d) {
 	int length = d.grid.size()/d._row;

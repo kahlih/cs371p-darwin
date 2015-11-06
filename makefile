@@ -76,3 +76,6 @@ RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
 
 RunDarwin.tmp: RunDarwin
 	./RunDarwin > RunDarwin.tmp
+
+RunDarwin.out: RunDarwin
+	./RunDarwin > RunDarwin.out

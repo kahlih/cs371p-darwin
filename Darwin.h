@@ -80,6 +80,8 @@ class Species {
         */
 	    Species(char c);
 
+	    Species(char c, vector<Instruction>::iterator b, vector<Instruction>::iterator e);
+
 	    // --------------
         // addInstruction
         // --------------
@@ -160,7 +162,8 @@ class Creature {
 		FRIEND_TEST(Constructors, creature_2);
 		FRIEND_TEST(Constructors, creature_3);
 		FRIEND_TEST(Simulation, simulate_1);
-
+		FRIEND_TEST(Simulation, simulate_2);
+		FRIEND_TEST(Simulation, simulate_3);
 	private:
 		DIRECTION _direction;
 		int _pc;
@@ -209,6 +212,8 @@ class Darwin {
 		FRIEND_TEST(Constructors, darwin_1);
 		FRIEND_TEST(Constructors, darwin_2);
 		FRIEND_TEST(Simulation, simulate_1);
+		FRIEND_TEST(Simulation, simulate_2);
+		FRIEND_TEST(Simulation, simulate_3);
 	private:
 		vector<Creature> grid;
 		int _row;
